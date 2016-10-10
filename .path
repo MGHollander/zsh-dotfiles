@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Add composer to PATH
+export PATH="$PATH:$HOME/.composer/vendor/bin"
