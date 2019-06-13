@@ -1,14 +1,14 @@
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/dotfiles/.{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
 # Add Git completion
-if [ -f ~/.git-completion.bash ]; then
-. ~/.git-completion.bash
+if [ -f ~/dotfiles/.git-completion.bash ]; then
+. ~/dotfiles/.git-completion.bash
 fi
 
 # Case-insensitive globbing (used in pathname expansion)
