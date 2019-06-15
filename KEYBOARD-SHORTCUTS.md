@@ -1,4 +1,4 @@
-# PHPStorm / Visual Code Studio
+# PhpStorm / Visual Code Studio
 
 ## Navigation and tools
 
