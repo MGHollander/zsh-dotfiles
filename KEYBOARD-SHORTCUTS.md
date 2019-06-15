@@ -12,6 +12,7 @@
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
 | `CMD` + `T` | Terminal |
+| `CMD` + `UP` | Floating file system <small><em>(PhpStorm only)</em></small> |
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog |
 | `CMD` + `CTRL` + `N` | Rename |
@@ -30,9 +31,12 @@
 | `CMD` + `V` | Past |
 | `CMD` + `X` | Cut |
 | `CMD` + `A` | Select all |
+| `CMD` + `Z` | Undo |
+| `CMD` + `SHIFT` + `Z` | Redo |
 | `CMD` + `D` | Duplicate line |
 | `CMD` + `BACKSPACE` | Delete line |
 | `ALT` + `UP` | Extend selection |
+| `ALT` + `DOWN` | Shrink selection |
 | `SHIFT` + `ALT` + `UP` | Move line up |
 | `SHIFT` + `ALT` + `DOWN` | Move line down |
 | `CMD` + `SHIFT` +`UP` | Select all lines till top of the file |
