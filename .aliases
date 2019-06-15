@@ -13,6 +13,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dev="cd ~/dev"
 
+# Command shortcuts
 alias g="git"
 alias h="history"
 alias j="jobs"
