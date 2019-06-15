@@ -12,8 +12,6 @@ alias -- -="cd -"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dev="cd ~/dev"
-alias db="cd ~/dev/devilbox"
-alias dbw="cd ~/dev/devilbox/data/www"
 
 alias g="git"
 alias h="history"
