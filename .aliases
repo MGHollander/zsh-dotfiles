@@ -12,6 +12,8 @@ alias -- -="cd -"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias dev="cd ~/dev"
+alias os="cd ~/dev/oneshoe"
+alias p="cd ~/dev/personal"
 
 # Command shortcuts
 alias g="git"
