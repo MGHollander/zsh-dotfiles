@@ -15,3 +15,6 @@ Thumbs.db
 
 # PHPStorm project files
 .idea
+
+# Environment files
+.env
