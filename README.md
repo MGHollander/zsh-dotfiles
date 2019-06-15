@@ -35,7 +35,7 @@ On Mac you have to change the default background en font color of the terminal.
 
 ## Add custom commands without creating a new fork
 
-If ~/.extra exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+If `~/dotfiles/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
 
 ## Using two Git identities to seperate work and personal accounts
 
