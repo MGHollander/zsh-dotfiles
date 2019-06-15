@@ -12,9 +12,9 @@
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
 | `CMD` + `T` | Terminal |
-| `CMD` + `UP` | Floating file system <small><em>(PhpStorm only)</em></small> |
+| `CMD` + `UP` | Floating file system *(PhpStorm only)* |
 | `CMD` + `N` | New file |
-| `CMD` + `ALT` + `N` | New file dialog <small><em>(VSCode only)</em></small> |
+| `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
 | `CMD` + `CTRL` + `N` | Rename selected file / folder in project files sidebar tool |
 | `CMD` + `SHIFT` + `P` | Find action / Show commands / Search for whatever |
 | `CMD` + `SHIFT` + `O` | Go to symbol (function in a class) |
