@@ -14,9 +14,9 @@
 | `CMD` + `T` | Terminal |
 | `CMD` + `UP` | Floating file system <small><em>(PhpStorm only)</em></small> |
 | `CMD` + `N` | New file |
-| `CMD` + `ALT` + `N` | New file dialog |
-| `CMD` + `CTRL` + `N` | Rename |
-| `CMD` + `SHIFT` + `P` | Find action / Show commands |
+| `CMD` + `ALT` + `N` | New file dialog <small><em>(VSCode only)</em></small> |
+| `CMD` + `CTRL` + `N` | Rename selected file / folder in project files sidebar tool |
+| `CMD` + `SHIFT` + `P` | Find action / Show commands / Search for whatever |
 | `CMD` + `SHIFT` + `O` | Go to symbol (function in a class) |
 | `CMD` + `SHIFT` + `I` | File structure popup |
 | `CMD` + `ALT` + `R` | Debug list |
