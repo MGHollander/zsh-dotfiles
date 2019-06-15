@@ -1,6 +1,6 @@
-## PHPStorm / Visual Code Studio
+# PHPStorm / Visual Code Studio
 
-### Navigation and tools
+## Navigation and tools
 
 | Keyboard shortcut | Action |
 | ------ | ------ |
@@ -22,8 +22,7 @@
 | `CTRL` + `ALT` + `R` | Run task list |
 | `CTRL` + `R` | Run |
 
-
-### Editor
+## Editor
 
 | Keyboard shortcut | Action |
 | ------ | ------ |
