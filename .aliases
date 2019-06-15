@@ -16,7 +16,6 @@ alias dev="cd ~/dev"
 # Command shortcuts
 alias g="git"
 alias h="history"
-alias j="jobs"
 
 # Docker-compose shortcuts
 alias dco="docker-compose"
