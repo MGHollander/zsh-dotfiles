@@ -10,7 +10,7 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
 - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
 - [Help](#help)
-  - [Git Completion not working?](#git-completion-not-working)
+  - [Git Completion not working](#git-completion-not-working)
 
 ## Installation
 
@@ -66,6 +66,6 @@ By default my commits will be in name of my personal account. When I commit some
 
 ## Help
 
-### Git Completion not working?
+### Git Completion not working
 
 Run `chmod -X ~/.git-completion.bash` and restart your terminal. ([source](http://thegeekywizard.com/2014/03/autocomplete-for-git-mac-osx-terminal/))
