@@ -38,4 +38,3 @@
 | `SHIFT` + `ALT` + `DOWN` | Move line down |
 | `CMD` + `SHIFT` +`UP` | Select all lines till top of the file |
 | `CMD` + `SHIFT` + `DOWN` | Select all lines till bottom of the file |
-
