@@ -15,6 +15,7 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 - [Help](#help)
   - [Git Completion not working](#git-completion-not-working)
 - [Contact](#contact)
+- [To do](#to-do)
 
 ## Installation
 
@@ -89,3 +90,7 @@ Run `chmod -X ~/.git-completion.bash` and restart your terminal. ([source](http:
 ## Contact
 
 Please [create an issue](https://gitlab.com/MGHollander/dotfiles/issues) if you have any questions or suggestions.
+
+## To do
+
+- Add a list with all functionalies included in the dotfiles. Describe things that happen in files that do not have aliases or functions, but do have useful functionalities (.bash_prompt, .exports, etc.).
