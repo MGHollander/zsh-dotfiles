@@ -8,6 +8,7 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 
 - [Installation](#installation)
 - [Keyboard shortcuts](#keyboard-shortcuts)
+- [Aliases](#aliases)
 - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
 - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
 - [Help](#help)
@@ -38,6 +39,10 @@ On Mac you have to change the default background en font color of the terminal.
 ## Keyboard shortcuts
 
 [My favorite keyboard shortcuts](KEYBOARD-SHORTCUTS.md)
+
+## Aliases
+
+[All available aliases](ALIASES.md)
 
 ## Add custom commands without creating a new fork
 
