@@ -6,16 +6,16 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 
 ## Table of content <!-- omit in toc -->
 
-- [Installation](#installation)
-- [Keyboard shortcuts](#keyboard-shortcuts)
-- [Aliases](#aliases)
-- [EditorConfig](#editorconfig)
-- [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
-- [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
-- [Help](#help)
-  - [Git Completion not working](#git-completion-not-working)
-- [Contact](#contact)
-- [To do](#to-do)
+- [Installation](#Installation)
+- [Keyboard shortcuts](#Keyboard-shortcuts)
+- [Aliases](#Aliases)
+- [EditorConfig](#EditorConfig)
+- [Add custom commands without creating a new fork](#Add-custom-commands-without-creating-a-new-fork)
+- [Using two Git identities to seperate work and personal accounts](#Using-two-Git-identities-to-seperate-work-and-personal-accounts)
+- [Help](#Help)
+  - [Git Completion not working](#Git-Completion-not-working)
+- [Contact](#Contact)
+- [To do](#To-do)
 
 ## Installation
 
@@ -28,6 +28,8 @@ Add to `~/.bashrc` or `~/.bash_profile`:
 source ~/dotfiles/.bashrc;
 ```
 
+**NOTE:** On Mac you have to change the default background en font color of the terminal.
+
 Add to `~/.gitconfig`
 
 ```ini
@@ -36,7 +38,7 @@ Add to `~/.gitconfig`
     path = ~/dotfiles/.gitconfig
 ```
 
-On Mac you have to change the default background en font color of the terminal.
+**NOTE:** Some git config files might be overwritten by Git GUI tools. For  example: My `~/dotfiles/.gitignore` wasn't loading. When I checked my `~/.gitconfig` the `excludesfile` variable was overwritten by Sourcetree. Therefore I have to configure my own global .gitignore in the Sourcetree settings.
 
 ## Keyboard shortcuts
 
