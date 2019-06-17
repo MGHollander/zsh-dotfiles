@@ -3,6 +3,7 @@
 - [PhpStorm / Visual Code Studio](#PhpStorm--Visual-Code-Studio)
   - [Navigation and tools](#Navigation-and-tools)
   - [Editor](#Editor)
+- [Google Chrome](#Google-Chrome)
 
 ## PhpStorm / Visual Code Studio
 
@@ -47,3 +48,9 @@
 | `SHIFT` + `ALT` + `DOWN` | Move line down |
 | `CMD` + `SHIFT` +`UP` | Select all lines till top of the file |
 | `CMD` + `SHIFT` + `DOWN` | Select all lines till bottom of the file |
+
+## Google Chrome
+
+| Keyboard shortcut | Action |
+| ------ | ------ |
+| `ALT` + `SHIFT` + `1` | Display OneTab |
