@@ -29,6 +29,9 @@
 | `CMD` + `ALT` + `R` | Debug list |
 | `CTRL` + `ALT` + `R` | Run task list |
 | `CTRL` + `R` | Run |
+| `CTRL` + `ALT` + `SHIFT` + `UP` | Previous change |
+| `CTRL` + `ALT` + `SHIFT` + `DOWN` | Next change |
+
 
 ### Editor
 
