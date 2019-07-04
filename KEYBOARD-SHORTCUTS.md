@@ -23,6 +23,10 @@
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
 | `CMD` + `CTRL` + `N` | Rename selected file / folder in project files sidebar tool |
+| `CMD` + `F` | Find in file |
+| `CMD` + `R` | Replace in file |
+| `CMD` + `SHIFT` + `F` | Find in path |
+| `CMD` + `SHIFT` + `R` | Replace in path |
 | `CMD` + `SHIFT` + `P` | Find action / Show commands / Search for whatever |
 | `CMD` + `SHIFT` + `O` | Go to symbol (function in a class) |
 | `CMD` + `SHIFT` + `I` | File structure popup |
