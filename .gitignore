@@ -1,3 +1,6 @@
+# Ignore the .extra file (see README.md for it's usage)
+.extra
+
 # Compiled Python files
 *.pyc
 
@@ -18,3 +21,6 @@ Thumbs.db
 
 # Environment files
 .env
+
+# Valet environment variable files
+.valet-env.php
