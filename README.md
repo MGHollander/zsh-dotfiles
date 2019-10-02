@@ -6,16 +6,16 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 
 ## Table of content <!-- omit in toc -->
 
-- [Installation](#Installation)
-- [Keyboard shortcuts](#Keyboard-shortcuts)
-- [Aliases](#Aliases)
-- [EditorConfig](#EditorConfig)
-- [Add custom commands without creating a new fork](#Add-custom-commands-without-creating-a-new-fork)
-- [Using two Git identities to seperate work and personal accounts](#Using-two-Git-identities-to-seperate-work-and-personal-accounts)
-- [Help](#Help)
-  - [Git Completion not working](#Git-Completion-not-working)
-- [Contact](#Contact)
-- [To do](#To-do)
+- [Installation](#installation)
+- [Keyboard shortcuts](#keyboard-shortcuts)
+- [Aliases](#aliases)
+- [EditorConfig](#editorconfig)
+- [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
+- [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
+- [Help](#help)
+  - [Git Completion not working](#git-completion-not-working)
+- [Contact](#contact)
+- [To do](#to-do)
 
 ## Installation
 
