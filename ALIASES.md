@@ -7,6 +7,7 @@
 - [Command shortcuts](#command-shortcuts)
 - [Docker-compose shortcuts](#docker-compose-shortcuts)
 - [List & grep aliases](#list--grep-aliases)
+- [Drush](#drush)
 - [Other aliases](#other-aliases)
 
 ## Easy navigation
@@ -56,6 +57,11 @@
 | `l` | `ls -lF ${colorflag}` | List all files colorized in long format |
 | `la` | `ls -laF ${colorflag}` | List all files colorized in long format, including dot files |
 | `lsd` | `ls -lF ${colorflag} | grep --color=never '^d'` | List only directories |
+
+## Drush
+| Alias | Command | Note |
+| ------ | ------ | ------ |
+| `dsd` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"` | Dump the database as file with teh current date and time |
 
 ## Other aliases
 

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Dump the database as file with teh current date and time
+alias dsd='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
