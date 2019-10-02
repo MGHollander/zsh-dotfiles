@@ -53,6 +53,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# Open repository in SourceTree from terminal. Usage: st /path/to/repo
+alias st='open -a SourceTree'
+
 # Enable aliases to be sudo'ed
 alias sudo='sudo '
 

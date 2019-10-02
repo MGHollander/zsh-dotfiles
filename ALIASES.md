@@ -69,6 +69,7 @@
 
 | Alias | Note |
 | ------ | ------ |
+| `st` |  Open repository in SourceTree from terminal. Usage: `st /path/to/repo` |
 | `update` | Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages |
 | `ip` | Get external IP address |
 | `localip` | Get local IP address |
