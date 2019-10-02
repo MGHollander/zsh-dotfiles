@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 
-# Dump the database as file with teh current date and time
-alias dsd='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
+# Eport the database as file with the current date and time
+alias dse='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
+
+# Import a database file
+alias dsi='drush sql-cli <'
+
+# Generate a one time login link without automatically opening the prowser
+alias dul='drush --no-browser uli'

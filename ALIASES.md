@@ -59,9 +59,11 @@
 | `lsd` | `ls -lF ${colorflag} | grep --color=never '^d'` | List only directories |
 
 ## Drush
+
 | Alias | Command | Note |
 | ------ | ------ | ------ |
-| `dsd` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"` | Dump the database as file with teh current date and time |
+| `dse` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"` | Export the database as file with the current date and time |
+| `dsi` | `drush sql-cli <` | Import a database file |
 
 ## Other aliases
 
