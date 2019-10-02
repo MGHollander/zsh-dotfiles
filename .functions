@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO add these functions to the readme
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
