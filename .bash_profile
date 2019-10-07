@@ -6,6 +6,9 @@ for file in ~/dotfiles/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+# Add bash completion (install by running `brew install bash-completion`)
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 # Add Git completion
 if [ -f ~/dotfiles/.git-completion.bash ]; then
 . ~/dotfiles/.git-completion.bash
