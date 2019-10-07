@@ -1,9 +1,9 @@
 # Keyboard shortcuts
 
-- [PhpStorm / Visual Code Studio](#PhpStorm--Visual-Code-Studio)
-  - [Navigation and tools](#Navigation-and-tools)
-  - [Editor](#Editor)
-- [Google Chrome](#Google-Chrome)
+- [PhpStorm / Visual Code Studio](#phpstorm--visual-code-studio)
+  - [Navigation and tools](#navigation-and-tools)
+  - [Editor](#editor)
+- [Google Chrome](#google-chrome)
 
 ## PhpStorm / Visual Code Studio
 
@@ -15,7 +15,7 @@
 | `CMD` + `4` | Open run console sidebar tool |
 | `CMD` + `7` | File structure sidebar / File outline |
 | `CMD` + `9` | Version Control |
-| `CMD` + `B` | Toggle sidebar |
+| `CMD` + `B` | Toggle sidebar *(VSCode only)* |
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
 | `CMD` + `T` | Terminal |
