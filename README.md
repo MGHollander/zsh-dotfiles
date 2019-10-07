@@ -12,6 +12,7 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 - [EditorConfig](#editorconfig)
 - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
 - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
+- [Terminal completion](#terminal-completion)
 - [Help](#help)
   - [Git Completion not working](#git-completion-not-working)
 - [Contact](#contact)
@@ -82,6 +83,10 @@ My `~/.gitconfig-work`:
 ```
 
 By default my commits will be in name of my personal account. When I commit something from a repository inside the `~/dev/work/` directory, then it will be in name of my work account.
+
+## Terminal completion
+
+Git completion is add to the dotfiles. You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
 
 ## Help
 
