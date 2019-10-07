@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 
+# One Shoe environment variable
 export ONESHOE_ENV=development
+
+# Aliases for default scripts in Drupal projects
+alias oneshoe-build="bash scripts/build.sh"
+alias oneshoe-clean-install="bash scripts/clean-install.sh"
+alias oneshoe-deploy="bash scripts/deploy.sh"
+alias oneshoe-drush-update="bash scripts/drush-update.sh"
+alias oneshoe-maintenance="bash scripts/maintenance.sh"
