@@ -8,3 +8,6 @@ alias dsi='drush sql-cli <'
 
 # Generate a one time login link without automatically opening the prowser
 alias dul='drush --no-browser uli'
+
+# Import config, update db and rebuild cache
+alias dup='drush csim -y; drush updb -y; drush cr'
