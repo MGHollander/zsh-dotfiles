@@ -9,3 +9,125 @@ alias oneshoe-clean-install="bash scripts/clean-install.sh"
 alias oneshoe-deploy="bash scripts/deploy.sh"
 alias oneshoe-drush-update="bash scripts/drush-update.sh"
 alias oneshoe-maintenance="bash scripts/maintenance.sh"
+
+# - Add usage documentation
+
+function oneshoe-create-project() {
+    GIT_REPO=$1
+    PROJECT_NAME=$2
+
+    if [ -z $GIT_REPO ]
+    then
+        echo "Please provide a Git repository"
+        return
+    fi
+
+    if [ -z $PROJECT_NAME ]
+    then
+        PROJECT_NAME=`echo $GIT_REPO | sed -n 's#.*/\([^.]*\)\.git#\1#p'`
+    fi
+
+    # TODO Add check to see if git is installed
+    # TODO Add check to see if clone succeeded
+    # TODO Add functionallity to checkout in a certain branch
+    echo "Checkout project"
+    git clone $GIT_REPO $PROJECT_NAME
+
+    # TODO Add check to see if valet-plus is installed or create db without valet-plus
+    # TODO Add check to see if db creation succeeded
+    echo "Create database"
+    valet db create $PROJECT_NAME
+
+    echo "Go to project root"
+    cd $PROJECT_NAME
+
+    if [ -d "./web/" ]
+    then
+        WEBROOT="./web/"
+        SETTINGS_FILE_PATH="./web/sites/default"
+    elif [ -d "./docroot/" ]
+    then
+        WEBROOT="./web/"
+        SETTINGS_FILE_PATH="./docroot/sites/default"
+    elif [ -d "./sites/" ]
+    then
+        WEBROOT="./"
+        SETTINGS_FILE_PATH="./sites/default"
+    else
+        echo "${red}Failed to find the settings file location${reset}"
+        return
+    fi
+
+    SETTINGS_FILE="${SETTINGS_FILE_PATH}/settings.php"
+
+    echo "SETTINGS_FILE: $SETTINGS_FILE"
+
+    echo "Copy the default settings file"
+    if [ -f $SETTINGS_FILE ]
+    then
+        echo "${yellow}There is a settings file present. Remove it.${reset}"
+
+        sudo chmod 777 "$SETTINGS_FILE"
+        sudo rm "$SETTINGS_FILE"
+    fi
+
+    sudo cp "${SETTINGS_FILE_PATH}/default.settings.php" $SETTINGS_FILE
+
+    if [ 0 -eq $? ]
+    then
+        echo "Settings file created";
+    else
+        echo "${red}Couldn't create a settings file${reset}"
+        return
+    fi
+
+    sudo chmod 777 $SETTINGS_FILE
+
+    echo "" >> $SETTINGS_FILE
+    if [ 0 -gt $? ]
+    then
+        echo "${red}Couldn't write in settings file${reset}"
+        return
+    fi
+
+    if [ 0 -eq $? ]
+    then
+        # TODO make the database details dynamic
+        echo "\$databases['default']['default'] = array (
+  'database' => '${PROJECT_NAME}',
+  'username' => 'root',
+  'password' => 'root',
+  'host' => 'localhost',
+  'driver' => 'mysql',
+);" >> $SETTINGS_FILE
+    else
+        echo "${red}Couldn't write in settings file${reset}";
+        return
+    fi
+
+    echo "Database details have been added to the settings file"
+    sudo chmod 666 $SETTINGS_FILE;
+
+    if [ -f scripts/clean-install.sh ]
+    then
+        echo "Run clean install"
+        bash scripts/clean-install.sh
+    else
+        echo "${yellow}No clean install script to run${reset}";
+    fi
+
+    if [ -z $WEBROOT ]
+    then
+        echo "Couldn't link the webroot to valet"
+    else
+        cd $WEBROOT
+        valet link $PROJECT_NAME
+        cd -
+
+        VALET_DOMAIN=`valet domain`
+
+        echo "Project link set. You can visit the website at http://${PROJECT_NAME}.${VALET_DOMAIN}/"
+    fi
+
+    echo "${green}Project creation finished${reset}"
+}
