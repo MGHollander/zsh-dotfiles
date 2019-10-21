@@ -4,6 +4,7 @@
   - [Navigation and tools](#navigation-and-tools)
   - [Editor](#editor)
 - [Google Chrome](#google-chrome)
+- [Terminal](#terminal)
 
 ## PhpStorm / Visual Code Studio
 
@@ -62,3 +63,12 @@
 | Keyboard shortcut | Action |
 | ------ | ------ |
 | `ALT` + `SHIFT` + `1` | Display OneTab |
+
+## Terminal
+
+| Keyboard shortcut | Action |
+| ------ | ------ |
+| `CTRL` + `W` | Cut the word before the cursor, adding it to the clipboard |
+| `CTRL` + `K` | Cut the part of the line after the cursor, adding it to the clipboard |
+| `CTRL` + `U` | Cut the part of the line before the cursor, adding it to the clipboard |
+| `CTRL` + `Y` | Paste the last thing you cut from the clipboard |
