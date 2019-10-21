@@ -114,6 +114,5 @@ Please [create an issue](https://gitlab.com/MGHollander/dotfiles/issues) if you 
 
 ## To do
 
-- Add a list with all functionalies included in the dotfiles. Describe things that happen in files that do not have aliases or functions, but do have useful functionalities (.bash_prompt, .exports, etc.).
+- Clean up and add a list with all functionalies included in the dotfiles. Describe things that happen in files that do not have aliases or functions, but do have useful functionalities (.bash_prompt, .exports, etc.).
 - Check if the original dotfiles contain an installer and (re)add this to my version. Also add new stuff such as bash-completion (via Homebrew) and drush. Maybe run `brew services list` to see what is installed via Homebrew.
-- Build a oneshoe command to replace the current aliases. The command should check the current location and change the dir to properly run the scripts.
