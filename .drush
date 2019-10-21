@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
+SCRIPT_DIR=`dirname $0`
+
+alias mydrush="bash $SCRIPT_DIR/oneshoe/mydrush.sh"
+
 # Eport the database as file with the current date and time
-alias dse='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
+alias dse='mydrush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
 
 # Import a database file
-alias dsi='drush sql-cli <'
+alias dsi='mydrush sql-cli <'
 
 # Generate a one time login link without automatically opening the prowser
-alias dul='drush --no-browser uli'
+alias dul='mydrush uli'
 
 # Import config, update db and rebuild cache
-alias dup='drush csim -y; drush updb -y; drush cr'
+alias dup='mydrush csim -y; mydrush updb -y; mydrush cr'
