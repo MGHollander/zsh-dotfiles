@@ -19,6 +19,9 @@ Thumbs.db
 # PHPStorm project files
 .idea
 
+# VS Code project files
+.vscode
+
 # Environment files
 .env
 
