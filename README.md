@@ -1,11 +1,12 @@
 # Marc's dotfiles
 
-Heavily stripped version of [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles).
+![Screenshot of my shell prompt](screenshot.png)
 
-I chose to leave every possible file in a subfolder to keep my home dir as clean as possible and keep my own custom files separate from the other files.
+**Note:** I chose to leave every possible file in a subfolder to keep my home dir as clean as possible and keep my own custom files separate from the other files.
 
 ## Table of content <!-- omit in toc -->
 
+- [Prerequirements](#prerequirements)
 - [Installation](#installation)
 - [Keyboard shortcuts](#keyboard-shortcuts)
 - [Aliases](#aliases)
@@ -16,20 +17,29 @@ I chose to leave every possible file in a subfolder to keep my home dir as clean
 - [Help](#help)
   - [Git Completion not working](#git-completion-not-working)
 - [Contact](#contact)
+- [Credits](#credits)
 - [To do](#to-do)
+
+## Prerequirements
+
+- Z shell ([Installation instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH))
+- [iTerm2](https://www.iterm2.com/)
+- [Oh My Zsh](https://ohmyz.sh/) ([Installation instructions](https://github.com/robbyrussell/oh-my-zsh#basic-installation))
+- [Powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k) ([Installation instructions](https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions))
+- [Solarized theme](https://ethanschoonover.com/solarized/) ([Installation instructions](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized))
+
+**Note:** I use the `Book` font type of the `DejaVu Sans Mono fo Powerline` font at size `15`.
 
 ## Installation
 
-Run `git clone git@gitlab.com:MGHollander/dotfiles.git` in the root of your user directory.
+Run `git clone git@github.com:MGHollander/zsh-dotfiles.git dotfiles` in the root of your user directory.
 
-Add to `~/.bashrc` or `~/.bash_profile`:
+Replace content of `~/.zshrc` or just add the code on the bottom:
 
 ```bash
 # Load custom dotfiles
-source ~/dotfiles/.bashrc;
+source ~/dotfiles/.zshrc;
 ```
-
-**NOTE:** On Mac you have to change the default background en font color of the terminal.
 
 Add to `~/.gitconfig`
 
@@ -97,6 +107,10 @@ Run `chmod -X ~/.git-completion.bash` and restart your terminal. ([source](http:
 ## Contact
 
 Please [create an issue](https://gitlab.com/MGHollander/dotfiles/issues) if you have any questions or suggestions.
+
+## Credits
+
+- [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ## To do
 
