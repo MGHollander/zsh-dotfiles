@@ -18,6 +18,7 @@ fi
 
 SITES_PATH="${WEBROOT}/sites"
 SETTINGS_LOCAL_FILE="${SITES_PATH}/default/settings.local.php"
+SETTINGS_LOCAL_EXAMPLE_FILE="${SITES_PATH}/example.settings.local.php"
 
 echo "Copy the example local settings file"
 
@@ -29,13 +30,18 @@ if [ -f $SETTINGS_LOCAL_FILE ]; then
     rm "$SETTINGS_LOCAL_FILE"
 fi
 
-cp "${SITES_PATH}/example.settings.local.php" $SETTINGS_LOCAL_FILE
+if [ -f $SETTINGS_LOCAL_EXAMPLE_FILE ]; then
+  cp $SETTINGS_LOCAL_EXAMPLE_FILE $SETTINGS_LOCAL_FILE
 
-if [ 0 -eq $? ]; then
-    echo -e "\033[32mLocal settings file created\033[0m";
+  if [ 0 -eq $? ]; then
+      echo -e "\033[32mLocal settings file created\033[0m";
+  else
+      echo -e "\033[31mCouldn't create local settings file\033[0m"
+      exit 1
+  fi
 else
-    echo -e "\033[31mCouldn't create local settings file\033[0m"
-    exit 1
+   echo -e "\033[33mThere is no local settings example available\033[0m"
+   exit 1
 fi
 
 chmod 777 $SETTINGS_LOCAL_FILE
