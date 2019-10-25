@@ -7,12 +7,23 @@ export ONESHOE_ENV=development
 
 # Aliases for default scripts in Drupal projects
 alias oneshoe-build="bash scripts/build.sh"
+alias osb="oneshoe-build"
+
 alias oneshoe-clean-install="bash scripts/clean-install.sh"
+alias osci="oneshoe-clean-install"
+
 alias oneshoe-deploy="bash scripts/deploy.sh"
-alias oneshoe-drush-update="bash scripts/drush-update.sh"
+alias osd="oneshoe-deploy"
+
 alias oneshoe-maintenance="bash scripts/maintenance.sh"
+alias osdu="oneshoe-drush-update"
 
 # Aliases for my own scripts
 alias oneshoe-create-project="bash $SCRIPT_DIR/oneshoe/create-project.sh"
+alias oscp="oneshoe-create-project"
+
 alias oneshoe-create-drupal-settings="bash $SCRIPT_DIR/oneshoe/create-drupal-settings-file.sh"
-alias oneshoe-copy-drupal-local-settings-file="bash $SCRIPT_DIR/oneshoe/copy-drupal-local-settings-file.sh"
+alias oscds="oneshoe-create-drupal-settings"
+
+alias oneshoe-copy-drupal-local-settings="bash $SCRIPT_DIR/oneshoe/copy-drupal-local-settings-file.sh"
+alias oscls="oneshoe-copy-drupal-local-settings"
