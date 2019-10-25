@@ -76,6 +76,9 @@
 		fi \
 	}; f"
 
+	# Delete all unstaged files from the repo
+	clear = "stash save --keep-index --include-untracked && git stash drop"
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
@@ -180,4 +183,3 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-	
