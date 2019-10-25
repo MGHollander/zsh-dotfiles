@@ -38,6 +38,12 @@
 | `g` | `git` |
 | `h` | `history` |
 
+## Open programs (Mac only)
+| Alias | Command |
+| ------ | ------ |
+| `phpstorm` | `open -a PhpStorm` |
+| `sourcetree` | `open -a SourceTree` |
+
 ## Docker-compose shortcuts
 
 | Alias | Command |

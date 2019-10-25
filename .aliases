@@ -19,6 +19,10 @@ alias p="cd ~/dev/personal"
 alias g="git"
 alias h="history"
 
+# Open Programs (Mac only)
+alias phpstorm="open -a PhpStorm"
+alias phpstorm="open -a SourceTree"
+
 # Docker-compose shortcuts
 alias dco="docker-compose"
 alias dcup="docker-compose up -d"
