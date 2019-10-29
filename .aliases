@@ -21,7 +21,7 @@ alias h="history"
 
 # Open Programs (Mac only)
 alias phpstorm="open -a PhpStorm"
-alias phpstorm="open -a SourceTree"
+alias sourcetree="open -a SourceTree"
 
 # Docker-compose shortcuts
 alias dco="docker-compose"
