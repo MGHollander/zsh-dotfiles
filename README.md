@@ -96,7 +96,7 @@ By default my commits will be in name of my personal account. When I commit some
 
 ## Terminal completion
 
-Git completion is add to the dotfiles. You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
+You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
 
 ## Help
 

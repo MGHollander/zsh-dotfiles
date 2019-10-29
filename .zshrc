@@ -99,9 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Add folders to CDPATH for quick access via `cd`
-export CDPATH=$CDPATH:~/dev:~/dev/oneshoe:~/dev/personal
-
 # https://github.com/Powerlevel9k/powerlevel9k/wiki/Stylizing-Your-Prompt
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
