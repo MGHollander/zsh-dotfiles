@@ -77,7 +77,7 @@
 	}; f"
 
 	# Delete all unstaged files from the repo
-	clear = "stash save --keep-index --include-untracked && git stash drop"
+	clear = "!git stash save --keep-index --include-untracked && git stash drop"
 
 [apply]
 
