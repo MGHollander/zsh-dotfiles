@@ -6,6 +6,9 @@ if [ -d "./web" ]; then
     COMMAND="$COMMAND --root=$PWD/web"
 elif [ -d "./docroot" ]; then
     COMMAND="$COMMAND --root=$PWD/docroot"
+elif [ ! -d "./sites" ]; then
+    echo -e "\033[31mCouldn't find the webroot folder\033[0m"
+    exit 1
 fi
 
 if [ "$1" == "uli" ]; then
