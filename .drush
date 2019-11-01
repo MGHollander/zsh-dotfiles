@@ -14,4 +14,7 @@ alias dsi='rush sql-cli <'
 alias dul='rush uli'
 
 # Import config, update db and rebuild cache
-alias dup='rush csim -y; rush updb -y; rush cr'
+alias dup8='rush csim -y; rush updb -y; rush cr'
+
+# Revert all features, update db and clear all caches
+alias dup7='rush fra -y; rush updb -y; rush cc all'
