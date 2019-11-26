@@ -19,11 +19,12 @@
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
+| `CMD` + `CTRL` + `P` | Recent projects popup |
 | `CMD` + `T` | Terminal |
 | `CMD` + `UP` | Floating file system *(PhpStorm only)* |
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
-| `CMD` + `CTRL` + `N` | Rename selected file / folder in project files sidebar tool |
+| `SHIFT` + `R` | Rename... |
 | `CMD` + `F` | Find in file |
 | `CMD` + `R` | Replace in file |
 | `CMD` + `SHIFT` + `F` | Find in path |
