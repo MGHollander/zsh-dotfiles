@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/common.sh"
+
 SCRIPT_DIR=`dirname $0`
 SCRIPT_NAME=`basename $0`
 
@@ -93,7 +95,7 @@ fi
 
 # TODO Make the checkout optional?
 # TODO Add check to see if git is installed
-echo "Checkout project"
+log "Checkout project"
 git clone $GIT_REPO $PROJECT_NAME $BRANCH_COMMAND
 
 if [ $? -gt 0 ]; then
@@ -109,14 +111,14 @@ if [ -z $NO_DATABASE ]; then
         DATABASE_NAME=$PROJECT_NAME
     fi
 
-    echo "Create database"
+    log "Create database"
     valet db create $PROJECT_NAME
 fi
 
-echo "Go to project root folder"
+log "Go to project root folder"
 cd $PROJECT_NAME/
 
-echo "Look for the webroot folder"
+log "Look for the webroot folder"
 
 if [ -d "./web" ]; then
     WEBROOT="./web"
@@ -143,7 +145,7 @@ bash $SCRIPT_DIR/copy-drupal-local-settings-file.sh $WEBROOT
 
 # TODO make clean install optional
 if [ -f scripts/clean-install.sh ]; then
-    echo "Run clean install"
+    log "Run clean install"
     bash scripts/clean-install.sh
 else
     echo -e "\033[33mNo clean install script to run\033[0m";
@@ -157,7 +159,8 @@ if [ -z $NO_LINK ]; then
 
     VALET_DOMAIN=`valet domain`
 
-    echo -e "\033[32mProject link set. You can visit the website at http://${PROJECT_NAME}.${VALET_DOMAIN}/\033[0m"
+    log "Project link set"
+    echo -e "You can visit the website at http://${PROJECT_NAME}.${VALET_DOMAIN}/\033[0m"
 fi
 
-echo -e "\033[32mProject creation finished\033[0m"
+log "Project creation finished"

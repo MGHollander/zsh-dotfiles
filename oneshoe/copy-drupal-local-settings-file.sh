@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/common.sh"
+
 SCRIPT_NAME=`basename $0`
 
 function usage() {
@@ -20,11 +22,11 @@ SITES_PATH="${WEBROOT}/sites"
 SETTINGS_LOCAL_FILE="${SITES_PATH}/default/settings.local.php"
 SETTINGS_LOCAL_EXAMPLE_FILE="${SITES_PATH}/example.settings.local.php"
 
-echo "Copy the example local settings file"
+log "Copy the example local settings file"
 
 # TODO Confirm if the file can be replaced
 if [ -f $SETTINGS_LOCAL_FILE ]; then
-    echo "There is a local settings file present. Remove it."
+    log "There is a local settings file present. Remove it."
 
     chmod 777 "$SETTINGS_LOCAL_FILE"
     rm "$SETTINGS_LOCAL_FILE"
@@ -45,6 +47,8 @@ else
 fi
 
 chmod 777 $SETTINGS_LOCAL_FILE
+
+log "Add trusted host patterns to local settings file"
 
 echo "" >> $SETTINGS_LOCAL_FILE
 if [ 0 -gt $? ]; then

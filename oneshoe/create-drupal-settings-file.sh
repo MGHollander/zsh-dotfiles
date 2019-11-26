@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/common.sh"
+
 SCRIPT_NAME=`basename $0`
 
 function usage() {
@@ -28,7 +30,7 @@ fi
 SETTINGS_FILE_PATH="${WEBROOT}/sites/default"
 SETTINGS_FILE="${SETTINGS_FILE_PATH}/settings.php"
 
-echo "Copy the default settings file"
+log "Copy the default settings file"
 
 # TODO Confirm if the file can be replaced
 if [ -f $SETTINGS_FILE ]; then
@@ -48,6 +50,8 @@ else
 fi
 
 chmod 777 $SETTINGS_FILE
+
+log "Add database details to settings file"
 
 echo "" >> $SETTINGS_FILE
 if [ 0 -gt $? ]; then
