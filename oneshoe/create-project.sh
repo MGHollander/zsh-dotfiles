@@ -154,13 +154,15 @@ fi
 # TODO make the valet link domain configurable
 # TODO check if the domain link already exists and ask if it needs to be replaced
 if [ -z $NO_LINK ]; then
+    log "Link project to valet"
+
     cd $WEBROOT
     valet link $PROJECT_NAME
 
     VALET_DOMAIN=`valet domain`
 
-    log "Project link set"
-    echo -e "You can visit the website at http://${PROJECT_NAME}.${VALET_DOMAIN}/\033[0m"
+    echo -e "\033[32mProject link set succesfully\033[0m"
+    echo "You can visit the project at http://${PROJECT_NAME}.${VALET_DOMAIN}"
 fi
 
 log "Project creation finished"
