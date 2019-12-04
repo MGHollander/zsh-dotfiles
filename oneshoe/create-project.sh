@@ -101,6 +101,7 @@ git clone $GIT_REPO $PROJECT_NAME $BRANCH_COMMAND
 if [ $? -gt 0 ]; then
     exit 4
 fi
+echo -e "\033[32mProject cloned succesfully\033[0m"
 
 # TODO Add check to see if valet-plus is installed or create db without valet-plus
 # TODO Add check to see if db creation succeeded
