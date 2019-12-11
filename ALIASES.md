@@ -5,8 +5,9 @@
 - [Easy navigation](#easy-navigation)
 - [Directory shortcuts](#directory-shortcuts)
 - [Command shortcuts](#command-shortcuts)
+- [Open programs (Mac only)](#open-programs-mac-only)
 - [Docker-compose shortcuts](#docker-compose-shortcuts)
-- [List & grep aliases](#list--grep-aliases)
+- [List &amp; grep aliases](#list-amp-grep-aliases)
 - [Drush](#drush)
 - [Other aliases](#other-aliases)
 
@@ -35,7 +36,6 @@
 
 | Alias | Command |
 | ------ | ------ |
-| `g` | `git` |
 | `h` | `history` |
 
 ## Open programs (Mac only)
@@ -96,3 +96,5 @@
 | `hd` | `hexdump -C` | |
 | `md5sum` | `md5` | macOS has no `md5sum`, so use `md5` as a fallback |
 | `sha1sum` | `shasum` | macOS has no `sha1sum`, so use `shasum` as a fallback |
+
+Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) provides.

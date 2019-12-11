@@ -21,20 +21,6 @@ alias dcs="docker-compose stop"
 alias dcd="docker-compose down"
 alias dcdv="docker-compose down --volumes"
 
-# Git
-alias g="git"
-alias gl="git log --pretty=oneline --graph --decorate --all"
-alias ga="git add"
-alias gb="git branch"
-alias gco="git checkout"
-alias gcd="git checkout develop"
-alias gcm="git checkout master"
-alias gc="git commit"
-alias gf="git fetch"
-alias gp="git pull"
-alias gps="git push"
-alias gs="git status"
-
 ## Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
 #    colorflag="--color"
