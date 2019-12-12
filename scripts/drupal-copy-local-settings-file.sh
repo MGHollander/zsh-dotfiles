@@ -5,14 +5,14 @@ source "$(dirname "$0")/common.sh"
 SCRIPT_NAME=`basename $0`
 
 function usage() {
-    echo -e "\033[33mUsage:\033[0m"
+    log_warning "Usage:"
     echo "  $SCRIPT_NAME <path_to_webroot>"
 }
 
 WEBROOT=$1
 
 if [ -z $WEBROOT ]; then
-    echo -e "\033[31mPlease provide a path to the webroot\033[0m"
+    log_error "Please provide a path to the webroot"
     echo ""
     usage
     exit 1
@@ -36,13 +36,13 @@ if [ -f $SETTINGS_LOCAL_EXAMPLE_FILE ]; then
   cp $SETTINGS_LOCAL_EXAMPLE_FILE $SETTINGS_LOCAL_FILE
 
   if [ 0 -eq $? ]; then
-      echo -e "\033[32mLocal settings file created\033[0m";
+      log_success "Local settings file created";
   else
-      echo -e "\033[31mCouldn't create local settings file\033[0m"
+      log_error "Couldn't create local settings file"
       exit 1
   fi
 else
-   echo -e "\033[33mThere is no local settings example available\033[0m"
+   log_warning "There is no local settings example available"
    exit 1
 fi
 
@@ -52,7 +52,7 @@ log "Add trusted host patterns to local settings file"
 
 echo "" >> $SETTINGS_LOCAL_FILE
 if [ 0 -gt $? ]; then
-    echo -e "\033[31mCouldn't write in local settings file\033[0m"
+    log_error "Couldn't write in local settings file"
     exit 2
 fi
 
@@ -62,10 +62,10 @@ if [ 0 -eq $? ]; then
   '\.valet$',
 ];" >> $SETTINGS_LOCAL_FILE
 else
-    echo -e "\033[31mCouldn't write in local settings file\033[0m";
+    log_error "Couldn't write in local settings file";
     exit 3
 fi
 
-echo -e "\033[32mTrusted host pattern has been added to the local settings file\033[0m"
+log_success "Trusted host pattern has been added to the local settings file"
 
 chmod 644 $SETTINGS_LOCAL_FILE;

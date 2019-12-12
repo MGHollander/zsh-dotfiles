@@ -13,13 +13,13 @@ SCRIPT_NAME=`basename $0`
 # - Add posibility to add files to the Drupal files folder
 
 function usage() {
-    echo -e "\033[33mUsage:\033[0m"
+    log_warning "Usage:"
     echo -e "  $SCRIPT_NAME [options] [--] <repo>"
     echo -e ""
-    echo -e "\033[33mArguments:\033[0m"
+    log_warning "Arguments:"
     echo -e "\033[32m  repo                                 \033[0m  Git repository"
     echo -e ""
-    echo -e "\033[33mOptions:\033[0m"
+    log_warning "Options:"
     echo -e "\033[32m  -h, --help                           \033[0m  Display this help message"
     echo -e "\033[32m  -b, --branch <branch>                \033[0m  Checkout <branch> instead of the remote's HEAD"
     echo -e "\033[32m  -d, --database-name <database-name>  \033[0m  Database name. If none is given then <project-name> is used"
@@ -61,7 +61,7 @@ while (( "$#" )); do
             break
             ;;
         -*|--*=) # unsupported flags
-            echo -e "\033[31mError: Unsupported flag $1\033[0m" >&2
+            log_error "Error: Unsupported flag $1" >&2
             echo ""
             usage
             exit 1
@@ -78,7 +78,7 @@ eval set -- "$PARAMS"
 GIT_REPO=$1
 
 if [ -z $GIT_REPO ]; then
-    echo -e "\033[31mPlease provide a Git repository\033[0m"
+    log_error "Please provide a Git repository"
     echo ""
     usage
     exit 2
@@ -101,7 +101,7 @@ git clone $GIT_REPO $PROJECT_NAME $BRANCH_COMMAND
 if [ $? -gt 0 ]; then
     exit 4
 fi
-echo -e "\033[32mProject cloned succesfully\033[0m"
+log_success "Project cloned succesfully"
 
 # TODO Add check to see if valet-plus is installed or create db without valet-plus
 # TODO Add check to see if db creation succeeded
@@ -131,7 +131,7 @@ fi
 
 # TODO find a way to check if the webroot script works.
 if [ -z $WEBROOT ]; then
-    echo -e "\033[31mCouldn't find the webroot folder\033[0m"
+    log_error "Couldn't find the webroot folder"
     exit 5
 fi
 
@@ -149,7 +149,7 @@ if [ -f scripts/clean-install.sh ]; then
     log "Run clean install"
     bash scripts/clean-install.sh
 else
-    echo -e "\033[33mNo clean install script to run\033[0m";
+    log_warning "No clean install script to run";
 fi
 
 # TODO make the valet link domain configurable
@@ -162,7 +162,7 @@ if [ -z $NO_LINK ]; then
 
     VALET_DOMAIN=`valet domain`
 
-    echo -e "\033[32mProject link set succesfully\033[0m"
+    log_success "Project link set succesfully"
     echo "You can visit the project at http://${PROJECT_NAME}.${VALET_DOMAIN}"
 fi
 

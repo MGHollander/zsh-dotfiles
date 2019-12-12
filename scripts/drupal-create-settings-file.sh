@@ -5,14 +5,14 @@ source "$(dirname "$0")/common.sh"
 SCRIPT_NAME=`basename $0`
 
 function usage() {
-    echo -e "\033[33mUsage:\033[0m"
+    log_warning "Usage:"
     echo "  $SCRIPT_NAME <path_to_webroot> <database_name>"
 }
 
 WEBROOT=$1
 
 if [ -z $WEBROOT ]; then
-    echo -e "\033[31mPlease provide a path to the webroot\033[0m"
+    log_error "Please provide a path to the webroot"
     echo ""
     usage
     exit 1
@@ -21,7 +21,7 @@ fi
 DATABASE_NAME=$2
 
 if [ -z $DATABASE_NAME ]; then
-    echo -e "\033[31mPlease provide a database name\033[0m"
+    log_error "Please provide a database name"
     echo ""
     usage
     exit 2
@@ -43,9 +43,9 @@ fi
 cp "${SETTINGS_FILE_PATH}/default.settings.php" $SETTINGS_FILE
 
 if [ 0 -eq $? ]; then
-    echo -e "\033[32mSettings file created\033[0m";
+    log_success "Settings file created";
 else
-    echo -e "\033[31mCouldn't create settings file\033[0m"
+    log_error "Couldn't create settings file"
     exit 3
 fi
 
@@ -55,7 +55,7 @@ log "Add database details to settings file"
 
 echo "" >> $SETTINGS_FILE
 if [ 0 -gt $? ]; then
-    echo -e "\033[31mCouldn't write in settings file\033[0m"
+    log_error "Couldn't write in settings file"
     exit 4
 fi
 
@@ -69,10 +69,10 @@ if [ 0 -eq $? ]; then
   'driver' => 'mysql',
 );" >> $SETTINGS_FILE
 else
-    echo -e "\033[31mCouldn't write in settings file\033[0m";
+    log_error "Couldn't write in settings file";
     exit 3
 fi
 
-echo -e "\033[32mDatabase details have been added to the settings file\033[0m"
+log_success "Database details have been added to the settings file"
 
 chmod 644 $SETTINGS_FILE;

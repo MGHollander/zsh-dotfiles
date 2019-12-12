@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/common.sh"
+
 COMMAND="drush"
 
 if [ -d "./web" ]; then
@@ -7,7 +9,7 @@ if [ -d "./web" ]; then
 elif [ -d "./docroot" ]; then
     COMMAND="$COMMAND --root=$PWD/docroot"
 elif [ ! -d "./sites" ]; then
-    echo -e "\033[31mCouldn't find the webroot folder\033[0m"
+    log_error "Couldn't find the webroot folder"
     exit 1
 fi
 
