@@ -2,7 +2,7 @@
 
 SCRIPT_DIR=`dirname $0`
 
-alias rush="bash $SCRIPT_DIR/oneshoe/mydrush.sh"
+alias rush="bash $SCRIPT_DIR/scripts/mydrush.sh"
 
 # Eport the database as file with the current date and time
 alias dse='rush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'

@@ -6,8 +6,8 @@ SCRIPT_DIR=`dirname $0`
 SCRIPT_NAME=`basename $0`
 
 # Test command:
-# rm -rf dotfiles && bash ~/dotfiles/oneshoe/create-project.sh git@gitlab.com:MGHollander/dotfiles.git --no-database
-# rm -rf drupal8-training && bash ~/dotfiles/oneshoe/create-project.sh git@gitlab.com:MGHollander/drupal8-training.git -b 13-website-header --no-database
+# rm -rf dotfiles && bash ~/dotfiles/scripts/create-project.sh git@gitlab.com:MGHollander/dotfiles.git --no-database
+# rm -rf drupal8-training && bash ~/dotfiles/scripts/create-project.sh git@gitlab.com:MGHollander/drupal8-training.git -b 13-website-header --no-database
 
 # TODO:
 # - Add posibility to add files to the Drupal files folder
@@ -136,13 +136,13 @@ if [ -z $WEBROOT ]; then
 fi
 
 # TODO add checks to determine the CMS / framework and add a settings file for other tools
-bash $SCRIPT_DIR/create-drupal-settings-file.sh $WEBROOT $PROJECT_NAME
+bash $SCRIPT_DIR/drupal-create-settings-file.sh $WEBROOT $PROJECT_NAME
 
 if [ $? -gt 0 ]; then
     exit 6$?
 fi
 
-bash $SCRIPT_DIR/copy-drupal-local-settings-file.sh $WEBROOT
+bash $SCRIPT_DIR/drupal-copy-local-settings-file.sh $WEBROOT
 
 # TODO make clean install optional
 if [ -f scripts/clean-install.sh ]; then

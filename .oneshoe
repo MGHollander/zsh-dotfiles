@@ -5,6 +5,8 @@ SCRIPT_DIR=`dirname $0`
 # One Shoe environment variable
 export ONESHOE_ENV=development
 
+# @TODO Add these aliases to ALIASES.md
+
 # Aliases for default scripts in Drupal projects
 alias oneshoe-build="bash scripts/build.sh"
 alias osb="oneshoe-build"
@@ -22,11 +24,8 @@ alias oneshoe-maintenance="bash scripts/maintenance.sh"
 alias osm="oneshoe-maintenance"
 
 # Aliases for my own scripts
-alias oneshoe-create-project="bash $SCRIPT_DIR/oneshoe/create-project.sh"
+alias oneshoe-create-project="bash $SCRIPT_DIR/scripts/create-project.sh"
 alias oscp="oneshoe-create-project"
 
-alias oneshoe-create-drupal-settings="bash $SCRIPT_DIR/oneshoe/create-drupal-settings-file.sh"
-alias oscds="oneshoe-create-drupal-settings"
-
-alias oneshoe-copy-drupal-local-settings="bash $SCRIPT_DIR/oneshoe/copy-drupal-local-settings-file.sh"
-alias oscls="oneshoe-copy-drupal-local-settings"
+alias drupal-create-settings="bash $SCRIPT_DIR/scripts/drupal-create-settings-file.sh"
+alias drupal-copy-local-settings="bash $SCRIPT_DIR/scripts/drupal-local-settings-file.sh"
