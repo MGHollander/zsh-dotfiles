@@ -38,7 +38,9 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-# TODO make variables configurable or something
+# TODO Add to docs
+# TODO Make variables configurable or something
+# TODO Use these functions to the project creation script in stead of valet function?
 DB_USER="root"
 DB_PASS="root"
 
@@ -64,6 +66,9 @@ function mdbc() {
     fi
 }
 
+# TODO Add to docs
+# TODO make variables configurable or something
+# TODO Add confirmation if to make sure an existing DB should be removed
 function mdbd() {
     DB_NAME=$1
 
