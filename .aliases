@@ -12,6 +12,7 @@ alias h="history"
 
 # Open Programs (Mac only)
 alias phpstorm="open -a PhpStorm"
+alias pst="phpstorm"
 alias sourcetree="open -a SourceTree"
 alias st="sourcetree"
 
