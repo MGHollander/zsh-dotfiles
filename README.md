@@ -94,6 +94,14 @@ My `~/.gitconfig-work`:
 
 By default my commits will be in name of my personal account. When I commit something from a repository inside the `~/dev/work/` directory, then it will be in name of my work account.
 
+## Prefix commit message with a ticket number automatically
+Copy `prepare-commit-msg` to the default Git hook template folder. On my machine this folder is placed add `/usr/local/git/share/git-core/templates`. These templates will be copied to every new repository that you create or clone on your machine.
+
+**NOTE:** You have to copy the file to existing repositories manually.
+**NOTE:** Make sure the file is executable after you have copied it to a repository manually. Run `chmod +x /path/to/repo/.git/hooks/pre-commit-msg` for the correct permissions.
+
+Source: https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05
+
 ## Terminal completion
 
 You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
