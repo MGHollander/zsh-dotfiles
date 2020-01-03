@@ -2,6 +2,7 @@
 
 - [PhpStorm / Visual Code Studio](#phpstorm--visual-code-studio)
   - [Navigation and tools](#navigation-and-tools)
+    - [Version Control](#version-control)
   - [Editor](#editor)
 - [Google Chrome](#google-chrome)
 - [Terminal](#terminal)
@@ -15,7 +16,6 @@
 | `CMD` + `1` | Open project files / file explorer sidebar tool |
 | `CMD` + `4` | Open run console sidebar tool |
 | `CMD` + `7` | File structure sidebar / File outline |
-| `CMD` + `9` | Version Control |
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
@@ -24,7 +24,7 @@
 | `CMD` + `UP` | Floating file system *(PhpStorm only)* |
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
-| `SHIFT` + `R` | Rename... |
+| `CMD` + `CTRL` + `R` | Rename... |
 | `CMD` + `F` | Find in file |
 | `CMD` + `R` | Replace in file |
 | `CMD` + `SHIFT` + `F` | Find in path |
@@ -34,10 +34,17 @@
 | `CMD` + `SHIFT` + `I` | File structure popup |
 | `CMD` + `ALT` + `R` | Debug list |
 | `CTRL` + `ALT` + `R` | Run task list |
-| `CTRL` + `R` | Run |
 | `CTRL` + `ALT` + `SHIFT` + `UP` | Previous change |
 | `CTRL` + `ALT` + `SHIFT` + `DOWN` | Next change |
 
+#### Version Control
+
+| Keyboard shortcut | Action |
+| ------ | ------ |
+| `CMD` + `9` | Version Control |
+| `CMD` + `K` | Commit dialog |
+| `CMD` + `SHIFT` + `K` | Push Dialog |
+| `CMD` + `Enter` | Confirm commit / push dialog |
 
 ### Editor
 
