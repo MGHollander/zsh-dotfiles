@@ -107,6 +107,15 @@ Source: https://medium.com/better-programming/how-to-automatically-add-the-ticke
 
 You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
 
+## Environment variables
+
+### MacOS nginx
+My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
+
+Append `fastcgi_param APP_ENV dev;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
+
+_Source: https://stackoverflow.com/a/45419230_
+
 ## Help
 
 ### Git Completion not working
