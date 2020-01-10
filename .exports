@@ -15,3 +15,6 @@ export LC_ALL='en_US.UTF-8';
 
 # Add folders to CDPATH for quick access via `cd`
 export CDPATH=$CDPATH:~/dev:~/dev/oneshoe:~/dev/personal
+
+# Local environment variable
+export APP_ENV='development'

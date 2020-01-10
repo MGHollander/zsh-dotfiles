@@ -111,6 +111,9 @@ Source: https://medium.com/better-programming/how-to-automatically-add-the-ticke
 You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
 
 ## Environment variables
+The .exports file contains an environment variable to use to check if you are on a certain environment. The variable is named `APP_ENV`.
+
+You should also set the environment variable to your development environments.
 
 ### MacOS nginx
 My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
