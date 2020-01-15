@@ -13,14 +13,19 @@
 
 | Keyboard shortcut | Action |
 | ------ | ------ |
-| `CMD` + `1` | Open project files / file explorer sidebar tool |
-| `CMD` + `4` | Open run console sidebar tool |
-| `CMD` + `7` | File structure sidebar / File outline |
+| `ESC` | Focus on editor |
+| `CMD` + `1` | Open project files / file explorer |
+| `CMD` + `2` | Open favorites |
+| `CMD` + `3` | Open terminal |
+| `CMD` + `4` | Open event log |
+| `CMD` + `5` | Open database |
+| `CMD` + `6` | Open TODO |
+| `CMD` + `7` | Open file structure / file outline |
+| `CMD` + `8` | Open services |
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
-| `CMD` + `E` | Recent files popup |
 | `CMD` + `P` | Open file |
+| `CMD` + `E` | Recent files popup |
 | `CMD` + `CTRL` + `P` | Recent projects popup |
-| `CMD` + `T` | Terminal |
 | `CMD` + `UP` | Floating file system *(PhpStorm only)* |
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
@@ -65,6 +70,10 @@
 | `CMD` + `SHIFT` +`UP` | Select all lines till top of the file |
 | `CMD` + `SHIFT` + `DOWN` | Select all lines till bottom of the file |
 | `CMD` + `ALT` + `L` | Format code |
+| `CMD` + `SHIFT` + `[` | Select previous tab |
+| `CMD` + `SHIFT` + `]` | Select next tab |
+| `CMD` + `W` | Close tab |
+| `CMD` + `SHIFT` + `T` | Reopen closed tab |
 
 ## Google Chrome
 
