@@ -50,6 +50,8 @@
 | `CMD` + `K` | Commit dialog |
 | `CMD` + `SHIFT` + `K` | Push Dialog |
 | `CMD` + `Enter` | Confirm commit / push dialog |
+| `CTRL` + `B` | Branch list |
+| `CTRL` + `F` | Fetch |
 
 ### Editor
 
