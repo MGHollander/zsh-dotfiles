@@ -6,6 +6,7 @@
 - [Directory shortcuts](#directory-shortcuts)
 - [Command shortcuts](#command-shortcuts)
 - [Open programs (Mac only)](#open-programs-mac-only)
+- [Git](#git)
 - [Docker-compose shortcuts](#docker-compose-shortcuts)
 - [List &amp; grep aliases](#list-amp-grep-aliases)
 - [Drush](#drush)
@@ -43,6 +44,15 @@
 | ------ | ------ |
 | `phpstorm` | `open -a PhpStorm` |
 | `sourcetree` | `open -a SourceTree` |
+
+## Git
+| Alias | Command |
+| ------ | ------ |
+| `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936) |
+
+Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) provides.
+
+@TODO: Add Git aliases from `.gitconfig`
 
 ## Docker-compose shortcuts
 
@@ -96,5 +106,3 @@
 | `hd` | `hexdump -C` | |
 | `md5sum` | `md5` | macOS has no `md5sum`, so use `md5` as a fallback |
 | `sha1sum` | `shasum` | macOS has no `sha1sum`, so use `shasum` as a fallback |
-
-Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) provides.
