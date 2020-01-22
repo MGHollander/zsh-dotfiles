@@ -23,19 +23,20 @@
 | `CMD` + `7` | Open file structure / file outline |
 | `CMD` + `8` | Open services |
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
-| `CMD` + `P` | Open file |
+| `CMD` + `F` | Find in file |
+| `CMD` + `R` | Replace in file |
+| `CMD` + `SHIFT` + `F` | Find in path |
+| `CMD` + `SHIFT` + `R` | Replace in path |
+| `CMD` + `P` | Find file |
+| `CMD` + `SHIFT` + `P` | Find action |
+| `CMD` + `SHIFT` + `O` | Find symbol (function in a class) |
+| `SHIFT` + `SHIFT` | Find action / Show commands / Search for whatever |
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `CTRL` + `P` | Recent projects popup |
 | `CMD` + `UP` | Floating file system *(PhpStorm only)* |
 | `CMD` + `N` | New file |
 | `CMD` + `ALT` + `N` | New file dialog *(VSCode only)* |
 | `CMD` + `CTRL` + `R` | Rename... |
-| `CMD` + `F` | Find in file |
-| `CMD` + `R` | Replace in file |
-| `CMD` + `SHIFT` + `F` | Find in path |
-| `CMD` + `SHIFT` + `R` | Replace in path |
-| `CMD` + `SHIFT` + `P` | Find action / Show commands / Search for whatever |
-| `CMD` + `SHIFT` + `O` | Go to symbol (function in a class) |
 | `CMD` + `SHIFT` + `I` | File structure popup |
 | `CMD` + `ALT` + `R` | Debug list |
 | `CTRL` + `ALT` + `R` | Run task list |
