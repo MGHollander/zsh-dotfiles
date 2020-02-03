@@ -47,12 +47,13 @@
 
 | Keyboard shortcut | Action |
 | ------ | ------ |
-| `CMD` + `9` | Version Control |
+| `CMD` + `9` | Version control panel |
 | `CMD` + `K` | Commit dialog |
-| `CMD` + `SHIFT` + `K` | Push Dialog |
+| `CMD` + `SHIFT` + `K` | Push dialog |
 | `CMD` + `Enter` | Confirm commit / push dialog |
-| `CTRL` + `B` | Branch list |
+| `CTRL` + `B` | Branch list dialog |
 | `CTRL` + `F` | Fetch |
+| `CTRL` + `P` | Pull dialog |
 
 ### Editor
 
