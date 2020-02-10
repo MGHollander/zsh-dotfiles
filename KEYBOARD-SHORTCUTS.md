@@ -28,9 +28,10 @@
 | `CMD` + `SHIFT` + `F` | Find in path |
 | `CMD` + `SHIFT` + `R` | Replace in path |
 | `CMD` + `P` | Find file |
+| `CMD` + `O` | Find class |
 | `CMD` + `SHIFT` + `P` | Find action |
 | `CMD` + `SHIFT` + `O` | Find symbol (function in a class) |
-| `SHIFT` + `SHIFT` | Find action / Show commands / Search for whatever |
+| `SHIFT` + `SHIFT` | Find anything (classes, files, symbols, actions) |
 | `CMD` + `E` | Recent files popup |
 | `CMD` + `CTRL` + `P` | Recent projects popup |
 | `CMD` + `UP` | Floating file system *(PhpStorm only)* |
@@ -39,6 +40,7 @@
 | `CMD` + `CTRL` + `R` | Rename... |
 | `CMD` + `SHIFT` + `I` | File structure popup |
 | `CMD` + `ALT` + `R` | Debug list |
+| `CTRL` + `CTRL` | Run anything |
 | `CTRL` + `ALT` + `R` | Run task list |
 | `CTRL` + `ALT` + `SHIFT` + `UP` | Previous change |
 | `CTRL` + `ALT` + `SHIFT` + `DOWN` | Next change |
