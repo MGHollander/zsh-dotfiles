@@ -57,10 +57,7 @@ if [ 0 -gt $? ]; then
 fi
 
 if [ 0 -eq $? ]; then
-    # TODO Make the devl domain dynamic
-    echo "\$settings['trusted_host_patterns'] = [
-  '\.valet$',
-];" >> $SETTINGS_LOCAL_FILE
+    echo "\$settings['trusted_host_patterns'] = ['.*'];" >> $SETTINGS_LOCAL_FILE
 else
     log_error "Couldn't write in local settings file";
     exit 3
