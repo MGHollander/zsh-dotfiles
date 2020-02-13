@@ -56,6 +56,8 @@
 | `CTRL` + `B` | Branch list dialog |
 | `CTRL` + `F` | Fetch |
 | `CTRL` + `P` | Pull dialog |
+| `CTRL` + `S` | Stash changes dialog |
+| `CTRL` + `A` | Unstash changes dialog |
 
 ### Editor
 
