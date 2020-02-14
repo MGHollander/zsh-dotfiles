@@ -135,6 +135,15 @@ if [ -z $WEBROOT ]; then
     exit 5
 fi
 
+# Build needs to run before creating settings file, because the
+#   default.setting.php is no longer present in the repo since Drupal 8.8
+if [ -f scripts/build.sh ]; then
+    log "Run build script"
+    bash scripts/build.sh
+else
+    log_warning "No build script to run";
+fi
+
 # TODO add checks to determine the CMS / framework and add a settings file for other tools
 bash $SCRIPT_DIR/drupal-create-settings-file.sh $WEBROOT $PROJECT_NAME
 
