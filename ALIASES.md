@@ -66,16 +66,6 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 | `dcd` | `docker-compose down` |
 | `dcdv` | `docker-compose down --volumes` |
 
-## List & grep aliases
-
-`ls`, `grep`, `fgrep` and `egrep` always return colored output.
-
-| Alias | Command | Note |
-| ------ | ------ | ------ |
-| `l` | `ls -lF ${colorflag}` | List all files colorized in long format |
-| `la` | `ls -laF ${colorflag}` | List all files colorized in long format, including dot files |
-| `lsd` | `ls -lF ${colorflag} \| grep --color=never '^d'` | List only directories |
-
 ## Drush
 
 | Alias | Command | Note |
