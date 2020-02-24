@@ -22,4 +22,5 @@ if [ "$1" == "uli" ]; then
     COMMAND="$COMMAND --uri=$PROJECT_NAME.valet"
 fi
 
+# @TODO Check if drush is installed
 $COMMAND $@
