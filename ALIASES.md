@@ -54,10 +54,12 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 
 @TODO: Add Git aliases from `.gitconfig`
 
-## Docker-compose shortcuts
+## Docker & docker-compose shortcuts
 
 | Alias | Command |
 | ------ | ------ |
+| `docker-stop-all` | `docker stop $(docker ps -q)` |
+| `dsa` | `docker-stop-all` |
 | `dco` | `docker-compose` |
 | `dcup` | `docker-compose up -d` |
 | `dcs` | `docker-compose stop` |
