@@ -74,7 +74,7 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 | ------ | ------ | ------ |
 | `l` | `ls -lF ${colorflag}` | List all files colorized in long format |
 | `la` | `ls -laF ${colorflag}` | List all files colorized in long format, including dot files |
-| `lsd` | `ls -lF ${colorflag} | grep --color=never '^d'` | List only directories |
+| `lsd` | `ls -lF ${colorflag} \| grep --color=never '^d'` | List only directories |
 
 ## Drush
 
