@@ -17,6 +17,9 @@ alias osci="oneshoe-clean-install"
 alias oneshoe-deploy="bash scripts/deploy.sh"
 alias osd="oneshoe-deploy"
 
+alias oneshoe-build-deploy="oneshoe-build && oneshoe-deploy"
+alias osbd="oneshoe-build-deploy"
+
 alias oneshoe-drush-update="bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
 
