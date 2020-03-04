@@ -14,14 +14,16 @@
 | Keyboard shortcut | Action |
 | ------ | ------ |
 | `ESC` | Focus on editor |
-| `CMD` + `1` | Open project files / file explorer |
-| `CMD` + `2` | Open favorites |
-| `CMD` + `3` | Open terminal |
-| `CMD` + `4` | Open event log |
-| `CMD` + `5` | Open database |
-| `CMD` + `6` | Open TODO |
-| `CMD` + `7` | Open file structure / file outline |
-| `CMD` + `8` | Open services |
+| `CMD` + `1` | Open project files / file explorer panel |
+| `CMD` + `2` | Open favorites panel |
+| `CMD` + `3` | Open terminal panel |
+| `CMD` + `4` | Open event log panel |
+| `CMD` + `5` | Open debug panel |
+| `CMD` + `6` | Open TODO panel |
+| `CMD` + `7` | Open file structure / file outline panel |
+| `CMD` + `8` | Open services panel |
+| `CMD` + `9` | Open version control panel |
+| `CMD` + `0` | Open database panel |
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
 | `CMD` + `F` | Find in file |
 | `CMD` + `R` | Replace in file |
