@@ -21,6 +21,7 @@
 | `CMD` + `5` | Open debug panel |
 | `CMD` + `6` | Open TODO panel |
 | `CMD` + `7` | Open file structure / file outline panel |
+| `CMD` + `SHOFT` + `I` | Open file structure / file outline panel popup |
 | `CMD` + `8` | Open services panel |
 | `CMD` + `9` | Open version control panel |
 | `CMD` + `0` | Open database panel |
