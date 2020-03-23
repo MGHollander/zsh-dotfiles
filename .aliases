@@ -70,10 +70,10 @@ alias git-clean-local-branches='git fetch --prune && git branch -r | awk "{print
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
-## IP addresses
-#alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-#alias localip="ipconfig getifaddr en0"
-#
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+
 ## Canonical hex dump; some systems have this symlinked
 #command -v hd > /dev/null || alias hd="hexdump -C"
 #
