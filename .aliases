@@ -68,7 +68,7 @@ alias git-clean-local-branches='git fetch --prune && git branch -r | awk "{print
 #alias sudo='sudo '
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+alias update='source ~/dotfiles/scripts/common.sh; log "--> Look for macOS software updates <--"; sudo softwareupdate -i -a; log "--> Run homebrew update <--"; brew update; log "--> Run homebrew upgrade <--"; brew upgrade; log "--> Cleanup homebrew <--"; brew cleanup; log "--> Install global NPM packages <--"; npm install npm -g; log "--> Update global NPM packages <--"; npm update -g; log "--> Update Ruby system <--"; sudo gem update --system; log "--> Update Ruby gems <--"; sudo gem update; log "--> Cleanup Ruby gems <--"; sudo gem cleanup'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
