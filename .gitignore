@@ -27,3 +27,7 @@ Thumbs.db
 
 # Valet environment variable files
 .valet-env.php
+
+# SQL database dumps
+.sql
+.sql.gz
