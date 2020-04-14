@@ -84,7 +84,7 @@
 | `CMD` + `SHIFT` + `[` | Select previous tab |
 | `CMD` + `SHIFT` + `]` | Select next tab |
 | `CMD` + `W` | Close tab |
-| `CMD` + `SHIFT` + `T` | Reopen closed tab |
+| `CMD` + `ALT` + `T` | Surround with (quickly wrap a code block in useful constructs) |
 
 ## Google Chrome
 
