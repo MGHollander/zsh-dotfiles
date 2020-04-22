@@ -21,7 +21,7 @@ alias finder="open -a Finder"
 alias fin="finder"
 
 # Docker-compose shortcuts
-alias docker-stop-all="docker stop $(docker ps -q)"
+alias docker-stop-all="docker stop \$(docker ps -q)"
 alias dsa="docker-stop-all"
 alias dco="docker-compose"
 alias dcup="docker-compose up -d"
