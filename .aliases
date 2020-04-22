@@ -29,6 +29,12 @@ alias dcs="docker-compose stop"
 alias dcd="docker-compose down"
 alias dcdv="docker-compose down --volumes"
 
+# Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
+alias uuid="uuidgen | tr A-Z a-z | pbcopy"
+
+# Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
+alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z | pbcopy"
+
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
 # TODO make a function from this command that return's branches that will be
 #  deleted and ask for confirmation before deleting.

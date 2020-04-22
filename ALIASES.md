@@ -77,6 +77,8 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 
 | Alias | Note |
 | ------ | ------ |
+| `uuid` | Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
+| `yuuid` | Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
 | `st` |  Open repository in SourceTree from terminal. Usage: `st /path/to/repo` |
 | `update` | Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages |
 | `ip` | Get external IP address |
