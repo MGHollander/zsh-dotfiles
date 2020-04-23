@@ -93,7 +93,7 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 | `mergepdf` | Merge PDF files. Usage: `mergepdf -o output.pdf input{1,2,3}.pdf` |
 | `stfu` and `pumpitup` | Stuff I never really use but cannot delete either because of [http://xkcd.com/530/](http://xkcd.com/530/) |
 | `afk` | Lock the screen (when going AFK) |
-| `reload` | Reload the shell (i.e. invoke as a login shell) |
+| `reload` | Reload ZSH config |
 
 | Alias | Command | Note |
 | ------ | ------ | ------ |
