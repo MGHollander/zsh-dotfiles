@@ -92,11 +92,13 @@
 | ------ | ------ |
 | `ALT` + `SHIFT` + `1` | Display OneTab |
 
-## Terminal
+## ZSH Terminal
 
 | Keyboard shortcut | Action |
 | ------ | ------ |
-| `CTRL` + `W` | Cut the word before the cursor, adding it to the clipboard |
-| `CTRL` + `K` | Cut the part of the line after the cursor, adding it to the clipboard |
-| `CTRL` + `U` | Cut the part of the line before the cursor, adding it to the clipboard |
-| `CTRL` + `Y` | Paste the last thing you cut from the clipboard |
+| `CTRL` + `A` | Go to the beginning of the line |
+| `CTRL` + `E` | Go to the end of the line |
+| `CTRL` + `W` | Cut one word before the cursor |
+| `CTRL` + `K` | Cut everything from the cursor to the end of the line |
+| `CTRL` + `U` | Cut everything from the cursor to the beginning of the line |
+| `CTRL` + `Y` | Paste the last thing you cut |
