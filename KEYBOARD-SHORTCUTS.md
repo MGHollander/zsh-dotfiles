@@ -16,14 +16,14 @@
 | `ESC` | Focus on editor |
 | `CMD` + `1` | Open project files / file explorer panel |
 | `CMD` + `2` | Open favorites panel |
-| `CMD` + `3` | Open terminal panel |
-| `CMD` + `4` | Open event log panel |
-| `CMD` + `5` | Open debug panel |
-| `CMD` + `6` | Open TODO panel |
-| `CMD` + `7` | Open file structure / file outline panel |
+| `CMD` + `3` | Open file structure / file outline panel |
 | `CMD` + `SHOFT` + `I` | Open file structure / file outline panel popup |
-| `CMD` + `8` | Open services panel |
-| `CMD` + `9` | Open version control panel |
+| `CMD` + `4` | Open NPM panel |
+| `CMD` + `5` | Open Git panel |
+| `CMD` + `6` | Open terminal panel |
+| `CMD` + `7` | Open debug panel |
+| `CMD` + `8` | Open run panel |
+| `CMD` + `9` | Open event log panel |
 | `CMD` + `0` | Open database panel |
 | `CMD` + `B` | Toggle sidebar *(VSCode only)* |
 | `CMD` + `F` | Find in file |
