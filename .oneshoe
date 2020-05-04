@@ -19,6 +19,7 @@ alias osd="oneshoe-deploy"
 
 alias oneshoe-build-deploy="oneshoe-build && oneshoe-deploy"
 alias osbd="oneshoe-build-deploy"
+alias osdb="echo 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && osbd"
 
 alias oneshoe-drush-update="bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
