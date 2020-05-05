@@ -54,6 +54,19 @@ Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/
 
 @TODO: Add Git aliases from `.gitconfig`
 
+## Composer
+Composer shortcuts including an unlimited PHP memory limit to prevent errors\
+(see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors)
+
+| Alias | Command |
+| ------ | ------ |
+| c | COMPOSER_MEMORY_LIMIT=-1 composer |
+| ci | c install |
+| co | c outdated |
+| cr | c require |
+| crm | c remove |
+| cu | c update |
+
 ## Docker & docker-compose shortcuts
 
 | Alias | Command |

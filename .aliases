@@ -20,6 +20,15 @@ alias st="sourcetree"
 alias finder="open -a Finder"
 alias fin="finder"
 
+# Composer shortcuts including an unlimited PHP memory limit to prevent errors
+# @see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
+alias c="COMPOSER_MEMORY_LIMIT=-1 composer"
+alias ci="c install"
+alias co="c outdated"
+alias cr="c require"
+alias crm="c remove"
+alias cu="c update"
+
 # Docker-compose shortcuts
 alias docker-stop-all="docker stop \$(docker ps -q)"
 alias dsa="docker-stop-all"
