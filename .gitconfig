@@ -153,6 +153,12 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
+[pager]
+    # As of Git 2.16.0 git branch uses the page by default. Disable this.
+    # @see https://github.com/git/git/blob/master/Documentation/RelNotes/2.16.0.txt#L85-L88
+    branch = false
+    tag = false
+
 [push]
 
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
