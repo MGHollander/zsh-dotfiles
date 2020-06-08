@@ -17,7 +17,7 @@ alias osci="oneshoe-clean-install"
 alias oneshoe-deploy="bash scripts/deploy.sh"
 alias osd="oneshoe-deploy"
 
-alias oneshoe-build-deploy="oneshoe-build && echo "" && oneshoe-deploy"
+alias oneshoe-build-deploy="osb && echo "" && osd"
 alias osbd="oneshoe-build-deploy"
 alias osdb="echo 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && osbd"
 
