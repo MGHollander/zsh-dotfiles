@@ -109,6 +109,7 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
 # https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
 DEFAULT_USER='marc.hollander'
 
+source ~/dotfiles/.intro
 source ~/dotfiles/.zsh_profile
 source ~/dotfiles/.drush
 source ~/dotfiles/.oneshoe
