@@ -44,3 +44,6 @@ alias oscp="oneshoe-create-project"
 
 alias drupal-create-settings="bash $SCRIPT_DIR/scripts/drupal-create-settings-file.sh"
 alias drupal-copy-local-settings="bash $SCRIPT_DIR/scripts/drupal-local-settings-file.sh"
+
+alias oneshoe-remove-project="bash $SCRIPT_DIR/scripts/remove-project.sh"
+alias osrp="oneshoe-remove-project"
