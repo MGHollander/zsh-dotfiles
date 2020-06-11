@@ -138,5 +138,9 @@ Please [create an issue](https://gitlab.com/MGHollander/dotfiles/issues) if you 
 
 ## To do
 
-- Clean up and add a list with all functionalities included in the dotfiles. Describe things that happen in files that do not have aliases or functions, but do have useful functionalities (.bash_prompt, .exports, etc.).
-- Check if the original dotfiles contain an installer and (re)add this to my version. Also add new stuff such as bash-completion (via Homebrew) and drush. Maybe run `brew services list` to see what is installed via Homebrew.
+- Clean up and add a list with all functionalities included in the dotfiles. Describe things that happen in files that
+  do not have aliases or functions, but do have useful functionalities (.bash_prompt, .exports, etc.).
+- Check if the original dotfiles contain an installer and (re)add this to my version. Also add new stuff such as
+  bash-completion (via Homebrew) and drush. Maybe run `brew services list` to see what is installed via Homebrew.
+- Split up the scripts in smaller bits. For example valet/create-db.sh and mysql/create-db.sh. That makes it easy to
+  swap out tasks in the main script. And makes it more flexibel.
