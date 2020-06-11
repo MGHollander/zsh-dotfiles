@@ -135,13 +135,14 @@ if [ -z $WEBROOT ]; then
     exit 5
 fi
 
-# Build needs to run before creating settings file, because the
-#   default.setting.php is no longer present in the repo since Drupal 8.8
-if [ -f scripts/build.sh ]; then
-    log "Run build script"
-    bash scripts/build.sh
+# Composer dependencies need to be installed since Drupal 8.8, because many files
+#   are added via Drupal Scaffold and we need the default.setting.php.
+# TODO add checks to determine the CMS / framework and only run composer install when it is necessary
+if [ -f composer.json ]; then
+    log "Install composer dependencies"
+    composer install --no-interaction --no-progress --no-suggest || exit 1
 else
-    log_warning "No build script to run";
+    log_warning "No composer dependencies to install";
 fi
 
 # TODO add checks to determine the CMS / framework and add a settings file for other tools
