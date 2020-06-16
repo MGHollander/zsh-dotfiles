@@ -59,7 +59,7 @@ if [ ! -d "$PROJECT_NAME" ]; then
     exit 2
 fi
 
-echo -e "\033[0;33mAre you sure you want do remove $PROJECT_NAME? This cannot be undone!\033[0m"
+echo -e "\033[0;33mAre you sure you want to remove \033[4;33m$PROJECT_NAME\033[0;33m? This cannot be undone!\033[0m"
 read -p "Continue (yes/no)? " choice
 case "$choice" in
     y|Y|[yY][eE][sS] ) ;;
