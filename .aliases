@@ -22,7 +22,8 @@ alias fin="finder"
 
 # Composer shortcuts including an unlimited PHP memory limit to prevent errors
 # @see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
-alias c="COMPOSER_MEMORY_LIMIT=-1 composer"
+alias composer="COMPOSER_MEMORY_LIMIT=-1 composer"
+alias c="composer"
 alias ci="c install"
 alias co="c outdated"
 alias cr="c require"
