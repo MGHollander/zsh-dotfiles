@@ -18,3 +18,9 @@ alias dup8='rush csim -y; rush updb -y; rush cr'
 
 # Revert all features, update db and clear all caches
 alias dup7='rush fra -y; rush updb -y; rush cc all'
+
+# Empty Drupal 8 caches
+alias dcr='rush cr'
+
+# Empty Drupal 7 caches
+alias dcc='rush cc all'
