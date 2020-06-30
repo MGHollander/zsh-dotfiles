@@ -26,11 +26,11 @@ alias osd="oneshoe-deploy"
 
 alias oneshoe-build-deploy="osb && echo "" && osd"
 alias osbd="oneshoe-build-deploy"
-alias osdb="echo 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && osbd"
+alias osdb="echo -e '\033[33mI assume you want to run the build first, so I will ¯\_(ツ)_/¯\033[0m' && echo '' && osbd"
 
 alias oneshoe-clean-build-deploy="oscb && echo "" && osd"
 alias oscbd="oneshoe-clean-build-deploy"
-alias oscdb="echo 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && oscbd"
+alias oscdb="echo -e '\033[33mI assume you want to run the build first, so I will ¯\_(ツ)_/¯\033[0m' && echo '' && oscbd"
 
 alias oneshoe-drush-update="bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
