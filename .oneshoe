@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/scripts/common.sh"
+
 SCRIPT_DIR=`dirname $0`
 
 # One Shoe environment variable
@@ -15,7 +17,7 @@ alias osb="oneshoe-build"
 # that have custom composer packages (like Nuffic).
 # This command assumes that the build uses composer and that the vendor dir is
 # placed in the project root
-alias oneshoe-clean-build="rm -rf vendor && osb"
+alias oneshoe-clean-build="log 'Remove vendor directory' && rm -rf vendor && osb"
 alias oscb="oneshoe-clean-build"
 
 alias oneshoe-clean-install="bash scripts/clean-install.sh"
@@ -26,11 +28,11 @@ alias osd="oneshoe-deploy"
 
 alias oneshoe-build-deploy="osb && echo "" && osd"
 alias osbd="oneshoe-build-deploy"
-alias osdb="echo -e '\033[33mI assume you want to run the build first, so I will ¯\_(ツ)_/¯\033[0m' && echo '' && osbd"
+alias osdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && osbd"
 
 alias oneshoe-clean-build-deploy="oscb && echo "" && osd"
 alias oscbd="oneshoe-clean-build-deploy"
-alias oscdb="echo -e '\033[33mI assume you want to run the build first, so I will ¯\_(ツ)_/¯\033[0m' && echo '' && oscbd"
+alias oscdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && echo '' && oscbd"
 
 alias oneshoe-drush-update="bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
