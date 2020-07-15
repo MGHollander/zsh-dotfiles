@@ -155,6 +155,7 @@ fi
 bash $SCRIPT_DIR/drupal-copy-local-settings-file.sh $WEBROOT
 
 # TODO make clean install optional
+# TODO add a command to import a db from a file instead of running a clean install
 if [ -f scripts/clean-install.sh ]; then
     log "Run clean install"
     bash scripts/clean-install.sh
