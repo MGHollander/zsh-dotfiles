@@ -62,7 +62,8 @@ fi
 if [ 0 -eq $? ]; then
     # TODO Make the database details dynamic
     # TODO Place db credentials on the spot they are placed in the file
-    echo "\$databases['default']['default'] = array (
+    echo "
+\$databases['default']['default'] = array (
   'database' => '${DATABASE_NAME}',
   'username' => 'root',
   'password' => 'root',
