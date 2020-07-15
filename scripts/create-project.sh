@@ -113,7 +113,7 @@ if [ -z $NO_DATABASE ]; then
     fi
 
     log "Create database"
-    valet db create $PROJECT_NAME
+    valet db create $DATABASE_NAME
 fi
 
 log "Go to project root folder"
