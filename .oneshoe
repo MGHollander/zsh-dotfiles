@@ -13,14 +13,16 @@ export ONESHOE_ENV=development
 alias oneshoe-build="log 'Run build.sh' && bash scripts/build.sh"
 alias osb="oneshoe-build"
 
+alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
+alias rvd="remove-vendor-dir"
+
 # Ensure that all composer packages are re-installed. This helps with projects
-# that have custom composer packages (like Nuffic).
-# This command assumes that the build uses composer and that the vendor dir is
-# placed in the project root
-alias oneshoe-clean-build="log 'Remove vendor directory' && rm -rf vendor && osb"
+# that have custom composer packages which are checkout on other branches very
+# now and then (like Nuffic).
+alias oneshoe-clean-build="rvd && osb"
 alias oscb="oneshoe-clean-build"
 
-alias oneshoe-clean-install="log 'Run clean-install.sh' && bash scripts/clean-install.sh"
+alias oneshoe-clean-install="rvd && log 'Run clean-install.sh' && bash scripts/clean-install.sh"
 alias osci="oneshoe-clean-install"
 
 alias oneshoe-deploy="log 'Run deploy.sh' && bash scripts/deploy.sh"
