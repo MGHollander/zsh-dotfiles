@@ -22,7 +22,7 @@ alias rvd="remove-vendor-dir"
 alias oneshoe-clean-build="rvd && osb"
 alias oscb="oneshoe-clean-build"
 
-alias oneshoe-clean-install="rvd && log 'Run clean-install.sh' && bash scripts/clean-install.sh"
+alias oneshoe-clean-install="log 'Run clean-install.sh' && bash scripts/clean-install.sh"
 alias osci="oneshoe-clean-install"
 
 alias oneshoe-deploy="log 'Run deploy.sh' && bash scripts/deploy.sh"
