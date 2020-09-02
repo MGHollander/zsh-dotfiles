@@ -62,6 +62,10 @@ Add to `~/.gitconfig`
 
 [All available aliases](docs/ALIASES.md)
 
+## Install Laravel Valet with Mailhog and Xdebug
+
+[Read all about it!](docs/VALET-INSTALLATION.md)
+
 ## EditorConfig
 
 If you want to use the `.editorconfig` then you have to move it to the root of the user directory.
