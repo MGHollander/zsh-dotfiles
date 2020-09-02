@@ -56,11 +56,11 @@ Add to `~/.gitconfig`
 
 ## Keyboard shortcuts
 
-[My favorite keyboard shortcuts](KEYBOARD-SHORTCUTS.md)
+[My favorite keyboard shortcuts](docs/KEYBOARD-SHORTCUTS.md)
 
 ## Aliases
 
-[All available aliases](ALIASES.md)
+[All available aliases](docs/ALIASES.md)
 
 ## EditorConfig
 
