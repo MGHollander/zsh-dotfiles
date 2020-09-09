@@ -22,7 +22,9 @@ Run `valet proxy mailhog http://127.0.0.1:8025` to access MailHog via http://mai
 
 ### Configure PHP to send mail to MailHog
 
-Go to `/usr/local/etc/php/X.X/conf.d` (X.X stands for the PHP version valet is using), create `mailhog.ini` and add the config below.
+Run `php --ini` to see which ini files PHP is using and copy the path in which additional .ini files are saved.
+
+Run `/usr/local/etc/php/X.X/conf.d/mailhog.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
 
 ```
 ; Use mailhog for sending emails
@@ -53,7 +55,7 @@ Run `php -m | grep 'xdebug'` to verify if Xdebug was installed. The output shoul
 
 Run `php --ini` to see which ini files PHP is using and copy the path in which additional .ini files are saved.
 
-Run `vi /usr/local/etc/php/X.X/conf.d/ext-xdebug.ini` (replace the X.X with you PHP version or change the path if it does not match the result from aboves command) and add the config below.
+Run `vi /usr/local/etc/php/X.X/conf.d/ext-xdebug.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
 
 ```
 [xdebug]
