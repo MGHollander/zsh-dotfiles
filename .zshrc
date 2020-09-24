@@ -104,6 +104,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 
 # Set username to consider a default context, which by default will not be shown.
 # https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
