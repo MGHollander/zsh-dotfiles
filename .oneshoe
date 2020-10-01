@@ -39,7 +39,7 @@ alias oscdb="log_warning 'I assume you want to run the build first, so I will ¯
 alias oneshoe-drush-update="log 'Run drush-update.sh' && bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
 
-alias oneshoe-maintenance="log 'Disable composer memory limit' && COMPOSER_MEMORY_LIMIT=-1 && log 'Run maintenance.sh' && bash scripts/maintenance.sh"
+alias oneshoe-maintenance="log 'Disable composer memory limit and run maintenance.sh' && COMPOSER_MEMORY_LIMIT=-1 bash scripts/maintenance.sh"
 alias osm="oneshoe-maintenance"
 
 # Aliases for my own scripts
