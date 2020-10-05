@@ -29,5 +29,5 @@ Thumbs.db
 .valet-env.php
 
 # SQL database dumps
-.sql
-.sql.gz
+*.sql
+*.sql.gz
