@@ -31,3 +31,6 @@ Thumbs.db
 # SQL database dumps
 *.sql
 *.sql.gz
+
+# Local Lando config
+.lando.local.yml
