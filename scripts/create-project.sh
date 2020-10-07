@@ -194,10 +194,11 @@ if [ -z $NO_LINK ]; then
     echo "You can visit the project at ${PROJECT_URL}"
 fi
 
-log "Use correct PHP version."
+log "Check for a PHP version in the composer.json and use it if one is available"
+
 PHP_VERSION=$(grep '"php":' composer.json | cut -f4 -d'"' | tr -d '>=')
 if [ -n "${PHP_VERSION}" ]; then
-  valet use "php@${PHP_VERSION}"
+    valet use "php@${PHP_VERSION}"
 fi
 
 log "Project creation finished"
