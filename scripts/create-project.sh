@@ -185,12 +185,19 @@ if [ -z $NO_LINK ]; then
 
     cd $WEBROOT
     valet link $PROJECT_NAME
+    cd -
 
     VALET_DOMAIN=`valet tld`
     PROJECT_URL="http://${PROJECT_NAME}.${VALET_DOMAIN}"
 
     log_success "Project link set successfully"
     echo "You can visit the project at ${PROJECT_URL}"
+fi
+
+log "Use correct PHP version."
+PHP_VERSION=$(grep '"php":' composer.json | cut -f4 -d'"' | tr -d '>=')
+if [ -n "${PHP_VERSION}" ]; then
+  valet use "php@${PHP_VERSION}"
 fi
 
 log "Project creation finished"
