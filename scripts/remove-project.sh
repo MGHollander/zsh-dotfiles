@@ -92,3 +92,5 @@ if hash valet 2>/dev/null; then
 else
     log_error "Cannot remove database and valet link, because valet is not installed"
 fi
+
+log "Project removal finished"
