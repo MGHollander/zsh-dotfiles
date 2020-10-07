@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
+MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
+MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+
 source "$(dirname "$0")/common.sh"
 
 SCRIPT_DIR=`dirname $0`
@@ -103,17 +107,28 @@ if [ $? -gt 0 ]; then
 fi
 log_success "Project cloned succesfully"
 
-# TODO Add check to see if valet-plus is installed or create db without valet-plus
-# TODO Add check to see if db creation succeeded
 # TODO Check if database exists and ask if it should be replaced
-# TODO Add posibility to import a database
+# TODO Add possibility to import a database
 if [ -z $NO_DATABASE ]; then
     if [ -z $DATABASE_NAME ]; then
         DATABASE_NAME=$PROJECT_NAME
     fi
 
-    log "Create database"
-    valet db create $DATABASE_NAME
+    log "Check database access"
+    command -v mysqladmin > /dev/null || { log_error "No mysqladmin found, install a database first."; exit 1; }
+
+    if [ -z $MYSQL_ROOT_PASSWORD ]; then
+        DATABASE_PASSWORD=""
+        mysqladmin -u ${MYSQL_ROOT_USER} --skip-password status || { log_error "Could not reach database."; exit 1; }
+    else
+        DATABASE_PASSWORD="--password=${MYSQL_ROOT_PASSWORD}"
+        mysqladmin -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} status || { log_error "Could not reach database."; exit 1; }
+    fi
+
+    log "Create a MySQL database if needed"
+    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "CREATE DATABASE IF NOT EXISTS \`${DATABASE_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" || exit 1
+    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "CREATE USER IF NOT EXISTS ${MYSQL_ROOT_USER}@localhost IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" || exit 1
+    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "GRANT ALL PRIVILEGES ON \`${DATABASE_NAME}\`.* TO '${MYSQL_ROOT_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" || exit 1
 fi
 
 log "Go to project root folder"

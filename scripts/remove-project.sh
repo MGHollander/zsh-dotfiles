@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
+MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
+MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+
 # shellcheck source=./common.sh
 source "$(dirname "$0")/common.sh"
 
@@ -72,10 +76,17 @@ else
     log_error "Cannot remove project folder"
 fi
 
-if hash valet 2>/dev/null; then
-    log "Remove database"
-    valet db drop "$PROJECT_NAME" -y
+log "Remove database"
+if [ -z $MYSQL_ROOT_PASSWORD ]; then
+    mysqladmin -u ${MYSQL_ROOT_USER} --skip-password status || { log_error "Could not reach database."; exit 1; }
+    DATABASE_PASSWORD=""
+else
+    DATABASE_PASSWORD="--password=${MYSQL_ROOT_PASSWORD}"
+    mysqladmin -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} status || { log_error "Could not reach database."; exit 1; }
+fi
+mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "DROP DATABASE \`${PROJECT_NAME}\`;" || exit 1
 
+if hash valet 2>/dev/null; then
     log "Remove valet link"
     valet unlink "$PROJECT_NAME"
 else
