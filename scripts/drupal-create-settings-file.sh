@@ -27,6 +27,11 @@ if [ -z $DATABASE_NAME ]; then
     exit 2
 fi
 
+# TODO Add parameters for db settings (like the params in create-project.sh)
+MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
+MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
+MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+
 SETTINGS_FILE_PATH="${WEBROOT}/sites/default"
 SETTINGS_FILE="${SETTINGS_FILE_PATH}/settings.php"
 
@@ -60,14 +65,12 @@ if [ 0 -gt $? ]; then
 fi
 
 if [ 0 -eq $? ]; then
-    # TODO Make the database details dynamic
-    # TODO Place db credentials on the spot they are placed in the file
     echo "
 \$databases['default']['default'] = array (
   'database' => '${DATABASE_NAME}',
-  'username' => 'root',
-  'password' => 'root',
-  'host' => 'localhost',
+  'username' => '${MYSQL_ROOT_USER}',
+  'password' => '${MYSQL_ROOT_PASSWORD}',
+  'host' => '${MYSQL_HOSTNAME}',
   'driver' => 'mysql',
 );" >> $SETTINGS_FILE
 else
