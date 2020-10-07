@@ -186,10 +186,11 @@ if [ -z $NO_LINK ]; then
     cd $WEBROOT
     valet link $PROJECT_NAME
 
-    VALET_DOMAIN=`valet domain`
+    VALET_DOMAIN=`valet tld`
+    PROJECT_URL="http://${PROJECT_NAME}.${VALET_DOMAIN}"
 
-    log_success "Project link set succesfully"
-    echo "You can visit the project at http://${PROJECT_NAME}.${VALET_DOMAIN}"
+    log_success "Project link set successfully"
+    echo "You can visit the project at ${PROJECT_URL}"
 fi
 
 log "Project creation finished"
