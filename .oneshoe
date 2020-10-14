@@ -21,7 +21,7 @@ alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
 alias rvd="remove-vendor-dir"
 
 # Ensure that all composer packages are re-installed. This helps with projects
-# that have custom composer packages which are checkout on other branches very
+# that have custom composer packages which are checkout on other branches every
 # now and then (like Nuffic).
 alias oneshoe-clean-build="rvd && osb"
 alias oscb="oneshoe-clean-build"
