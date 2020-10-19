@@ -7,8 +7,8 @@ DEV_SERVICES_FILE="web/sites/development.services.yml"
 log "Add twig.config to development.services.yml"
 
 if [ ! -f $DEV_SERVICES_FILE ]; then
-    log_error "$DEV_SERVICES_FILE not found"
-    exit 1
+    log_warning "$DEV_SERVICES_FILE not found"
+    exit;
 fi
 
 if [ -z $(grep twig.config $DEV_SERVICES_FILE) ]; then
