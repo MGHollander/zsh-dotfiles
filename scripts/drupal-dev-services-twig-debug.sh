@@ -16,7 +16,7 @@ if [ -z $(grep twig.config $DEV_SERVICES_FILE) ]; then
 \  twig.config:\
 \    cache: false\
 \    debug: true
-' $DEV_SERVICES_FILE || log_error "Failed to add twig.config to development.services.yml"; exit 1;
+' $DEV_SERVICES_FILE || { log_error "Failed to add twig.config to development.services.yml"; exit; }
     log_success "Successfully added twig.config to development.services.yml"
 
     log "Rebuild Drupal caches"
