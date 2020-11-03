@@ -14,8 +14,8 @@ alias drupal-dev-services-twig-debug="bash $SCRIPT_DIR/scripts/drupal-dev-servic
 alias dtd="drupal-dev-services-twig-debug"
 
 # Aliases for default scripts in Drupal projects
-alias oneshoe-build="log 'Run build.sh' && bash scripts/build.sh && dtd"
-alias osb="oneshoe-build"
+alias oneshoe-build="log 'Run build.sh' && bash scripts/build.sh"
+alias osb="oneshoe-build && dtd"
 
 alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
 alias rvd="remove-vendor-dir"
@@ -23,8 +23,8 @@ alias rvd="remove-vendor-dir"
 # Ensure that all composer packages are re-installed. This helps with projects
 # that have custom composer packages which are checkout on other branches every
 # now and then (like Nuffic).
-alias oneshoe-clean-build="rvd && osb"
-alias oscb="oneshoe-clean-build"
+alias oneshoe-clean-build="remove-vendor-dir && oneshoe-build"
+alias oscb="oneshoe-clean-build && dtd"
 
 alias oneshoe-clean-install="log 'Run clean-install.sh' && bash scripts/clean-install.sh && dtd"
 alias osci="oneshoe-clean-install"
@@ -32,12 +32,12 @@ alias osci="oneshoe-clean-install"
 alias oneshoe-deploy="log 'Run deploy.sh' && bash scripts/deploy.sh"
 alias osd="oneshoe-deploy"
 
-alias oneshoe-build-deploy="osb && osd"
-alias osbd="oneshoe-build-deploy"
+alias oneshoe-build-deploy="oneshoe-build && oneshoe-deploy"
+alias osbd="oneshoe-build-deploy && dtd"
 alias osdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && osbd"
 
-alias oneshoe-clean-build-deploy="oscb && osd"
-alias oscbd="oneshoe-clean-build-deploy"
+alias oneshoe-clean-build-deploy="oneshoe-clean-build && oneshoe-deploy"
+alias oscbd="oneshoe-clean-build-deploy && dtd"
 alias oscdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && oscbd"
 
 alias oneshoe-drush-update="log 'Run drush-update.sh' && bash scripts/drush-update.sh"
