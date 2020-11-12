@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# @TODO Split these aliases in separate files in a aliases folder and load all files available
+# TODO Split these aliases in separate files in a shortcuts folder and load all files available
+#  call if a shortcuts folder, because I will also add functions and not just aliases
 
 # Shortcuts
 alias dl="cd ~/Downloads"
@@ -55,6 +56,7 @@ alias glc='git pull origin "$(git_current_branch)"'
 alias gp='git push'
 alias gpc='git push origin "$(git_current_branch)"'
 alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
+# TODO make a function from this to make the returned tags configurable
 alias gtl='git tag --sort=-version:refname | head -n 5'
 
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
