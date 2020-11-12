@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# @TODO Split these aliases in separate files in a aliases folder and load all files available
+
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
@@ -44,6 +46,16 @@ alias uuid="uuidgen | tr A-Z a-z | pbcopy"
 
 # Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
 alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z | pbcopy"
+
+## Git shortcuts
+alias gco='git checkout'
+alias gd='git diff'
+alias gl='git pull'
+alias glc='git pull origin "$(git_current_branch)"'
+alias gp='git push'
+alias gpc='git push origin "$(git_current_branch)"'
+alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
+alias gtl='git tag --sort=-version:refname | head -n 5'
 
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
 # TODO make a function from this command that return's branches that will be
