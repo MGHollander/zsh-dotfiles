@@ -50,6 +50,8 @@ alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z | pbcopy"
 
 ## Git shortcuts
 alias gco='git checkout'
+alias gcd='git checkout develop'
+alias gcm='git checkout master'
 alias gd='git diff'
 alias gl='git pull'
 alias glc='git pull origin "$(git_current_branch)"'
