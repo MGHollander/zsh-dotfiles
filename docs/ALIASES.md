@@ -25,8 +25,8 @@
 
 ## Directory shortcuts
 
-| Alias | Command | Comment |
-| ------ | ------ | ------ |
+| Alias | Command |
+| ------ | ------ |
 | `dl` | `d ~/Downloads` |
 | `dt` | `cd ~/Desktop` |
 | `dev` | `cd ~/dev` |
@@ -46,11 +46,21 @@
 | `sourcetree` | `open -a SourceTree` |
 
 ## Git
-| Alias | Command |
-| ------ | ------ |
-| `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936) |
-
-Also see the aliases for git that the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) provides.
+| Alias | Command | Note |
+| ------ | ------ | ------ |
+| `gco` | `git checkout` |
+| `gcd` | `git checkout develop` |
+| `gcm` | `git checkout master` |
+| `gdt` | `git describe --tags $(git rev-list --tags --max-count=1)` | Return the last tag |
+| `gd` | `git diff` |
+| `gf` | `git fetch` |
+| `gl` | `git pull` |
+| `glc` | `git pull origin "$(git_current_branch)"` |
+| `gld` | `git pull origin develop` |
+| `gp` | `git push` |
+| `gpc` | `git push origin "$(git_current_branch)"` |
+| `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
+| `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936) |
 
 @TODO: Add Git aliases from `.gitconfig`
 
@@ -60,12 +70,12 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 
 | Alias | Command |
 | ------ | ------ |
-| c | COMPOSER_MEMORY_LIMIT=-1 composer |
-| ci | c install |
-| co | c outdated |
-| cr | c require |
-| crm | c remove |
-| cu | c update |
+| `c` | `COMPOSER_MEMORY_LIMIT=-1 composer` |
+| `ci` | `c install` |
+| `co` | `c outdated` |
+| `cr` | `c require` |
+| `crm` | `c remove` |
+| `cu` | `c update` |
 
 ## Docker & docker-compose shortcuts
 
