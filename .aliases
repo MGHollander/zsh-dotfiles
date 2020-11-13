@@ -52,13 +52,14 @@ alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z | pbcopy"
 alias gco='git checkout'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
+alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gd='git diff'
+alias gf='git fetch'
 alias gl='git pull'
 alias glc='git pull origin "$(git_current_branch)"'
 alias gld='git pull origin develop'
 alias gp='git push'
 alias gpc='git push origin "$(git_current_branch)"'
-alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
 # TODO make a function from this to make the returned tags configurable
 alias gtl='git tag --sort=-version:refname | head -n 5'
 
