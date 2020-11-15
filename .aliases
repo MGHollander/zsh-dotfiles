@@ -60,6 +60,7 @@ alias glc='git pull origin "$(git_current_branch)"'
 alias gld='git pull origin develop'
 alias gp='git push'
 alias gpc='git push origin "$(git_current_branch)"'
+alias gst='git status'
 # TODO make a function from this to make the returned tags configurable
 alias gtl='git tag --sort=-version:refname | head -n 5'
 

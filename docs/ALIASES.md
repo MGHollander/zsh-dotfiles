@@ -59,6 +59,7 @@
 | `gld` | `git pull origin develop` |
 | `gp` | `git push` |
 | `gpc` | `git push origin "$(git_current_branch)"` |
+| `gst` | `git status` |
 | `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
 | `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936) |
 
