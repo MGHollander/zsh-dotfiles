@@ -88,6 +88,9 @@ if [ -z $GIT_REPO ]; then
     exit 2
 fi
 
+# TODO
+#  - Add a check if a project name already exists to prevent that two projects are cloned in the same folder.
+#  - Add an option to replace the existing folder by the one that you want to create.
 if [ -z $PROJECT_NAME ]; then
     PROJECT_NAME=`echo $GIT_REPO | sed -n 's#.*/\([^.]*\)\.git#\1#p'`
 fi
