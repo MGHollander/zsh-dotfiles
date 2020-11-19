@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Load the shell dotfiles, and then some:
+# TODO Add description for these files to the README
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in "$(dirname "$0")"/.{path,exports,aliases,functions,extra}; do
@@ -8,3 +9,9 @@ for file in "$(dirname "$0")"/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+# Load the shortcut files
+# TODO Describe the feature in the README
+for file in "$(dirname "$0")"/shortcuts/**/.*; do
+    source "$file";
+done
+unset file;

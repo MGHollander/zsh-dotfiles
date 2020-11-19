@@ -20,8 +20,6 @@ alias st="sourcetree"
 alias finder="open -a Finder"
 alias fin="finder"
 
-for FILE in "$(dirname "$0")"/shortcuts/**/.*; do source "$FILE"; done
-
 # Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
 alias uuid="uuidgen | tr A-Z a-z | pbcopy"
 
