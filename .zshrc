@@ -112,8 +112,6 @@ DEFAULT_USER='marc.hollander'
 
 source ~/dotfiles/.intro
 source ~/dotfiles/.zsh_profile
-source ~/dotfiles/.drush
-source ~/dotfiles/.oneshoe
 
 # https://coderwall.com/p/a8uxma/zsh-iterm2-osx-shortcuts
 bindkey "[D" backward-word

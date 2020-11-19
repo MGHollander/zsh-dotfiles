@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-source "$(dirname "$0")/scripts/common.sh"
+SCRIPT_DIR="$(dirname "$0")/.."
 
-SCRIPT_DIR=`dirname $0`
+source "$SCRIPT_DIR/scripts/common.sh"
+
 
 # One Shoe environment variable
 export ONESHOE_ENV=development
@@ -10,7 +11,7 @@ export ONESHOE_ENV=development
 # TODO Add these aliases to ALIASES.md
 # TODO Move the aliases that are not One Shoe specific somewhere else
 
-alias drupal-dev-services-twig-debug="bash $SCRIPT_DIR/scripts/drupal-dev-services-twig-debug.sh"
+alias drupal-dev-services-twig-debug="bash "$SCRIPT_DIR"/scripts/drupal-dev-services-twig-debug.sh"
 alias dtd="drupal-dev-services-twig-debug"
 
 # Aliases for default scripts in Drupal projects

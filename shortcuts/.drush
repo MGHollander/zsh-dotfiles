@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=`dirname $0`
+SCRIPT_DIR="$(dirname "$0")/.."
 
 alias rush="bash $SCRIPT_DIR/scripts/mydrush.sh"
 
