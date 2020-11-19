@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(dirname "$0")/.."
+SCRIPT_DIR="$(dirname "$0")/../scripts"
 
-alias rush="bash $SCRIPT_DIR/scripts/mydrush.sh"
+alias rush="bash $SCRIPT_DIR/mydrush.sh"
 
 # Eport the database as file with the current date and time
 alias dse='rush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'

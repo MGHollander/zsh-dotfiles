@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR="$(dirname "$0")/.."
+SCRIPT_DIR="$(dirname "$0")/../scripts"
 
-source "$SCRIPT_DIR/scripts/common.sh"
-
+source "$SCRIPT_DIR/common.sh"
 
 # One Shoe environment variable
 export ONESHOE_ENV=development
@@ -11,7 +10,7 @@ export ONESHOE_ENV=development
 # TODO Add these aliases to ALIASES.md
 # TODO Move the aliases that are not One Shoe specific somewhere else
 
-alias drupal-dev-services-twig-debug="bash "$SCRIPT_DIR"/scripts/drupal-dev-services-twig-debug.sh"
+alias drupal-dev-services-twig-debug="bash "$SCRIPT_DIR"/drupal-dev-services-twig-debug.sh"
 alias dtd="drupal-dev-services-twig-debug"
 
 # Aliases for default scripts in Drupal projects
@@ -48,11 +47,11 @@ alias oneshoe-maintenance="log 'Disable composer memory limit and run maintenanc
 alias osm="oneshoe-maintenance"
 
 # Aliases for my own scripts
-alias oneshoe-create-project="bash $SCRIPT_DIR/scripts/create-project.sh"
+alias oneshoe-create-project="bash $SCRIPT_DIR/create-project.sh"
 alias oscp="oneshoe-create-project"
 
-alias drupal-create-settings="bash $SCRIPT_DIR/scripts/drupal-create-settings-file.sh"
-alias drupal-copy-local-settings="bash $SCRIPT_DIR/scripts/drupal-local-settings-file.sh"
+alias drupal-create-settings="bash $SCRIPT_DIR/drupal-create-settings-file.sh"
+alias drupal-copy-local-settings="bash $SCRIPT_DIR/drupal-local-settings-file.sh"
 
-alias oneshoe-remove-project="bash $SCRIPT_DIR/scripts/remove-project.sh"
+alias oneshoe-remove-project="bash $SCRIPT_DIR/remove-project.sh"
 alias osrp="oneshoe-remove-project"
