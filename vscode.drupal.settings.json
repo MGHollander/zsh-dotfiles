@@ -4,7 +4,7 @@
   "css.validate": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.tabSize": 2,
-  "editor.autoIndent": true,
+  "editor.autoIndent": "full",
   "editor.insertSpaces": true,
   "editor.formatOnPaste": true,
   "editor.formatOnSave": false,
@@ -13,7 +13,7 @@
   "editor.wordWrap": "off",
   "editor.detectIndentation": true,
   "editor.rulers": [
-    80
+    80, 120
   ],
   "files.associations": {
     "*.inc": "php",
@@ -36,23 +36,6 @@
   "emptyIndent.highlightIndent": false,
   "emptyIndent.highlightColor": "rgba(246,36,89,0.6)",
 
-  /* Crane php intellisense */
-  "crane.showStatusBarBugReportLink": false,
-
-  /* Ignore some D8 paths */
-  "crane.ignoredPaths": [
-    "sites/default/files/*",
-    "vendor/*",
-    "core/themes/*",
-    "core/tests/*",
-    "core/scripts/*",
-    "core/profiles/*",
-    "core/misc/*",
-    "core/assets/vendor/*",
-    "themes/*",
-    "sites/*"
-  ],
-
   /* PHP CodeSniffer (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-drupal-code-standards-configuration) */
   "phpcs.enable": true,
   "phpcs.extensions": "php,module,inc,install,test,profile,theme",
@@ -63,9 +46,11 @@
   "php.validate.executablePath": "/usr/local/bin/php",
   "php.validate.run": "onType",
 
-  /* PHP Intellisense (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-intellisense) */
+  /* PHP IntelliSense (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-intellisense) */
   "php.suggest.basic": false,
   "php.executablePath": "/usr/local/bin/php",
+  // Intelephense and Drupal >8 only. This should be set to the path to core/index.php.
+  "intelephense.environment.documentRoot": "core/index.php",
 
   /* PHP Docblocks (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-docblocks) */
   "php-docblocker.gap": true,
