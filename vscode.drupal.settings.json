@@ -46,7 +46,7 @@
   "php.validate.executablePath": "/usr/local/bin/php",
   "php.validate.run": "onType",
 
-  /* PHP IntelliSense (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-intellisense) */
+  /* PHP IntelliSense/Intelephense (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-intellisense) */
   "php.suggest.basic": false,
   // PHP IntelliSense only.
   "php.executablePath": "/usr/local/bin/php",
