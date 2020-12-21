@@ -6,3 +6,6 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 # Add Visual Studio Code (code)
 # @TODO check if VS Code exists?
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Add Garmin ConnectIQ SDK
+export PATH="$PATH:/Users/marc.hollander/dev/garmin-sdk/connectiq-sdk-mac-3.2.2-2020-08-28-a50584d55/bin"
