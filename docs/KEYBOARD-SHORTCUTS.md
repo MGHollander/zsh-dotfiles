@@ -39,6 +39,7 @@
 | `CTRL` + `ALT` + `SHIFT` + `DOWN` | Next change |
 
 #### PhpStorm only
+
 | Keyboard shortcut | Action |
 | ------ | ------ |
 | `CMD` + `1` | Open project files / file explorer panel |
@@ -54,11 +55,13 @@
 | `CMD` + `0` | Open database panel |
 
 #### VS code only
+
 | Keyboard shortcut | Action |
 | ------ | ------ |
 | `CMD` + `1` | Explorer panel |
 | `CMD` + `2` | Open outline panel |
 | `CMD` + `3` | Open Version Control panel |
+| `CMD` + `4` | Open debug panel |
 | `CMD` + `B` | Toggle sidebar |
 
 #### Version Control
