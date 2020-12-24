@@ -20,11 +20,19 @@ alias st="sourcetree"
 alias finder="open -a Finder"
 alias fin="finder"
 
-# Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
-alias uuid="uuidgen | tr A-Z a-z | pbcopy"
+# Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the
+# clipboard
+alias uuid="uuidgen | tr A-Z a-z"
+alias uuidc="uuid | pbcopy"
 
-# Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard
-alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z | pbcopy"
+# Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47)
+# and copy it to the clipboard
+alias yuuid="echo \"uuid:\" \$(uuidgen) | tr A-Z a-z"
+alias yuuidc="yuuid | pbcopy"
+
+# Generate a random string of 48 characters and copy it to the clipboard
+alias randomstr="openssl rand -base64 48"
+alias randomstrc="randomstr | pbcopy"
 
 ## Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`

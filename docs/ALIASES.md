@@ -7,8 +7,8 @@
 - [Command shortcuts](#command-shortcuts)
 - [Open programs (Mac only)](#open-programs-mac-only)
 - [Git](#git)
-- [Docker-compose shortcuts](#docker-compose-shortcuts)
-- [List &amp; grep aliases](#list-amp-grep-aliases)
+- [Composer](#composer)
+- [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
 - [Drush](#drush)
 - [Other aliases](#other-aliases)
 
@@ -101,8 +101,12 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 
 | Alias | Note |
 | ------ | ------ |
-| `uuid` | Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
-| `yuuid` | Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
+| `uuid` | Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) |
+| `uuidc` | Generate a uuid (531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
+| `yuuid` | Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) |
+| `yuuidc` | Generate a uuid in yaml format (uuid: 531fedb1-b2b5-42ba-8a8e-04c84d3afb47) and copy it to the clipboard |
+| `randomstr` | Generate a random string of 48 characters |
+| `randomstrc` | Generate a random string of 48 characters and copy it to the clipboard |
 | `st` |  Open repository in SourceTree from terminal. Usage: `st /path/to/repo` |
 | `update` | Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages |
 | `ip` | Get external IP address |
