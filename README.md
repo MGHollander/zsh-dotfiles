@@ -10,6 +10,7 @@
 - [Installation](#installation)
 - [Keyboard shortcuts](#keyboard-shortcuts)
 - [Aliases](#aliases)
+- [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
 - [EditorConfig](#editorconfig)
 - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
 - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
@@ -102,29 +103,32 @@ My `~/.gitconfig-work`:
 By default my commits will be in name of my personal account. When I commit something from a repository inside the `~/dev/work/` directory, then it will be in name of my work account.
 
 ## Prefix commit message with a ticket number automatically
+
 Copy `prepare-commit-msg` to the default Git hook template folder. On my machine this folder is placed add `/usr/local/git/share/git-core/templates`. These templates will be copied to every new repository that you create or clone on your machine.
 
 **NOTE:** You have to copy the file to existing repositories manually. You can copy the file to all existing repositories by running `echo /path/to/projects/*/.git/hooks/ | xargs -n 1 cp ~/dotfiles/prepare-commit-msg`, but you should be aware that it will overwrite existing files.
 
 **NOTE:** Make sure the file is executable after you have copied it to a repository manually. Run `chmod +x /path/to/repo/.git/hooks/pre-commit-msg` for the correct permissions. You can also use a wildcard here if you have copied the file to multiple existing repositories using the above command. This should look something like this: `chmod +x /path/to/projects/*/.git/hooks/prepare-commit-msg`.
 
-Source: https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05
+Source: <https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05>
 
 ## Terminal completion
 
 You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
 
 ## Environment variables
+
 The .exports file contains an environment variable to use to check if you are on a certain environment. The variable is named `APP_ENV`.
 
 You should also set the environment variable to your development environments.
 
 ### MacOS nginx
+
 My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
 
 Append `fastcgi_param APP_ENV dev;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
 
-_Source: https://stackoverflow.com/a/45419230_
+_Source: <https://stackoverflow.com/a/45419230>_
 
 ## Help
 

@@ -40,12 +40,14 @@
 | `h` | `history` |
 
 ## Open programs (Mac only)
+
 | Alias | Command |
 | ------ | ------ |
 | `phpstorm` | `open -a PhpStorm` |
 | `sourcetree` | `open -a SourceTree` |
 
 ## Git
+
 | Alias | Command | Note |
 | ------ | ------ | ------ |
 | `gco` | `git checkout` |
@@ -61,13 +63,14 @@
 | `gpc` | `git push origin "$(git_current_branch)"` |
 | `gst` | `git status` |
 | `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
-| `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936) |
+| `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (<https://stackoverflow.com/a/17029936>) |
 
 @TODO: Add Git aliases from `.gitconfig`
 
 ## Composer
+
 Composer shortcuts including an unlimited PHP memory limit to prevent errors\
-(see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors)
+(see <https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors>)
 
 | Alias | Command |
 | ------ | ------ |

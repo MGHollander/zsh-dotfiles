@@ -10,15 +10,15 @@ This guide describes how to install Laravel Valet with Mailhog and Xdebug.
 
 ## Install Laravel Valet
 
-Follow the installation steps on https://laravel.com/docs/master/valet#installation.
+Follow the installation steps on <https://laravel.com/docs/master/valet#installation>.
 
 ## Install MailHog
 
 Run `brew install mailhog` on your command line. Once MailHog has been installed, you may start it using `brew services start mailhog`.
 
-Now you can access MailHog via http://localhost:8025/ or http://127.0.0.1:8025/.
+Now you can access MailHog via <http://localhost:8025/> or <http://127.0.0.1:8025/>.
 
-Run `valet proxy mailhog http://127.0.0.1:8025` to access MailHog via http://mailhog.test/.
+Run `valet proxy mailhog http://127.0.0.1:8025` to access MailHog via <http://mailhog.test/>.
 
 ### Configure PHP to send mail to MailHog
 
@@ -26,7 +26,7 @@ Run `php --ini` to see which ini files PHP is using and copy the path in which a
 
 Run `/usr/local/etc/php/X.X/conf.d/mailhog.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
 
-```
+```ini
 ; Use mailhog for sending emails
 sendmail_path = /usr/local/bin/MailHog sendmail test@test
 ```
@@ -42,7 +42,7 @@ Run `pecl channel-update pecl.php.net` to prepare PECL.
 Run `pecl install xdebug` to install Xdebug.
 The Xdebug installation returns a path to `xdebug.so` when it has finished installing. This looks something like
 
-```
+```txt
 Build process completed successfully
 Installing '/usr/local/Cellar/php/7.4.9/pecl/20190902/xdebug.so'
 install ok: channel://pecl.php.net/xdebug-2.9.6
@@ -57,7 +57,7 @@ Run `php --ini` to see which ini files PHP is using and copy the path in which a
 
 Run `vi /usr/local/etc/php/X.X/conf.d/ext-xdebug.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
 
-```
+```ini
 [xdebug]
 zend_extension="/path/to/xdebug.so"
 xdebug.remote_autostart=1
