@@ -15,14 +15,18 @@ if [ $# -ne 2 ]; then
   exit 1
 fi
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=root
-
-FILE="$1"
+DB_HOST=${DB_HOST:-localhost}
+DB_USER=${DB_USER:-root}
+DB_PASS=${DB_PASS:-root}
 DB_NAME="$2"
 
-log "\033[1mStart database import"
+FILE="$1"
+
+# TODO Add delete confirmation...
+log "\033[1mDelete and re-create database"
+mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" || exit 1
+
+log "\033[1mImport database dump"
 log_text "Import $FILE into $DB_NAME"
 
 # echo "$FILE | gzip -cd | mysql -h $DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME"

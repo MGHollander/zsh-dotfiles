@@ -24,15 +24,12 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=root
-
+DB_HOST=${DB_HOST:-localhost}
+DB_USER=${DB_USER:-root}
+DB_PASS=${DB_PASS:-root}
 DB_NAME="$1"
 
 log "\033[1mStart database export"
-
-
 
 db_size=$(mysql \
     -h "$DB_HOST" \
