@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# @TODO make these variables overwriteable
 MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
 MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
 MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
@@ -186,9 +187,9 @@ fi
 if [ -z $NO_LINK ]; then
     log "Link project to valet"
 
-    cd $WEBROOT
+    cd $WEBROOT || exit 1
     valet link $PROJECT_NAME
-    cd -
+    cd - || exit 1
 
     VALET_DOMAIN=`valet tld`
     PROJECT_URL="http://${PROJECT_NAME}.${VALET_DOMAIN}"
