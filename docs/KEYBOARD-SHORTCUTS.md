@@ -59,9 +59,11 @@
 | Keyboard shortcut | Action |
 | ------ | ------ |
 | `CMD` + `1` | Explorer panel |
-| `CMD` + `2` | Open outline panel |
-| `CMD` + `3` | Open Version Control panel |
-| `CMD` + `4` | Open debug panel |
+| `CMD` + `2` | Open Version Control panel |
+| `CMD` + `3` | Open debug panel |
+| `CMD` + `4` | Focus on Outline view |
+| `CMD` + `5` | Focus on NPM Scripts view |
+| `CMD` + `6` | Focus on Gitlens Commits view |
 | `CMD` + `B` | Toggle sidebar |
 
 #### Version Control
