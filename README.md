@@ -114,7 +114,7 @@ Source: <https://medium.com/better-programming/how-to-automatically-add-the-tick
 
 ## Terminal completion
 
-You can add paths to the `CDPATH` variable in `.exports` for shortcuts when you use the `cd` command.
+You can add paths to the `CDPATH` variable in `.path` for shortcuts when you use the `cd` command.
 
 ## Environment variables
 
