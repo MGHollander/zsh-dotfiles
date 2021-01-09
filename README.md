@@ -18,6 +18,7 @@
 - [Terminal completion](#terminal-completion)
 - [Environment variables](#environment-variables)
   - [MacOS nginx](#macos-nginx)
+- [MySQL database import and export](#mysql-database-import-and-export)
 - [Help](#help)
   - [Git Completion not working](#git-completion-not-working)
 - [Contact](#contact)
@@ -129,6 +130,25 @@ My nginx config is located in `/usr/local/etc/nginx` and environment variables a
 Append `fastcgi_param APP_ENV dev;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
 
 _Source: <https://stackoverflow.com/a/45419230>_
+
+## MySQL database import and export
+
+There are scripts with aliases available to import and export MySQL databases. Run `dbi --help` and `dbe --help` for
+instructions to use these scripts.
+
+There are some default MySQL settings set in `scripts/mysql/mysql-settings.sh`.
+You can change these or override them in one of the other configuration files,
+like `.extra`. Example:
+
+```bash
+export MYSQL_HOST=localhost
+export MYSQL_USER=root
+export MYSQL_PASS=root
+export MYSQL_CHAR_SET=utf8mb4
+export MYSQL_COLLATE=utf8mb4_unicode_ci
+```
+
+_Don't forget to restart the terminal after you have changed a setting that is overwritten using the method above._
 
 ## Help
 
