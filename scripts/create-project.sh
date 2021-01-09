@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-# @TODO make these variables overwriteable
-MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
-MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
-MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+SCRIPT_DIR=$(dirname "$0")
+SCRIPT_NAME=$(basename "$0")
 
-source "$(dirname "$0")/common.sh"
+source "$SCRIPT_DIR/common.sh"
+source "$SCRIPT_DIR/mysql/mysql-settings.sh"
 
-SCRIPT_DIR=`dirname $0`
-SCRIPT_NAME=`basename $0`
+set -e
 
 # Test command:
 # rm -rf dotfiles && bash ~/dotfiles/scripts/create-project.sh git@gitlab.com:MGHollander/dotfiles.git --no-database
@@ -16,6 +14,7 @@ SCRIPT_NAME=`basename $0`
 
 # TODO:
 # - Add posibility to add files to the Drupal files folder
+# - Override mysql settings
 
 function usage() {
     log_warning "Usage:"
@@ -121,18 +120,18 @@ if [ -z $NO_DATABASE ]; then
     log "Check database access"
     command -v mysqladmin > /dev/null || { log_error "No mysqladmin found, install a database first."; exit 1; }
 
-    if [ -z $MYSQL_ROOT_PASSWORD ]; then
+    if [ -z $MYSQL_PASS ]; then
         DATABASE_PASSWORD=""
-        mysqladmin -u ${MYSQL_ROOT_USER} --skip-password status || { log_error "Could not reach database."; exit 1; }
+        mysqladmin -u ${MYSQL_USER} --skip-password status || { log_error "Could not reach database."; exit 1; }
     else
-        DATABASE_PASSWORD="--password=${MYSQL_ROOT_PASSWORD}"
-        mysqladmin -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} status || { log_error "Could not reach database."; exit 1; }
+        DATABASE_PASSWORD="--password=${MYSQL_PASS}"
+        mysqladmin -u ${MYSQL_USER} ${DATABASE_PASSWORD} status || { log_error "Could not reach database."; exit 1; }
     fi
 
     log "Create a MySQL database if needed"
-    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "CREATE DATABASE IF NOT EXISTS \`${DATABASE_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" || exit 1
-    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "CREATE USER IF NOT EXISTS ${MYSQL_ROOT_USER}@localhost IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" || exit 1
-    mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "GRANT ALL PRIVILEGES ON \`${DATABASE_NAME}\`.* TO '${MYSQL_ROOT_USER}'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" || exit 1
+    mysql -u ${MYSQL_USER} ${DATABASE_PASSWORD} -e "CREATE DATABASE IF NOT EXISTS \`${DATABASE_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;" || exit 1
+    mysql -u ${MYSQL_USER} ${DATABASE_PASSWORD} -e "CREATE USER IF NOT EXISTS ${MYSQL_USER}@localhost IDENTIFIED BY '${MYSQL_PASS}';" || exit 1
+    mysql -u ${MYSQL_USER} ${DATABASE_PASSWORD} -e "GRANT ALL PRIVILEGES ON \`${DATABASE_NAME}\`.* TO '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_PASS}';" || exit 1
 fi
 
 log "Go to project root folder"
