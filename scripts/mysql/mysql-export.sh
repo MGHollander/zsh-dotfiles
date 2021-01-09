@@ -23,7 +23,7 @@ function usage() {
     log_warning "Options:"
     log_text "\033[32m  -h, --help                       \033[0m  Display this help message"
     log_text "\033[32m  -r, --result-FILE <result-FILE>  \033[0m  FILE to save the export"
-    log_text "\033[32m  -u, --uncompressed               \033[0m  Make an uncompressed export"
+    log_text "\033[32m  -u, --uncompressed               \033[0m  Create an uncompressed export"
     log_text "\033[32m  -H, --host <hostname>            \033[0m  MySQL hostname"
     log_text "\033[32m  -U, --user <username>            \033[0m  MySQL username"
     log_text "\033[32m  -p, --pass <password>            \033[0m  MySQL password"
@@ -116,6 +116,11 @@ DB_SIZE=$(mysql \
     WHERE table_schema='$DB_NAME';"
 )
 
+if [ "$DB_SIZE" == "NULL" ]; then
+    log_error "$DB_NAME seems to be empty... Aborting export"
+    exit 1
+fi
+
 RESULT_FILE_EXTENSION="sql"
 if hash gzip && [ -z "$UNCOMPRESSED" ]; then
     RESULT_FILE_EXTENSION="sql.gz"
@@ -149,6 +154,6 @@ elif ! hash gzip && [ -n "$UNCOMPRESSED" ]; then
     log_warning "Cannot compress the database export, because gzip is not installed..."
 fi
 
-eval "$MYSQL_DUMP > $RESULT_FILE"
+eval "$MYSQL_DUMP > $RESULT_FILE" || exit 1
 
 log "\033[32mDatabase export saved to $RESULT_FILE"
