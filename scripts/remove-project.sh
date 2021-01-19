@@ -64,11 +64,12 @@ if [ ! -d "$PROJECT_NAME" ]; then
 fi
 
 echo -e "\033[0;33mAre you sure you want to remove \033[4;33m$PROJECT_NAME\033[0;33m? This cannot be undone!\033[0m"
-read -p "Continue (yes/no)? " choice
-case "$choice" in
-    y|Y|[yY][eE][sS] ) ;;
-    * ) exit 0 ;;
-esac
+read -rp "Continue? [y/n] " -n 1
+echo # move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    log_error "Removal aborted"
+    exit 1
+fi
 
 if sudo rm -rf "$PROJECT_NAME"; then
     log_success "Project folder is removed successfully"

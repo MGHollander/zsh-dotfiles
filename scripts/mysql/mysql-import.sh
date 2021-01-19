@@ -120,15 +120,12 @@ log "\033[1mDelete and re-create database"
 
 if [ -z "$FORCE" ]; then
     log_warning "Are you sure you want to overwrite \033[4;33m$DB_NAME\033[0;33m? This cannot be undone!"
-    read -rp "Continue (yes/no)? " choice
-
-    case "$choice" in
-        y|Y|[yY][eE][sS] ) ;;
-        * )
-            log_error "Imported aborted"
-            exit 0
-            ;;
-    esac
+    read -rp "Continue? [y/n] " -n 1
+    echo # move to a new line
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        log_error "Imported aborted"
+        exit 1
+    fi
 fi
 
 mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET $MYSQL_CHAR_SET COLLATE $MYSQL_COLLATE;" || exit 1
