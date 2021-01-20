@@ -10,12 +10,12 @@ export ONESHOE_ENV=development
 # TODO Add these aliases to ALIASES.md
 # TODO Move the aliases that are not One Shoe specific somewhere else
 
-alias drupal-dev-services-twig-debug="bash $SCRIPT_DIR/drupal-dev-services-twig-debug.sh"
-alias dtd="drupal-dev-services-twig-debug"
+alias drupal-twig-debug="bash $SCRIPT_DIR/drupal-dev-services-twig-debug.sh"
+alias dtd="drupal-twig-debug"
 
 # Aliases for default scripts in Drupal projects
 alias oneshoe-build="log 'Run build.sh' && bash scripts/build.sh"
-alias osb="oneshoe-build && dtd"
+alias osb="oneshoe-build"
 
 alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
 alias rvd="remove-vendor-dir"
@@ -24,7 +24,7 @@ alias rvd="remove-vendor-dir"
 # that have custom composer packages which are checkout on other branches every
 # now and then (like Nuffic).
 alias oneshoe-clean-build="remove-vendor-dir && oneshoe-build"
-alias oscb="oneshoe-clean-build && dtd"
+alias oscb="oneshoe-clean-build"
 
 alias oneshoe-clean-install="log 'Run clean-install.sh' && bash scripts/clean-install.sh && dtd"
 alias osci="oneshoe-clean-install"
