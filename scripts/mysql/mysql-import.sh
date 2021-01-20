@@ -120,7 +120,7 @@ log "\033[1mDelete and re-create database"
 
 if [ -z "$FORCE" ]; then
     log_warning "Are you sure you want to overwrite \033[4;33m$DB_NAME\033[0;33m? This cannot be undone!"
-    read -rp "Continue? [y/n] " -n 1
+    read -rp "Continue? [Y/n] " -n 1
     echo # move to a new line
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         log_error "Imported aborted"
