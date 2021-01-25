@@ -82,21 +82,12 @@ done
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
 
-log "\033[1mStart database import"
-
-# TODO
-# - Add proper help documentation
-# - Make db name optional and use folder as db name if none is set
-# - Check if db exists before import
-# - Make db settings configurable
-# - Check extension of the db backup and import based on it (compressed db or not)
-
 if ! hash mysql; then
     log_error "MySQL is not available via the terminal. Please install MySQL to continue..."
     exit 1;
 fi
 
-if [ $# -ne 1 ]; then
+if [ -z "$1" ]; then
   log_error "You must specify a file to import"
   usage
   exit 1
@@ -114,6 +105,8 @@ if [ -n "$2" ]; then
 else
     DB_NAME=$(basename "$PWD")
 fi
+
+log "\033[1mStart database import"
 
 # TODO Add delete confirmation...
 log "\033[1mDelete and re-create database"
