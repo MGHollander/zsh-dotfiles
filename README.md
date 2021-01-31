@@ -105,6 +105,19 @@ By default my commits will be in name of my personal account. When I commit some
 
 ## Prefix commit message with a ticket number automatically
 
+Based on
+<https://medium.com/better-programming/how-to-automatically-add-the-ticket-number-in-git-commit-message-bda5426ded05>
+
+Examples of ticket numbers that are extracted:
+
+```txt
+myproj-123-some-feature → MYPROJ-123
+feature/myproj-456-some-other-feature → MYPROJ-456
+bugifx/myproj-789 →  MYPROJ-789
+123_some_feature →  #123
+123-another-feature →  #123
+```
+
 Copy `prepare-commit-msg` to the default Git hook template folder. On my machine this folder is placed add `/usr/local/git/share/git-core/templates`. These templates will be copied to every new repository that you create or clone on your machine.
 
 **NOTE:** You have to copy the file to existing repositories manually. You can copy the file to all existing repositories by running `echo /path/to/projects/*/.git/hooks/ | xargs -n 1 cp ~/dotfiles/prepare-commit-msg`, but you should be aware that it will overwrite existing files.
