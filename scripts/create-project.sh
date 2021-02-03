@@ -153,14 +153,14 @@ if [ -z $WEBROOT ]; then
     exit 5
 fi
 
-# Composer dependencies need to be installed since Drupal 8.8, because many files
-#   are added via Drupal Scaffold and we need the default.setting.php.
-# TODO add checks to determine the CMS / framework and only run composer install when it is necessary
-if [ -f composer.json ]; then
-    log "Install composer dependencies"
-    composer install --no-interaction --no-progress --no-suggest || exit 1
+# The build script needs to run first, because Drupal 8 and Drupal 7 with a make
+# file scaffold files like the default.setting.php. And we need this to continue
+# the installation.
+if [ -f scripts/build.sh ]; then
+    log "Pre-run the build"
+    bash scripts/build.sh
 else
-    log_warning "No composer dependencies to install";
+    log_warning "No build script to pre-run";
 fi
 
 # TODO add checks to determine the CMS / framework and add a settings file for other tools
