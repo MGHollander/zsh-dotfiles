@@ -43,7 +43,7 @@ if [ -f $SETTINGS_LOCAL_EXAMPLE_FILE ]; then
   fi
 else
    log_warning "There is no local settings example available"
-   exit 1
+   exit 0
 fi
 
 chmod 777 $SETTINGS_LOCAL_FILE
