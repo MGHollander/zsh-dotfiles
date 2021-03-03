@@ -136,7 +136,6 @@ MYSQL_DUMP="mysqldump \
     -h $MYSQL_HOST \
     -u $MYSQL_USER \
     -p$MYSQL_PASS \
-    --compact \
     --databases \
     --dump-date \
     --hex-blob \
