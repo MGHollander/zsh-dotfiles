@@ -130,7 +130,7 @@ if [ -z "$RESULT_FILE" ]; then
     RESULT_FILE="./$DB_NAME-$(date +'%F-%H%M%S').$RESULT_FILE_EXTENSION"
 fi
 
-log_text "Export $DB_NAME (~$(bytesToHumanReadable "$DB_SIZE"))"
+log_text "Export $DB_NAME (~$(bytesToHumanReadable "$DB_SIZE")). The progress bar might be inaccurate, because the db size is an estimate."
 
 MYSQL_DUMP="mysqldump \
     -h $MYSQL_HOST \
