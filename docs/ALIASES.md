@@ -50,6 +50,7 @@
 
 | Alias | Command | Note |
 | ------ | ------ | ------ |
+| `gb` | `git branch -a` | List all branches |
 | `gco` | `git checkout` |
 | `gcd` | `git checkout develop` |
 | `gcm` | `git checkout master` |
@@ -62,6 +63,7 @@
 | `gp` | `git push` |
 | `gpc` | `git push origin "$(git_current_branch)"` |
 | `gst` | `git status` |
+| `gr` | `git remote -v` | List remote servers |
 | `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
 | `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (<https://stackoverflow.com/a/17029936>) |
 
