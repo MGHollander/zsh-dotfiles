@@ -140,7 +140,7 @@ You should also set the environment variable to your development environments.
 
 My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
 
-Append `fastcgi_param APP_ENV dev;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
+Append `fastcgi_param APP_ENV development;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
 
 _Source: <https://stackoverflow.com/a/45419230>_
 
