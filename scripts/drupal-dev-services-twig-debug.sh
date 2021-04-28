@@ -2,6 +2,7 @@
 
 source "$(dirname "$0")/common.sh"
 
+# TODO Add support for other file locations like docroot/sites/
 DEV_SERVICES_FILE="web/sites/development.services.yml"
 
 log "Add twig.config to development.services.yml"
