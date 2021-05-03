@@ -3,11 +3,15 @@
 source "$(dirname "$0")/common.sh"
 
 # TODO Add support for other file locations like docroot/sites/
-DEV_SERVICES_FILE="web/sites/development.services.yml"
+DEV_SERVICES_FILE="sites/development.services.yml"
 
 log "Add twig.config to development.services.yml"
 
-if [ ! -f $DEV_SERVICES_FILE ]; then
+if [ -f "web/$DEV_SERVICES_FILE" ]; then
+    DEV_SERVICES_FILE="web/$DEV_SERVICES_FILE"
+elif [ -f "docroot/$DEV_SERVICES_FILE" ]; then
+    DEV_SERVICES_FILE="docroot/$DEV_SERVICES_FILE"
+else
     log_warning "$DEV_SERVICES_FILE not found"
     exit;
 fi
