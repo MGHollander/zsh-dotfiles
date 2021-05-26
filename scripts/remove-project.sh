@@ -64,7 +64,7 @@ if [ ! -d "$PROJECT_NAME" ]; then
 fi
 
 echo -e "\033[0;33mAre you sure you want to remove \033[4;33m$PROJECT_NAME\033[0;33m? This cannot be undone!\033[0m"
-read -rp "Continue? [y/N] " -n 1
+read -p "Continue? [y/N] "
 echo # move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     log_error "Removal aborted"
