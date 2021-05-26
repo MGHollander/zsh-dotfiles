@@ -143,6 +143,8 @@ if [ -d "./web" ]; then
     WEBROOT="./web"
 elif [ -d "./docroot" ]; then
     WEBROOT="./docroot"
+elif [ -d "./htdocs" ]; then
+    WEBROOT="./htdocs"
 elif [ -d "./sites" ]; then
     WEBROOT="."
 fi
