@@ -10,15 +10,34 @@ export ONESHOE_ENV=development
 # TODO Add these aliases to ALIASES.md
 # TODO Move the aliases that are not One Shoe specific somewhere else
 
+# Aliases for my own scripts
+alias oneshoe-create-project="bash $SCRIPT_DIR/create-project.sh"
+alias oscp="oneshoe-create-project"
+
+alias drupal-create-settings="bash $SCRIPT_DIR/drupal-create-settings-file.sh"
+alias drupal-copy-local-settings="bash $SCRIPT_DIR/drupal-local-settings-file.sh"
+
+alias oneshoe-remove-project="bash $SCRIPT_DIR/remove-project.sh"
+alias osrp="oneshoe-remove-project"
+
+alias mysql-db-export="bash $SCRIPT_DIR/mysql/mysql-export.sh"
+alias dbe="mysql-db-export"
+
+alias mysql-db-import="bash $SCRIPT_DIR/mysql/mysql-import.sh"
+alias dbi="mysql-db-import"
+
+alias php-version-check="log 'Run PHP version check' && bash $SCRIPT_DIR/php-version-check.sh"
+alias pvc="php-version-check"
+
 alias drupal-twig-debug="bash $SCRIPT_DIR/drupal-dev-services-twig-debug.sh"
 alias dtd="drupal-twig-debug"
 
-# Aliases for default scripts in Drupal projects
-alias oneshoe-build="log 'Run build.sh' && bash scripts/build.sh"
-alias osb="oneshoe-build"
-
 alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
 alias rvd="remove-vendor-dir"
+
+# Aliases for default One Shoe scripts in projects
+alias oneshoe-build="pvc && log 'Run build.sh' && bash scripts/build.sh"
+alias osb="oneshoe-build"
 
 # Ensure that all composer packages are re-installed. This helps with projects
 # that have custom composer packages which are checkout on other branches every
@@ -45,19 +64,3 @@ alias osdu="oneshoe-drush-update"
 
 alias oneshoe-maintenance="log 'Disable composer memory limit and run maintenance.sh' && COMPOSER_MEMORY_LIMIT=-1 bash scripts/maintenance.sh"
 alias osm="oneshoe-maintenance"
-
-# Aliases for my own scripts
-alias oneshoe-create-project="bash $SCRIPT_DIR/create-project.sh"
-alias oscp="oneshoe-create-project"
-
-alias drupal-create-settings="bash $SCRIPT_DIR/drupal-create-settings-file.sh"
-alias drupal-copy-local-settings="bash $SCRIPT_DIR/drupal-local-settings-file.sh"
-
-alias oneshoe-remove-project="bash $SCRIPT_DIR/remove-project.sh"
-alias osrp="oneshoe-remove-project"
-
-alias mysql-db-export="bash $SCRIPT_DIR/mysql/mysql-export.sh"
-alias dbe="mysql-db-export"
-
-alias mysql-db-import="bash $SCRIPT_DIR/mysql/mysql-import.sh"
-alias dbi="mysql-db-import"
