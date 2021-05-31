@@ -51,9 +51,15 @@ fi
 if [ "${PHP_VERSION}" == "${SYSTEM_PHP_VERSION}" ]; then
     log_success "The active PHP version (PHP ${SYSTEM_PHP_VERSION}) matches the recommanded PHP version."
 elif [ -n "${PHP_VERSION}" ]; then
-    # TODO Check if valet is available
-    log "Switch valet to PHP \033[1m${PHP_VERSION}\033[0m."
-    valet use "php@${PHP_VERSION}"
+    log_warning "The active PHP version differs from the recommended PHP version. Do you want to use \033[4;33mPHP $PHP_VERSION\033[0;33m?"
+    read -p "Continue? [y/N] "
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        log_warning "PHP version will not change."
+    else
+        # TODO Check if valet is available
+        log "Switch valet to PHP \033[1m${PHP_VERSION}\033[0m."
+        valet use "php@${PHP_VERSION}"
+    fi
 else
     log_warning "No PHP version found. The active PHP version is \033[4;33m${SYSTEM_PHP_VERSION}\033[0;33m."
 fi
