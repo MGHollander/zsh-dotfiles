@@ -9,7 +9,7 @@ set -e
 log "Check for a PHP versions in the composer.json and .lando.yml and use it if one is available"
 
 COMPOSER_PHP_VERSION=$(grep '"php":' composer.json 2>/dev/null | cut -f 4 -d'"' | tr -d '>=^~')
-LANDO_PHP_VERSION=$(grep 'php:' .lando.yml 2>/dev/null | cut -f 2 -d ':' | tr -d ' ')
+LANDO_PHP_VERSION=$(grep 'php:' .lando.yml 2>/dev/null | cut -f 2 -d ':' | tr -d ''\'' ')
 SYSTEM_PHP_VERSION=$(php -v | grep -o -m 1 -E "[0-9]+\.[0-9]+")
 PHP_VERSION=""
 
