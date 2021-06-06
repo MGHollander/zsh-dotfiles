@@ -54,7 +54,9 @@ Add to `~/.gitconfig`
     path = ~/dotfiles/.gitconfig
 ```
 
-**NOTE:** Some git config files might be overwritten by Git GUI tools. For  example: My `~/dotfiles/.gitignore` wasn't loading. When I checked my `~/.gitconfig` the `excludesfile` variable was overwritten by Sourcetree. Therefore I have to configure my own global .gitignore in the Sourcetree settings.
+**NOTE:** Some git config files might be overwritten by Git GUI tools. For  example: My `~/dotfiles/.gitignore` wasn't loading. When I checked my `~/.gitconfig` the `excludesfile` variable was overwritten by Sourcetree. Therefore I had to configure my own global .gitignore in the Sourcetree settings.
+
+Copy `.config-example`, rename the copied file to `.config` and change the variables inside the file.
 
 ## Keyboard shortcuts
 

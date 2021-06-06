@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# The default username for MySQL
+DB_USER="username"
+# The default password for MySQL
+DB_PASS="password"
+
+# Array of folder names that may contain the webroot files of a project
+WEBROOT_POSSIBILITIES=("docroot" "htdocs" "public_html" "web")

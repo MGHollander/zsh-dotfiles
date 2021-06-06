@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+SCRIPT_DIR=$(dirname "$0")
+CONFIG_FILE="$SCRIPT_DIR/../.config"
+
+if [ -e "$CONFIG_FILE" ]; then
+    source "$CONFIG_FILE"
+fi
+
 # Bash colors and formatting
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
 
