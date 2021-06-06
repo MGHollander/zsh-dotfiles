@@ -3,16 +3,10 @@
 source "$(dirname "$0")/common.sh"
 
 COMMAND="drush"
+WEBROOT=$(getWebRoot)
 
-if [ -d "./web" ]; then
-    COMMAND="$COMMAND --root=$PWD/web"
-elif [ -d "./docroot" ]; then
-    COMMAND="$COMMAND --root=$PWD/docroot"
-elif [ -d "./htdocs" ]; then
-    COMMAND="$COMMAND --root=$PWD/htdocs"
-elif [ ! -d "./sites" ]; then
-    log_error "Couldn't find the webroot folder"
-    exit 1
+if [ -n "$WEBROOT" ]; then
+    COMMAND="$COMMAND --root=$PWD/$WEBROOT"
 fi
 
 if [ "$1" == "uli" ]; then

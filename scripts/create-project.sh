@@ -140,32 +140,28 @@ fi
 log "Go to project root folder"
 cd $PROJECT_NAME/
 
-log "Look for the webroot folder"
-
-if [ -d "./web" ]; then
-    WEBROOT="./web"
-elif [ -d "./docroot" ]; then
-    WEBROOT="./docroot"
-elif [ -d "./htdocs" ]; then
-    WEBROOT="./htdocs"
-elif [ -d "./sites" ]; then
-    WEBROOT="."
-fi
-
-# TODO find a way to check if the webroot script works.
-if [ -z $WEBROOT ]; then
-    log_error "Couldn't find the webroot folder"
-    exit 5
-fi
-
 # The build script needs to run first, because Drupal 8 and Drupal 7 with a make
-# file scaffold files like the default.setting.php. And we need this to continue
-# the installation.
+# file scaffold files like the default.setting.php. And we need those to
+# continue the installation.
 if [ -f scripts/build.sh ]; then
     log "Pre-run the build"
     bash scripts/build.sh
 else
     log_warning "No build script to pre-run";
+fi
+
+log "Look for the webroot folder"
+
+WEBROOT=$(getWebRoot)
+if [ -z "$WEBROOT" ]; then
+    if [ -d "./sites" ]; then
+        WEBROOT="."
+    fi
+fi
+
+if [ -z $WEBROOT ]; then
+    log_error "Couldn't find the webroot folder"
+    exit 5
 fi
 
 # TODO add checks to determine the CMS / framework and add a settings file for other tools

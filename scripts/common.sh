@@ -34,3 +34,12 @@ function bytesToHumanReadable() {
     done
     echo "$i$d ${S[$s]}"
 }
+
+function getWebRoot() {
+    for DIR in "${WEBROOT_POSSIBILITIES[@]:-("web")}"; do
+        if [ -d "./$DIR" ]; then
+            echo "$DIR"
+            break
+        fi
+    done
+}
