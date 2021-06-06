@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
 source "$(dirname "$0")/common.sh"
 
-SCRIPT_NAME=`basename $0`
+SCRIPT_NAME=$(basename "$0")
 
 function usage() {
     log_warning "Usage:"

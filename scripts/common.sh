@@ -4,6 +4,7 @@ SCRIPT_DIR=$(dirname "$0")
 CONFIG_FILE="$SCRIPT_DIR/../.config"
 
 if [ -e "$CONFIG_FILE" ]; then
+    # shellcheck disable=SC1090
     source "$CONFIG_FILE"
 fi
 

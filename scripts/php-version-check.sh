@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$(dirname "$0")
-
-source "$SCRIPT_DIR/common.sh"
+# shellcheck disable=SC1091
+source "$(dirname "$0")/common.sh"
 
 set -e
 

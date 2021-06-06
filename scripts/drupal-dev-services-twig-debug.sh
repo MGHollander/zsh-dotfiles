@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# shellcheck disable=SC1091
 source "$(dirname "$0")/common.sh"
 
 # TODO Add support for other file locations like docroot/sites/

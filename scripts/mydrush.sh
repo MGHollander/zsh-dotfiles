@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$(dirname "$0")
-
 # shellcheck disable=SC1091
-source "$SCRIPT_DIR/common.sh"
+source "$(dirname "$0")/common.sh"
 
 COMMAND="drush"
 WEBROOT=$(getWebRoot)

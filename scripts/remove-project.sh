@@ -4,7 +4,7 @@ MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
 MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
 MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
 
-# shellcheck source=./common.sh
+# shellcheck disable=SC1091
 source "$(dirname "$0")/common.sh"
 
 SCRIPT_NAME=$(basename "$0")

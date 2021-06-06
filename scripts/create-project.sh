@@ -3,7 +3,9 @@
 SCRIPT_DIR=$(dirname "$0")
 SCRIPT_NAME=$(basename "$0")
 
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/common.sh"
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/mysql/mysql-settings.sh"
 
 set -e
