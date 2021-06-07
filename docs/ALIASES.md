@@ -99,7 +99,7 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 
 | Alias | Command | Note |
 | ------ | ------ | ------ |
-| `dse` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"` | Export the database as file with the current date and time |
+| `dse` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip` | Export the database as compressed file with the current date and time |
 | `dsi` | `drush sql-cli <` | Import a database file |
 
 ## Other aliases
