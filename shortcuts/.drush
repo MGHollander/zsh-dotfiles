@@ -2,25 +2,25 @@
 
 SCRIPT_DIR="$(dirname "$0")/../scripts"
 
-alias rush="bash $SCRIPT_DIR/mydrush.sh"
+alias drush='bash $SCRIPT_DIR/drush.sh'
 
 # Eport the database as file with the current date and time
-alias dse='rush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
+alias dse='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql"'
 
 # Import a database file
-alias dsi='rush sql-cli <'
+alias dsi='drush sql-cli <'
 
 # Generate a one time login link without automatically opening the prowser
-alias dul='rush uli'
+alias dul='drush uli'
 
 # Import config, update db and rebuild cache
-alias dup8='rush csim -y; rush updb -y; rush cr'
+alias dup8='drush csim -y; drush updb -y; drush cr'
 
 # Revert all features, update db and clear all caches
-alias dup7='rush fra -y; rush updb -y; rush cc all'
+alias dup7='drush fra -y; drush updb -y; drush cc all'
 
 # Empty Drupal 8 caches
-alias dcr='rush cr'
+alias dcr='drush cr'
 
 # Empty Drupal 7 caches
-alias dcc='rush cc all'
+alias dcc='drush cc all'
