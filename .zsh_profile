@@ -4,7 +4,7 @@
 # TODO Add description for these files to the README
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in "$(dirname "$0")"/.{path,exports,aliases,functions,extra}; do
+for file in "$(dirname "$0")"/.{config,path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
