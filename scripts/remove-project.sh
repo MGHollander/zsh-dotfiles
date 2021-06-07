@@ -5,7 +5,10 @@ set -e
 
 source "$(dirname "$0")/../.common"
 
-SCRIPT_NAME=$(basename "$0")
+# Set default variables
+MYSQL_HOST=${MYSQL_HOST:-localhost}
+MYSQL_USER=${MYSQL_USER:-root}
+MYSQL_PASS=${MYSQL_PASS:-root}
 
 function usage() {
     log_warning "Usage:"
@@ -31,7 +34,7 @@ while (( "$#" )); do
             shift
             break
             ;;
-        -*|--*=) # unsupported flags
+        -*) # unsupported flags
             log_error "Error: Unsupported flag $1" >&2
             echo ""
             usage
@@ -47,49 +50,41 @@ done
 eval set -- "$PARAMS"
 
 PROJECT_NAME=$1
-
 if [ -z "$PROJECT_NAME" ]; then
-    log_error "Please provide a project name"
+    log_error "Please provide a project name."
     echo ""
     usage
     exit 1
 fi
 
-log "Remove project folder"
+log "Remove project folder."
 if [ ! -d "$PROJECT_NAME" ]; then
-    log_error "$PROJECT_NAME is not a project folder"
+    log_error "$PROJECT_NAME is not a project folder."
     exit 2
 fi
 
 echo -e "\033[0;33mAre you sure you want to remove \033[4;33m$PROJECT_NAME\033[0;33m? This cannot be undone!\033[0m"
-read -p "Continue? [y/N] "
+read -rp "Continue? [y/N] "
 echo # move to a new line
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    log_error "Removal aborted"
+    log_error "Removal aborted."
     exit 1
 fi
 
 if sudo rm -rf "$PROJECT_NAME"; then
-    log_success "Project folder is removed successfully"
+    log_success "Project folder is removed successfully."
 else
-    log_error "Cannot remove project folder"
+    log_error "Cannot remove project folder."
 fi
 
-log "Remove database"
-if [ -z $MYSQL_ROOT_PASSWORD ]; then
-    mysqladmin -u ${MYSQL_ROOT_USER} --skip-password status || { log_error "Could not reach database."; exit 1; }
-    DATABASE_PASSWORD=""
-else
-    DATABASE_PASSWORD="--password=${MYSQL_ROOT_PASSWORD}"
-    mysqladmin -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} status || { log_error "Could not reach database."; exit 1; }
-fi
-mysql -u ${MYSQL_ROOT_USER} ${DATABASE_PASSWORD} -e "DROP DATABASE \`${PROJECT_NAME}\`;" || exit 1
+log "Remove database."
+mysql_drop_db "$PROJECT_NAME"
 
-if hash valet 2>/dev/null; then
-    log "Remove valet link"
+if command -v valet > /dev/null; then
+    log "Remove valet link."
     valet unlink "$PROJECT_NAME"
 else
-    log_error "Cannot remove database and valet link, because valet is not installed"
+    log_error "Cannot remove database and valet link, because valet is not installed."
 fi
 
-log "Project removal finished"
+log "Project removal finished."
