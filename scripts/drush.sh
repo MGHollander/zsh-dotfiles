@@ -3,17 +3,11 @@
 # shellcheck disable=SC1091
 source "$(dirname "$0")/common.sh"
 
-log "Run drush command"
 COMMAND="drush"
-
-log "Look for a webroot"
 WEBROOT=$(getWebRoot)
 
 if [ -n "$WEBROOT" ]; then
-    log_success "Found $WEBROOT"
     COMMAND="$COMMAND --root=$PWD/$WEBROOT"
-else
-    log_warning "Continue without a webroot"
 fi
 
 if [ "$1" == "user:login" ] || [ "$1" == "user-login" ] || [ "$1" == "uli" ]; then
