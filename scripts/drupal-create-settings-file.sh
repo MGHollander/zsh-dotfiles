@@ -2,80 +2,69 @@
 
 source "$(dirname "$0")/../.common"
 
+# TODO Add parameters for db settings (like the params in create-project.sh)
+MYSQL_HOST=${MYSQL_HOST:-localhost}
+MYSQL_USER=${MYSQL_USER:-root}
+MYSQL_PASS=${MYSQL_PASS:-root}
+
 function usage() {
     log_warning "Usage:"
     echo "  $(basename "$0") <path_to_webroot> <database_name>"
 }
 
 WEBROOT=$1
+DB_NAME=$2
 
-if [ -z $WEBROOT ]; then
-    log_error "Please provide a path to the webroot"
+if [ -z "$WEBROOT" ]; then
+    log_error "Please provide a path to the webroot."
     echo ""
     usage
     exit 1
 fi
 
-DATABASE_NAME=$2
-
-if [ -z $DATABASE_NAME ]; then
-    log_error "Please provide a database name"
+if [ -z "$DB_NAME" ]; then
+    log_error "Please provide a database name."
     echo ""
     usage
-    exit 2
+    exit 1
 fi
 
-# TODO Add parameters for db settings (like the params in create-project.sh)
-MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
-MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
-MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+SETTINGS_FILE_PATH="$WEBROOT/sites/default"
+SETTINGS_FILE="$SETTINGS_FILE_PATH/settings.php"
 
-SETTINGS_FILE_PATH="${WEBROOT}/sites/default"
-SETTINGS_FILE="${SETTINGS_FILE_PATH}/settings.php"
+log "Copy the default settings file."
 
-log "Copy the default settings file"
-
-# TODO Confirm if the file can be replaced
-if [ -f $SETTINGS_FILE ]; then
-    echo "There is a settings file present. Remove it."
-
-    chmod 777 "$SETTINGS_FILE"
-    rm "$SETTINGS_FILE"
+# TODO Ask to replace the existing file or stop the script
+if [ -f "$SETTINGS_FILE" ]; then
+    log_warning "There is a settings file present."
+    read -rp "Do you want to replace it? [y/N] "
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        chmod 777 "$SETTINGS_FILE"
+        rm "$SETTINGS_FILE"
+    else
+        exit
+    fi
 fi
 
-cp "${SETTINGS_FILE_PATH}/default.settings.php" $SETTINGS_FILE
+cp "$SETTINGS_FILE_PATH/default.settings.php" "$SETTINGS_FILE" || { log_error "Failed to create settings file."; exit 1; }
+log_success "Settings file created."
 
-if [ 0 -eq $? ]; then
-    log_success "Settings file created";
-else
-    log_error "Couldn't create settings file"
-    exit 3
-fi
+chmod 777 "$SETTINGS_FILE" || { log_error "Failed to set permissions of the settings file."; exit 1; }
 
-chmod 777 $SETTINGS_FILE
+log "Add database details to settings file."
 
-log "Add database details to settings file"
-
-echo "" >> $SETTINGS_FILE
-if [ 0 -gt $? ]; then
-    log_error "Couldn't write in settings file"
-    exit 4
-fi
-
-if [ 0 -eq $? ]; then
-    echo "
+echo "
+// START (added by drupal-create-settings.sh)
 \$databases['default']['default'] = array (
-  'database' => '${DATABASE_NAME}',
-  'username' => '${MYSQL_ROOT_USER}',
-  'password' => '${MYSQL_ROOT_PASSWORD}',
-  'host' => '${MYSQL_HOSTNAME}',
+  'database' => '$DB_NAME',
+  'username' => '$MYSQL_USER',
+  'password' => '$MYSQL_PASS',
+  'host' => '$MYSQL_HOST',
   'driver' => 'mysql',
-);" >> $SETTINGS_FILE
-else
-    log_error "Couldn't write in settings file";
-    exit 3
-fi
+);
+// END
+" >> "$SETTINGS_FILE" || { log_error "Failed to write the database details to the settings file."; exit 1; }
 
-log_success "Database details have been added to the settings file"
+chmod 644 "$SETTINGS_FILE" || { log_error "Failed to reset permissions of the settings file."; exit 1; }
 
-chmod 644 $SETTINGS_FILE;
+log_success "Database details have been added to the settings file."
