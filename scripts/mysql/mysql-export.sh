@@ -3,11 +3,7 @@
 # Stop on any error.
 set -e
 
-SCRIPT_DIR=$(dirname "$0")
-SCRIPT_NAME=$(basename "$0")
-
-# shellcheck disable=SC1091
-source "$SCRIPT_DIR/../common.sh"
+source "$(dirname "$0")/../../.common"
 
 # Set default variables
 MYSQL_HOST=${MYSQL_HOST:-localhost}
@@ -22,7 +18,7 @@ MYSQL_COLLATE=${MYSQL_COLLATE:-utf8mb4_unicode_ci}
 function usage() {
     log_text ""
     log_warning "Usage:"
-    log_text "  $SCRIPT_NAME [options] [--] <database>"
+    log_text "  $(basename "$0") [options] [--] <database>"
     log_text ""
     log_warning "Arguments:"
     log_text "\033[32m  <database>                       \033[0m  Database to export (optional, folder name is used if non is provided)"
@@ -96,6 +92,7 @@ else
     DB_NAME=$(basename "$PWD")
 fi
 
+# TODO Make a function for this.
 DB_EXISTS=$(mysql \
     -h "$MYSQL_HOST" \
     -u "$MYSQL_USER" \

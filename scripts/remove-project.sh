@@ -1,17 +1,15 @@
 #!/usr/bin/env bash
 
-MYSQL_HOSTNAME=${MYSQL_HOSTNAME:-localhost}
-MYSQL_ROOT_USER=${MYSQL_ROOT_USER:-root}
-MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
+# Stop on any error.
+set -e
 
-# shellcheck disable=SC1091
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/../.common"
 
 SCRIPT_NAME=$(basename "$0")
 
 function usage() {
     log_warning "Usage:"
-    echo -e "  $SCRIPT_NAME [options] [--] <project>"
+    echo -e "  $(basename "$0") [options] [--] <project>"
     echo -e ""
     log_warning "Arguments:"
     echo -e "\033[32m  project     \033[0m  Project name"

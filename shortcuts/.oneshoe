@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/../.common"
+
 SCRIPT_DIR="$(dirname "$0")/../scripts"
 
-source "$SCRIPT_DIR/common.sh"
-
-# One Shoe environment variable
-export ONESHOE_ENV=development
-
+# TODO Rename this file, because it does not have to relate to my work
 # TODO Add these aliases to ALIASES.md
 # TODO Move the aliases that are not One Shoe specific somewhere else
 

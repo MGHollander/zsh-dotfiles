@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1091
-source "$(dirname "$0")/common.sh"
-
-SCRIPT_NAME=$(basename "$0")
+source "$(dirname "$0")/../.common"
 
 function usage() {
     log_warning "Usage:"
-    echo "  $SCRIPT_NAME <path_to_webroot> <database_name>"
+    echo "  $(basename "$0") <path_to_webroot> <database_name>"
 }
 
 WEBROOT=$1

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1091
-source "$(dirname "$0")/common.sh"
-
+# Stop on any error.
 set -e
+
+source "$(dirname "$0")/../.common"
 
 log "Check for a PHP versions in the composer.json and .lando.yml and use it if one is available"
 

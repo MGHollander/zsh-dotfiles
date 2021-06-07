@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$(dirname "$0")
-SCRIPT_NAME=$(basename "$0")
-
-# shellcheck disable=SC1091
-source "$SCRIPT_DIR/common.sh"
-# shellcheck disable=SC1091
-source "$SCRIPT_DIR/mysql/mysql-settings.sh"
-
+# Stop on any error.
 set -e
+
+source "$(dirname "$0")/../.common"
 
 # Test command:
 # rm -rf dotfiles && bash ~/dotfiles/scripts/create-project.sh git@gitlab.com:MGHollander/dotfiles.git --no-database
@@ -16,11 +11,11 @@ set -e
 
 # TODO:
 # - Add posibility to add files to the Drupal files folder
-# - Override mysql settings
+# - Override mysql settings as parameters
 
 function usage() {
     log_warning "Usage:"
-    echo -e "  $SCRIPT_NAME [options] [--] <repo>"
+    echo -e "  $(basename "$0") [options] [--] <repo>"
     echo -e ""
     log_warning "Arguments:"
     echo -e "\033[32m  repo                                 \033[0m  Git repository"

@@ -3,11 +3,7 @@
 # Stop on any error.
 set -e
 
-SCRIPT_DIR=$(dirname "$0")
-SCRIPT_NAME=$(basename "$0")
-
-# shellcheck disable=SC1091
-source "$SCRIPT_DIR/../common.sh"
+source "$(dirname "$0")/../../.common"
 
 # Set default variables
 MYSQL_HOST=${MYSQL_HOST:-localhost}
@@ -22,7 +18,7 @@ MYSQL_COLLATE=${MYSQL_COLLATE:-utf8mb4_unicode_ci}
 function usage() {
     log_text ""
     log_warning "Usage:"
-    log_text "  $SCRIPT_NAME [options] [--] <file> <database>"
+    log_text "  $(basename "$0") [options] [--] <file> <database>"
     log_text ""
     log_warning "Arguments:"
     log_text "\033[32m  <file>                       \033[0m  Database export to import"
@@ -113,6 +109,8 @@ else
     DB_NAME=$(basename "$PWD")
 fi
 
+# TODO Check if the DB exists like in the export script.
+
 log "\033[1mStart database import"
 
 # TODO Add delete confirmation...
@@ -127,6 +125,8 @@ if [ -z "$FORCE" ]; then
     fi
 fi
 
+# TODO Replace this with the existing mddb and mcdb dunctions.
+# TODO Verify if the existing db should be removed.
 mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET $MYSQL_CHAR_SET COLLATE $MYSQL_COLLATE;" || exit 1
 
 log "\033[1mImport database dump"

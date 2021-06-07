@@ -1,0 +1,182 @@
+#!/usr/bin/env bash
+
+# TODO Add these functions to the readme
+# TODO Sort functions in alphabetic order
+
+SCRIPT_DIR=$(dirname "$0")
+CONFIG_FILE="$SCRIPT_DIR/../.config"
+
+if [ -e "$CONFIG_FILE" ]; then
+    # shellcheck disable=SC1090
+    source "$CONFIG_FILE"
+fi
+
+# Set default variables
+MYSQL_HOST=${MYSQL_HOST:-localhost}
+MYSQL_USER=${MYSQL_USER:-root}
+MYSQL_PASS=${MYSQL_PASS:-root}
+MYSQL_CHAR_SET=${MYSQL_CHAR_SET:-utf8mb4}
+MYSQL_COLLATE=${MYSQL_COLLATE:-utf8mb4_unicode_ci}
+
+# Bash colors and formatting
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+function log() {
+  echo -e "\033[34m[$(date +'%F %T')]\033[0m $1\033[0m"
+}
+
+function log_error() {
+    echo -e "\033[31m$1\033[0m"
+}
+
+function log_success() {
+    echo -e "\033[32m$1\033[0m"
+}
+
+function log_text() {
+    echo -e "$1\033[0m"
+}
+
+function log_warning() {
+    echo -e "\033[33m$1\033[0m"
+}
+
+# Converts bytes value to human-readable string [$1: bytes value]
+# Source: https://unix.stackexchange.com/a/259254
+function bytesToHumanReadable() {
+    local i=${1:-0} d="" s=0 S=("Bytes" "KiB" "MiB" "GiB" "TiB" "PiB" "EiB" "YiB" "ZiB")
+    while ((i > 1024 && s < ${#S[@]}-1)); do
+        printf -v d ".%02d" $((i % 1024 * 100 / 1024))
+        i=$((i / 1024))
+        s=$((s + 1))
+    done
+    echo "$i$d ${S[$s]}"
+}
+
+function getWebRoot() {
+    for DIR in "${WEBROOT_POSSIBILITIES[@]:-("web")}"; do
+        if [ -d "./$DIR" ]; then
+            echo "$DIR"
+            break
+        fi
+    done
+}
+
+# Create a new directory and enter it
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+	if du -b /dev/null > /dev/null 2>&1; then
+		local arg=-sbh;
+	else
+		local arg=-sh;
+	fi
+	if [[ -n "$@" ]]; then
+		du $arg -- "$@";
+	else
+		du $arg .[^.]* ./*;
+	fi;
+}
+
+# Create a data URL from a file
+function dataurl() {
+	local mimeType=$(file -b --mime-type "$1");
+	if [[ $mimeType == text/* ]]; then
+		mimeType="${mimeType};charset=utf-8";
+	fi
+	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+}
+
+function _mysql_set_password() {
+    if [ -z "$MYSQL_PASS" ]; then
+        echo ""
+    else
+        echo "--password=${MYSQL_PASS}"
+    fi
+}
+
+function mysql_test_connection() {
+    command -v mysqladmin > /dev/null || { log_error "mysqladmin not found."; return 1; }
+    command -v mysql > /dev/null || { log_error "mysql not found."; return 1; }
+
+    if [ -z "$MYSQL_PASS" ]; then
+        mysqladmin -u "$MYSQL_USER" --skip-password status || { log_error "Could not reach database."; return 1; }
+    else
+        mysqladmin -u "$MYSQL_USER" "--password=$MYSQL_PASS" status || { log_error "Could not reach database."; return 1; }
+    fi
+}
+
+# TODO Add to docs
+# TODO Create multiple databases
+function mysql_create_db() {
+    DB_NAME=$1
+
+    if [ -z "$DB_NAME" ];then
+        log_error "No database name given."
+        return 1
+    fi
+
+    mysql_test_connection || return 1
+
+    mysql -u"$MYSQL_USER" "$(_mysql_set_password)" -e "
+        CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET \`$MYSQL_CHAR_SET\` COLLATE \`$MYSQL_COLLATE\`;
+        CREATE USER IF NOT EXISTS $MYSQL_USER@$MYSQL_HOST IDENTIFIED BY '$MYSQL_PASS';
+        GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '$MYSQL_USER'@'$MYSQL_HOST' IDENTIFIED BY '$MYSQL_PASS';
+        FLUSH PRIVILEGES;
+        "
+    CODE=$?
+
+    if [ 0 -ne $CODE ]; then
+        log_error "Could not create database."
+        return $CODE
+    fi
+
+    log_success "Database named \033[1m$DB_NAME\033[0;32m created succesfully."
+}
+
+# TODO Add to docs
+alias mcdb="mysql_create_db"
+
+# TODO Add to docs
+# TODO Delete multiple databases
+# TODO Add confirmation to make sure the DB should be removed
+function mysql_drop_db() {
+    DB_NAME=$1
+
+    if [ -z "$DB_NAME" ]; then
+        log_error "No database name given."
+        return 1
+    fi
+
+    mysql_test_connection || return 1
+
+    mysql -u"$MYSQL_USER" "$(_mysql_set_password)" -e "
+        DROP DATABASE IF EXISTS \`$DB_NAME\`;
+        "
+    CODE=$?
+
+    if [ 0 -ne $CODE ]; then
+        log_error "Could not drop database."
+        return $CODE
+    fi
+
+    log_success "Database named \033[1m$DB_NAME\033[0;32m dropped succesfully."
+}
+
+# TODO Add to docs
+alias mddb="mysql_drop_db"
+
+# My last commits
+git-standup() {
+    AUTHOR=${AUTHOR:="`git config user.name`"}
+
+    since=yesterday
+    if [[ $(date +%u) == 1 ]] ; then
+        since="2 days ago"
+    fi
+
+    git log --all --since "$since" --oneline --author="$AUTHOR"
+}

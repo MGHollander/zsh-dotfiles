@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1091
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/../.common"
 
 # TODO Add support for other file locations like docroot/sites/
 DEV_SERVICES_FILE="sites/development.services.yml"
