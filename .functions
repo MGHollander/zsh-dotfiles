@@ -31,23 +31,19 @@ function dataurl() {
 }
 
 # TODO Add to docs
-# TODO Make variables configurable or something
-# TODO Use these functions to the project creation script in stead of valet function?
-DB_USER="root"
-DB_PASS="root"
-
+# TODO Use these functions in the project creation script
 function mdbc() {
     DB_NAME=$1
 
-    if [ -z $DB_NAME ];then
+    if [ -z "$DB_NAME" ];then
         echo "No database name given"
         return
     fi
 
-    mysql -u$DB_USER -p$DB_PASS -e "
-        CREATE DATABASE IF NOT EXISTS ${DB_NAME};
-        CREATE USER IF NOT EXISTS $DB_USER@localhost IDENTIFIED BY '$DB_PASS';
-        GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '$DB_USER'@'localhost';
+    mysql -u"$MYSQL_USER" -p"$MYSQL_PASS" -e "
+        CREATE DATABASE IF NOT EXISTS $DB_NAME;
+        CREATE USER IF NOT EXISTS $MYSQL_USER@$MYSQL_HOST IDENTIFIED BY '$MYSQL_PASS';
+        GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$MYSQL_USER'@'$MYSQL_HOST';
         FLUSH PRIVILEGES;
         "
     code=$?
@@ -59,18 +55,17 @@ function mdbc() {
 }
 
 # TODO Add to docs
-# TODO make variables configurable or something
 # TODO Add confirmation if to make sure an existing DB should be removed
 function mdbd() {
     DB_NAME=$1
 
-    if [ -z $DB_NAME ];then
+    if [ -z "$DB_NAME" ];then
         echo "No database name given"
         return
     fi
 
-    mysql -u$DB_USER -p$DB_PASS -e "
-        DROP DATABASE ${DB_NAME};
+    mysql -u"$MYSQL_USER" -p"$MYSQL_PASS" -e "
+        DROP DATABASE $DB_NAME;
         "
     code=$?
 
@@ -79,8 +74,6 @@ function mdbd() {
         exit $code;
     fi
 }
-
-# TODO Add functions to import and export databases
 
 # My last commits
 git-standup() {

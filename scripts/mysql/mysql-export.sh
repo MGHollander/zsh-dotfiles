@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
+# Stop on any error.
+set -e
+
 SCRIPT_DIR=$(dirname "$0")
 SCRIPT_NAME=$(basename "$0")
 
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/../common.sh"
-# shellcheck disable=SC1091
-source "$SCRIPT_DIR/mysql-settings.sh"
 
-# Stop on any error.
-set -e
+# Set default variables
+MYSQL_HOST=${MYSQL_HOST:-localhost}
+MYSQL_USER=${MYSQL_USER:-root}
+MYSQL_PASS=${MYSQL_PASS:-root}
+MYSQL_CHAR_SET=${MYSQL_CHAR_SET:-utf8mb4}
+MYSQL_COLLATE=${MYSQL_COLLATE:-utf8mb4_unicode_ci}
 
 # MySQL / MariaDB Dump Helper
 # Source: https://gist.github.com/o5/8bf57b3e5fa4649a81a4449787ba3691

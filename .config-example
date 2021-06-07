@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-# The default username for MySQL
-DB_USER="username"
-# The default password for MySQL
-DB_PASS="password"
+# The default settings for MySQL
+MYSQL_HOST="localhost"
+MYSQL_USER="username"
+MYSQL_PASS="password"
+MYSQL_CHAR_SET="utf8mb4"
+MYSQL_COLLATE="utf8mb4_unicode_ci"
+
 
 # Array of folder names that may contain the webroot files of a project
 WEBROOT_POSSIBILITIES=("docroot" "htdocs" "public_html" "web")
