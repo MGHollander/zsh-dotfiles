@@ -94,7 +94,7 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-function _mysql_set_password() {
+function _mysql_get_password_option() {
     if [ -z "$MYSQL_PASS" ]; then
         echo ""
     else
@@ -125,7 +125,7 @@ function mysql_create_db() {
 
     mysql_test_connection || return 1
 
-    mysql -u"$MYSQL_USER" "$(_mysql_set_password)" -e "
+    mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" "$(_mysql_get_password_option)" -e "
         CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET \`$MYSQL_CHAR_SET\` COLLATE \`$MYSQL_COLLATE\`;
         CREATE USER IF NOT EXISTS $MYSQL_USER@$MYSQL_HOST IDENTIFIED BY '$MYSQL_PASS';
         GRANT ALL PRIVILEGES ON \`$DB_NAME\`.* TO '$MYSQL_USER'@'$MYSQL_HOST' IDENTIFIED BY '$MYSQL_PASS';
@@ -157,7 +157,7 @@ function mysql_drop_db() {
 
     mysql_test_connection || return 1
 
-    mysql -u"$MYSQL_USER" "$(_mysql_set_password)" -e "
+    mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" "$(_mysql_get_password_option)" -e "
         DROP DATABASE IF EXISTS \`$DB_NAME\`;
         "
     CODE=$?
