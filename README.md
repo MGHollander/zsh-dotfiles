@@ -149,21 +149,7 @@ _Source: <https://stackoverflow.com/a/45419230>_
 ## MySQL database import and export
 
 There are scripts with aliases available to import and export MySQL databases. Run `dbi --help` and `dbe --help` for
-instructions to use these scripts.
-
-There are some default MySQL settings set in `scripts/mysql/mysql-settings.sh`.
-You can change these or override them in one of the other configuration files,
-like `.extra`. Example:
-
-```bash
-export MYSQL_HOST=localhost
-export MYSQL_USER=root
-export MYSQL_PASS=root
-export MYSQL_CHAR_SET=utf8mb4
-export MYSQL_COLLATE=utf8mb4_unicode_ci
-```
-
-_Don't forget to restart the terminal after you have changed a setting that is overwritten using the method above._
+instructions to use these scripts. The default MySQL config is set in `.config`.
 
 ## Help
 
