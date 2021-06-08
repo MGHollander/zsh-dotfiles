@@ -70,7 +70,7 @@ while (( "$#" )); do
             shift
             break
             ;;
-        -*|--*=) # unsupported flags
+        -*) # unsupported flags
             log_error "Error: Unsupported flag $1" >&2
             echo ""
             usage
@@ -85,13 +85,10 @@ done
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
 
-if ! hash mysql; then
-    log_error "MySQL is not available via the terminal. Please install MySQL to continue..."
-    exit 1;
-fi
+mysql_test_connection || return 1
 
 if [ -z "$1" ]; then
-  log_error "You must specify a file to import"
+  log_error "You must specify a file to import."
   usage
   exit 1
 fi
@@ -99,7 +96,7 @@ fi
 FILE="$1"
 
 if [ ! -r "$FILE" ]; then
-    log_error "$FILE does not exist or is not readable"
+    log_error "$FILE does not exist or is not readable."
     exit 1
 fi
 
@@ -109,29 +106,24 @@ else
     DB_NAME=$(basename "$PWD")
 fi
 
-# TODO Check if the DB exists like in the export script.
-
-log "\033[1mStart database import"
-
-# TODO Add delete confirmation...
-log "\033[1mDelete and re-create database"
+log "Start database import."
+log "Delete and re-create database."
 
 if [ -z "$FORCE" ]; then
-    log_warning "Are you sure you want to overwrite \033[4;33m$DB_NAME\033[0;33m? This cannot be undone!"
-    read -p "Continue? [y/N] "
+    log_warning "Are you sure you want to overwrite \033[1;33m$DB_NAME\033[0;33m? This cannot be undone!"
+    read -rp "Continue? [y/N] "
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         log_error "Imported aborted"
         exit 1
     fi
 fi
 
-# TODO Replace this with the existing mddb and mcdb dunctions.
-# TODO Verify if the existing db should be removed.
-mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" -p"$MYSQL_PASS" -e "DROP DATABASE IF EXISTS \`$DB_NAME\`; CREATE DATABASE IF NOT EXISTS \`$DB_NAME\` CHARACTER SET $MYSQL_CHAR_SET COLLATE $MYSQL_COLLATE;" || exit 1
+mysql_drop_db "$DB_NAME" || exit 1
+mysql_create_db "$DB_NAME" || exit 1
 
-log "\033[1mImport database dump"
+log "Import database dump."
 
-if hash pv; then
+if command -v pv > /dev/null; then
     IMPORT="pv $FILE"
 fi
 
@@ -139,17 +131,17 @@ FILE_NAME=$(basename -- "$FILE")
 FILE_EXTENSION="${FILE_NAME##*.}"
 
 if [ "$FILE_EXTENSION" == "gz" ]; then
-    if hash pv && hash gzip; then
+    if command -v pv > /dev/null && command -v gzip > /dev/null; then
         IMPORT="$IMPORT | gzip -cd"
-    elif ! hash pv && hash gzip; then
+    elif ! command -v pv > /dev/null && command -v gzip > /dev/null; then
         IMPORT="gzip -cd $FILE"
     else
-        log_error "Cannot import a compressed database, because gzip is not installed..."
+        log_error "Cannot import a compressed database, because gzip is not installed."
         exit 1;
     fi
 fi
 
-DATABASE="mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASS $DB_NAME"
+DATABASE="mysql -h $MYSQL_HOST -u $MYSQL_USER $(_mysql_get_password_option)"
 
 if [ -z "$IMPORT" ]; then
     eval "$DATABASE < $FILE" || exit 1
@@ -157,4 +149,4 @@ else
     eval "$IMPORT | $DATABASE" || exit 1
 fi
 
-log "\033[32mDatabase dump is imported succesfully into \033[4m$DB_NAME"
+log_success "Database dump is imported succesfully into \033[1m$DB_NAME\033[0;32m."
