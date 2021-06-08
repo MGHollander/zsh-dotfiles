@@ -107,9 +107,9 @@ function mysql_test_connection() {
     command -v mysql > /dev/null || { log_error "mysql not found."; return 1; }
 
     if [ -z "$MYSQL_PASS" ]; then
-        mysqladmin -u "$MYSQL_USER" --skip-password status || { log_error "Could not reach database."; return 1; }
+        mysqladmin -u "$MYSQL_USER" --skip-password status > /dev/null || { log_error "Could not reach database."; return 1; }
     else
-        mysqladmin -u "$MYSQL_USER" "--password=$MYSQL_PASS" status || { log_error "Could not reach database."; return 1; }
+        mysqladmin -u "$MYSQL_USER" "--password=$MYSQL_PASS" status > /dev/null || { log_error "Could not reach database."; return 1; }
     fi
 }
 
