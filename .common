@@ -67,7 +67,7 @@ function getWebRoot() {
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+	mkdir -p "$@" && cd "$_" || exit 1;
 }
 
 # Determine size of a file or total size of a directory
@@ -77,7 +77,7 @@ function fs() {
 	else
 		local arg=-sh;
 	fi
-	if [[ -n "$@" ]]; then
+	if [[ -n "$*" ]]; then
 		du $arg -- "$@";
 	else
 		du $arg .[^.]* ./*;
@@ -86,7 +86,8 @@ function fs() {
 
 # Create a data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
+	mimeType=$(file -b --mime-type "$1");
+	local mimeType
 	if [[ $mimeType == text/* ]]; then
 		mimeType="${mimeType};charset=utf-8";
 	fi
@@ -117,8 +118,8 @@ function mysql_test_connection() {
 function mysql_create_db() {
     DB_NAME=$1
 
-    if [ -z "$DB_NAME" ];then
-        log_error "No database name given."
+    if [ -z "$DB_NAME" ]; then
+        log_error "Please provide a database name."
         return 1
     fi
 
@@ -133,7 +134,7 @@ function mysql_create_db() {
     CODE=$?
 
     if [ 0 -ne $CODE ]; then
-        log_error "Could not create database."
+        log_error "Failed to create database."
         return $CODE
     fi
 
@@ -150,7 +151,7 @@ function mysql_drop_db() {
     DB_NAME=$1
 
     if [ -z "$DB_NAME" ]; then
-        log_error "No database name given."
+        log_error "Please provide a database name."
         return 1
     fi
 
@@ -162,7 +163,7 @@ function mysql_drop_db() {
     CODE=$?
 
     if [ 0 -ne $CODE ]; then
-        log_error "Could not drop database."
+        log_error "Failed to drop database."
         return $CODE
     fi
 
@@ -174,10 +175,10 @@ alias mddb="mysql_drop_db"
 
 # My last commits
 git-standup() {
-    AUTHOR=${AUTHOR:="`git config user.name`"}
+    AUTHOR=${AUTHOR:="$(git config user.name)"}
 
     since=yesterday
-    if [[ $(date +%u) == 1 ]] ; then
+    if [[ $(date +%u) == 1 ]]; then
         since="2 days ago"
     fi
 
