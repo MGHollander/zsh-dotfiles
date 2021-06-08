@@ -3,12 +3,15 @@
 # TODO Add these functions to the readme
 # TODO Sort functions in alphabetic order
 
-SCRIPT_DIR=$(dirname "$0")
-CONFIG_FILE="$SCRIPT_DIR/../.config"
+# The location of .config when .common is loaded via .zsh_profile.
+CONFIG_FILE_LOCAL="$(dirname "$0")/.config"
+# The location of .config file when .common is sourced from a file.
+CONFIG_FILE_ABSOLUTE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)/.config"
 
-if [ -e "$CONFIG_FILE" ]; then
-    # shellcheck disable=SC1090
-    source "$CONFIG_FILE"
+if [ -f "$CONFIG_FILE_LOCAL" ]; then
+    source "$CONFIG_FILE_LOCAL"
+elif [ -f "$CONFIG_FILE_ABSOLUTE" ]; then
+    source "$CONFIG_FILE_ABSOLUTE"
 fi
 
 # Set default variables
