@@ -64,7 +64,7 @@ while (( "$#" )); do
             shift
             break
             ;;
-        -*|--*=) # unsupported flags
+        -*) # unsupported flags
             log_error "Error: Unsupported flag $1" >&2
             echo ""
             usage
@@ -81,10 +81,8 @@ eval set -- "$PARAMS"
 
 log "\033[1mStart database export"
 
-if ! hash mysql || ! hash mysqldump; then
-    log_error "MySQL is not available via the terminal. Please install MySQL to continue..."
-    exit 1;
-fi
+mysql_test_connection || exit 1
+command -v mysqldump > /dev/null || { log_error "mysqldump not found."; return 1; }
 
 if [ -n "$1" ]; then
     DB_NAME="$1"
@@ -92,41 +90,23 @@ else
     DB_NAME=$(basename "$PWD")
 fi
 
-# TODO Make a function for this.
-DB_EXISTS=$(mysql \
-    -h "$MYSQL_HOST" \
-    -u "$MYSQL_USER" \
-    -p"$MYSQL_PASS" \
-    --batch \
-    --skip-column-names \
-    -e "SHOW DATABASES LIKE '$DB_NAME';" \
-    | grep "$DB_NAME" > /dev/null; echo "$?"
-)
+mysql_db_exists "$DB_NAME" || { usage; exit 1; }
 
-if [ "$DB_EXISTS" -eq 1 ]; then
-    log_error "No database with the name '$DB_NAME' found"
-    usage
-    exit 1
-fi
-
-DB_SIZE=$(mysql \
-    -h "$MYSQL_HOST" \
-    -u "$MYSQL_USER" \
-    -p"$MYSQL_PASS" \
-    --silent \
-    --skip-column-names \
-    -e "SELECT ROUND(SUM(data_length) * 0.91) AS \"size_bytes\" \
-    FROM information_schema.TABLES \
-    WHERE table_schema='$DB_NAME';"
+DB_SIZE=$(mysql -h "$MYSQL_HOST" -u "$MYSQL_USER" "$(_mysql_get_password_option)" \
+    --silent --skip-column-names -e "
+    SELECT ROUND(SUM(data_length) * 0.91) AS \"size_bytes\"
+    FROM information_schema.TABLES
+    WHERE table_schema='$DB_NAME';
+    "
 )
 
 if [ "$DB_SIZE" == "NULL" ]; then
-    log_error "$DB_NAME seems to be empty... Aborting export"
+    log_error "Database named \033[1m$DB_NAME\033[0;31m seems to be empty. Aborting export."
     exit 1
 fi
 
 RESULT_FILE_EXTENSION="sql"
-if hash gzip && [ -z "$UNCOMPRESSED" ]; then
+if command -v gzip > /dev/null && [ -z "$UNCOMPRESSED" ]; then
     RESULT_FILE_EXTENSION="sql.gz"
 fi
 
@@ -136,24 +116,17 @@ fi
 
 log_text "Export $DB_NAME (~$(bytesToHumanReadable "$DB_SIZE")). The progress bar might be inaccurate, because the db size is an estimate."
 
-MYSQL_DUMP="mysqldump \
-    -h $MYSQL_HOST \
-    -u $MYSQL_USER \
-    -p$MYSQL_PASS \
-    --databases \
-    --dump-date \
-    --hex-blob \
-    --order-by-primary \
-    --quick \
+MYSQL_DUMP="mysqldump -h $MYSQL_HOST -u $MYSQL_USER $(_mysql_get_password_option) \
+    --databases --dump-date --hex-blob --order-by-primary --quick \
     $DB_NAME"
 
-if hash pv; then
+if command -v pvs > /dev/null; then
     MYSQL_DUMP="$MYSQL_DUMP | pv --size $DB_SIZE"
 fi
 
-if hash gzip && [ -z "$UNCOMPRESSED" ]; then
+if command -v gzip > /dev/null && [ -z "$UNCOMPRESSED" ]; then
     MYSQL_DUMP="$MYSQL_DUMP | gzip -c"
-elif ! hash gzip && [ -n "$UNCOMPRESSED" ]; then
+elif ! command -v gzip > /dev/null && [ -n "$UNCOMPRESSED" ]; then
     log_warning "Cannot compress the database export, because gzip is not installed..."
 fi
 
