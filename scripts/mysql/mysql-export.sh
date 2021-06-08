@@ -79,7 +79,7 @@ done
 # set positional arguments in their proper place
 eval set -- "$PARAMS"
 
-log "\033[1mStart database export"
+log "Start database export"
 
 mysql_test_connection || exit 1
 command -v mysqldump > /dev/null || { log_error "mysqldump not found."; return 1; }
@@ -132,4 +132,4 @@ fi
 
 eval "$MYSQL_DUMP > $RESULT_FILE" || exit 1
 
-log "\033[32mDatabase export saved to $RESULT_FILE"
+log_success "Database export saved to $RESULT_FILE"
