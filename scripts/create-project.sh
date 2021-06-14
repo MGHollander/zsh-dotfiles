@@ -136,18 +136,19 @@ fi
 log "Look for the webroot folder"
 WEBROOT=$(getWebRoot)
 if [ -z "$WEBROOT" ]; then
-    # TODO add checks to determine the CMS / framework and add a settings file for other tools
+    # TODO Make an extension of getWebRoot named getDrupalWebRoot that intergrates this part and apply it to the drupal
+    # scripts like drupal-dev-services-twig-debug.sh
     if [ -d "./sites" ]; then
         WEBROOT="."
     fi
 fi
 
+# TODO add checks to determine the CMS / framework and add a settings file for other tools
 if [ -n "$WEBROOT" ]; then
     # TODO add checks to determine the CMS / framework and add a settings file for other tools
     bash "$SCRIPT_DIR/drupal-create-settings-file.sh" "$WEBROOT" "$PROJECT_NAME"
     bash "$SCRIPT_DIR/drupal-copy-local-settings-file.sh" "$WEBROOT"
 fi
-
 
 # TODO make clean install optional
 # TODO add a command to import a db from a file instead of running a clean install
@@ -171,6 +172,12 @@ if [ -z $NO_LINK ]; then
 
     log_success "Project link set successfully"
     echo "You can visit the project at $PROJECT_URL"
+fi
+
+if [ -n "$WEBROOT" ]; then
+    # TODO This script should not exit the the proces when it fails.
+    # Then it can be grouped with the Drupal scripts above.
+    bash "$SCRIPT_DIR/drupal-dev-services-twig-debug.sh" "$WEBROOT"
 fi
 
 log "Project creation finished"
