@@ -3,7 +3,9 @@
 # Stop on any error.
 set -e
 
-source "$(dirname "$0")/../.common"
+SCRIPT_DIR=$(dirname "$0")
+
+source "$SCRIPT_DIR/../.common"
 
 # Set default variables
 MYSQL_HOST=${MYSQL_HOST:-localhost}
