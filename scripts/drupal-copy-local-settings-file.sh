@@ -61,6 +61,8 @@ else
     exit 3
 fi
 
+# TODO Add funcionallity to uncomment settings that prevent caching.
+
 log_success "Trusted host pattern has been added to the local settings file"
 
 chmod 644 $SETTINGS_LOCAL_FILE;
