@@ -22,7 +22,7 @@ if [ ! -f "$DEV_SERVICES_FILE" ]; then
     exit;
 fi
 
-if [ "$(! grep -q twig.config "$DEV_SERVICES_FILE")" ]; then
+if ! grep -q twig.config "$DEV_SERVICES_FILE"; then
     sed -i '' '7i\
 \  twig.config:\
 \    cache: false\
