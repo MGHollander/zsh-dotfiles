@@ -53,6 +53,7 @@ chmod 777 "$SETTINGS_FILE" || { log_error "Failed to set permissions of the sett
 
 log "Add database details to settings file."
 
+# TODO Add settings for Lando
 echo "
 // START (added by drupal-create-settings.sh)
 \$databases['default']['default'] = array (
