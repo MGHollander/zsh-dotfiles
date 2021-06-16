@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Laravel shortcuts (php artisan)
 
 alias pa='php artisan'

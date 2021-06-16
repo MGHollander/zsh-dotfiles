@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Git shortcuts
 
 # This file cannot be named .git, because most editors will hide it then.
