@@ -3,6 +3,7 @@
 
 # Ignore the .extra file (see README.md for it's usage)
 .extra
+extra/
 
 # Compiled Python files
 *.pyc

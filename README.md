@@ -6,24 +6,25 @@
 
 ## Table of content <!-- omit in toc -->
 
-- [Prerequirements](#prerequirements)
-- [Installation](#installation)
-- [Keyboard shortcuts](#keyboard-shortcuts)
-- [Aliases](#aliases)
-- [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
-- [EditorConfig](#editorconfig)
-- [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
-- [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
-- [Prefix commit message with a ticket number automatically](#prefix-commit-message-with-a-ticket-number-automatically)
-- [Terminal completion](#terminal-completion)
-- [Environment variables](#environment-variables)
-  - [MacOS nginx](#macos-nginx)
-- [MySQL database import and export](#mysql-database-import-and-export)
-- [Help](#help)
-  - [Git Completion not working](#git-completion-not-working)
-- [Contact](#contact)
-- [Credits](#credits)
-- [To do](#to-do)
+- [Marc's dotfiles](#marcs-dotfiles)
+  - [Prerequirements](#prerequirements)
+  - [Installation](#installation)
+  - [Keyboard shortcuts](#keyboard-shortcuts)
+  - [Aliases](#aliases)
+  - [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
+  - [EditorConfig](#editorconfig)
+  - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
+  - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
+  - [Prefix commit message with a ticket number automatically](#prefix-commit-message-with-a-ticket-number-automatically)
+  - [Terminal completion](#terminal-completion)
+  - [Environment variables](#environment-variables)
+    - [MacOS nginx](#macos-nginx)
+  - [MySQL database import and export](#mysql-database-import-and-export)
+  - [Help](#help)
+    - [Git Completion not working](#git-completion-not-working)
+  - [Contact](#contact)
+  - [Credits](#credits)
+  - [To do](#to-do)
 
 ## Prerequirements
 
@@ -76,7 +77,9 @@ If you want to use the `.editorconfig` then you have to move it to the root of t
 
 ## Add custom commands without creating a new fork
 
-If `~/dotfiles/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+If `.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
+
+You can also add a directory named `extra` in which you can add files that you do not want in your repository. These files will not be sourced along with other files. If they need to be sources, then you should use the `.extra` file to source them.
 
 ## Using two Git identities to seperate work and personal accounts
 
