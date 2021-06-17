@@ -2,4 +2,4 @@
 
 # Valet
 
-alias o="valet open"
+alias vo="valet open"
