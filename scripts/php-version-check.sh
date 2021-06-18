@@ -60,5 +60,5 @@ elif [ -n "${PHP_VERSION}" ]; then
         valet use "php@${PHP_VERSION}"
     fi
 else
-    log_warning "No PHP version found. The active PHP version is \033[4;33m${SYSTEM_PHP_VERSION}\033[0;33m."
+    log_warning "No recommended PHP version found in this project. The active PHP version is \033[4;33m${SYSTEM_PHP_VERSION}\033[0;33m."
 fi
