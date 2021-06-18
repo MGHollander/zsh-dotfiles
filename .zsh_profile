@@ -4,14 +4,14 @@
 # TODO Add description for these files to the README
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in "$(dirname "$0")"/.{common,path,exports,aliases,extra}; do
+for file in "$(dirname "$0")"/.{common,path,exports,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
-# Load the shortcut files
+# Load aliases
 # TODO Describe the feature in the README
-for file in "$(dirname "$0")"/shortcuts/**/.*; do
+for file in "$(dirname "$0")"/aliases/**/.*; do
     source "$file";
 done
 unset file;
