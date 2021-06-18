@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Docker shortcuts
 
 alias docker-stop-all="docker stop \$(docker ps -q)"

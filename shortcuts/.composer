@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Composer shortcuts
 
 # Composer shortcuts including an unlimited PHP memory limit to prevent errors
