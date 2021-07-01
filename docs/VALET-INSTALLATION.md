@@ -2,11 +2,14 @@
 
 This guide describes how to install Laravel Valet with Mailhog and Xdebug.
 
-- [Install Laravel Valet](#install-laravel-valet)
-- [Install MailHog](#install-mailhog)
-  - [Configure PHP to send mail to MailHog](#configure-php-to-send-mail-to-mailhog)
-- [Install Xdebug](#install-xdebug)
-  - [Configure PHPStorm](#configure-phpstorm)
+- [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
+  - [Install Laravel Valet](#install-laravel-valet)
+  - [Install MailHog](#install-mailhog)
+    - [Configure PHP to send mail to MailHog](#configure-php-to-send-mail-to-mailhog)
+  - [Install Xdebug](#install-xdebug)
+    - [Configure PHPStorm](#configure-phpstorm)
+  - [Install Memcached](#install-memcached)
+  - [Install Apache Solr](#install-apache-solr)
 
 ## Install Laravel Valet
 
@@ -126,4 +129,20 @@ You need to repeat these steps every time you switch to a PHP version you have n
 
 **Note:** This has been tested with PHP 7.3. Instructions might be different for other PHP versions.
 
-## Install SOLR
+## Install Apache Solr
+
+You can use Docker Desktop to get a local Apache Solr server using the following command. Do not forget to change the SOLR_CONFIG_DIR, PROJECT_NAME, Solr version.
+
+SOLR_CONFIG_DIR represents the directory that hold the projects Apache Solr config.
+
+```
+docker run -d --name solr-5.5 -p 8983:8983 -v SOLR_CONFIG_DIR:/opt/solr/server/solr/configsets/solr-5.5/conf:ro solr:5.5 solr-precreate PROJECT_NAME /opt/solr/server/solr/configsets/solr-5.5
+```
+
+Server settings:
+
+```
+Host: localhost
+Path: /
+Core: PROJECT_NAME
+```
