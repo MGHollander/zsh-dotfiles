@@ -86,3 +86,44 @@ Next step is to configure PHPStorm. Open PHPStorm and open the preference panel.
 After that, go to `Languages & Frameworks > PHP > Debug` and set Xdebug port to `9000`, check Can accept external connections and clear the two Force break at first line… checkboxes.
 
 Now, you can save the settings and click Start listening for PHP Debug Connections and your debugger should be up and running.
+
+## Install Memcached
+
+Run `brew install libmemcached` to install Memcached on your machine if you haven't yet. You might also need to run `brew install pkg-config`.
+
+Run `pecl channel-update pecl.php.net` to prepare PECL.
+
+Run `pecl install memcached` to install Memcached.
+The Xdebug installation returns a path to `memcached.so` when it has finished installing. This looks something like
+
+```txt
+Build process completed successfully
+Installing '/usr/local/Cellar/php@7.2/7.2.34_4/pecl/20170718/memcached.so'
+install ok: channel://pecl.php.net/memcached-3.1.5
+Extension memcached enabled in php.ini
+```
+
+Remember the path after **Installing**.
+
+Run `php -m | grep 'memcached'` to verify if Memcached was installed. The output should be `memcached`.
+
+Run `php --ini` to see which ini files PHP is using and copy the path in which additional .ini files are saved.
+
+Run `vi /usr/local/etc/php/X.X/conf.d/ext-memcached.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
+
+```ini
+[memcached]
+extension=/path/to/memcached.so
+```
+
+Replace `/path/to` in the `extension` value with the path the Memcached installation returned.
+
+Edit you php.ini file and remove `extension="memcached.so"`. This rule is probably added to the top of the file.
+
+Finally run `valet restart`.
+
+You need to repeat these steps every time you switch to a PHP version you have not been using before.
+
+**Note:** This has been tested with PHP 7.3. Instructions might be different for other PHP versions.
+
+## Install SOLR
