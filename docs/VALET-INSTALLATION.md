@@ -133,15 +133,17 @@ You need to repeat these steps every time you switch to a PHP version you have n
 
 You can use Docker Desktop to get a local Apache Solr server using the following command. Do not forget to change the SOLR_CONFIG_DIR, PROJECT_NAME, Solr version.
 
-SOLR_CONFIG_DIR represents the directory that hold the projects Apache Solr config.
+SOLR_CONFIG_DIR represents the directory that hold the projects Apache Solr config. A full path should be used, for example `/full/path/to/solr_config`.
 
-```
+**TIP:** If the Solr config is part of the project and it lives in the solr_config directory, then you can use `$PWD/solr_config`. Make sure you run the docker command below from the root directory of the project.
+
+```bash
 docker run -d --name solr-5.5 -p 8983:8983 -v SOLR_CONFIG_DIR:/opt/solr/server/solr/configsets/solr-5.5/conf:ro solr:5.5 solr-precreate PROJECT_NAME /opt/solr/server/solr/configsets/solr-5.5
 ```
 
 Server settings:
 
-```
+```txt
 Host: localhost
 Path: /
 Core: PROJECT_NAME
