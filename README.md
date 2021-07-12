@@ -69,7 +69,7 @@ Copy `.config-example`, rename the copied file to `.config` and change the varia
 
 ## Install Laravel Valet with Mailhog and Xdebug
 
-[Read all about it!](docs/VALET-INSTALLATION.md)
+[Read all about it!](docs/LARAVEL-VALET.md)
 
 ## EditorConfig
 
