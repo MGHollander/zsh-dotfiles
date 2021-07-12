@@ -10,6 +10,8 @@ This guide describes how to install Laravel Valet with Mailhog and Xdebug.
     - [Configure PHPStorm](#configure-phpstorm)
   - [Install Memcached](#install-memcached)
   - [Install Apache Solr](#install-apache-solr)
+  - [Known issues](#known-issues)
+    - [500 Bad Gateway (upstream sent too big header)](#500-bad-gateway-upstream-sent-too-big-header)
 
 ## Install Laravel Valet
 
@@ -148,3 +150,29 @@ Host: localhost
 Path: /
 Core: PROJECT_NAME
 ```
+
+## Known issues
+
+### 500 Bad Gateway (upstream sent too big header)
+
+You might encounter a 500 Bad Gateway. Check the logs via `valet log nginx`. If one of the most recent lines says `upstream sent too big header while reading response header from upstream`, then the below solution might help.
+
+1. Create `~/.config/valet/Nginx/all.conf` with this:
+
+  ```conf
+  proxy_buffer_size   4096k;
+  proxy_buffers   128 4096k;
+  proxy_busy_buffers_size   4096k;
+  ```
+
+2. Append this to `/usr/local/etc/nginx/fastcgi_params`
+
+  ```conf
+  fastcgi_buffer_size 4096k;
+  fastcgi_buffers 128 4096k;
+  fastcgi_busy_buffers_size 4096k;
+  ```
+
+_**Note:** 4096k is something you need to figure out what best works for you._
+
+_**Source:** <https://github.com/laravel/valet/issues/290#issuecomment-398686133>_
