@@ -6,7 +6,7 @@
 # TODO Consider to move the Git aliases from .gitconfig to this file to have everything at one place.
 
 alias gb='git branch -a'
-alias gco='git checkout'
+alias gco='git fetch && git checkout'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
 alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
