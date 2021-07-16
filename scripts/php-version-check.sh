@@ -46,7 +46,6 @@ elif [ -n "${LANDO_PHP_VERSION}" ]; then
     PHP_VERSION="${LANDO_PHP_VERSION}"
 fi
 
-
 if [ "${PHP_VERSION}" == "${SYSTEM_PHP_VERSION}" ]; then
     log_success "The active PHP version (PHP ${SYSTEM_PHP_VERSION}) matches the recommanded PHP version."
 elif [ -n "${PHP_VERSION}" ]; then
