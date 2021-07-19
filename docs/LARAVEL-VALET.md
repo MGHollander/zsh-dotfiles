@@ -9,7 +9,9 @@ This guide describes how to install Laravel Valet with Mailhog and Xdebug.
   - [Install Xdebug](#install-xdebug)
     - [Configure PHPStorm](#configure-phpstorm)
   - [Install Memcached](#install-memcached)
-  - [Install Apache Solr](#install-apache-solr)
+  - [Install Apache Solr as a Docker container](#install-apache-solr-as-a-docker-container)
+  - [Install Elasticsearch as a Docker container](#install-elasticsearch-as-a-docker-container)
+  - [Install Redis](#install-redis)
   - [Known issues](#known-issues)
     - [500 Bad Gateway (upstream sent too big header)](#500-bad-gateway-upstream-sent-too-big-header)
 
@@ -131,7 +133,7 @@ You need to repeat these steps every time you switch to a PHP version you have n
 
 **Note:** This has been tested with PHP 7.3. Instructions might be different for other PHP versions.
 
-## Install Apache Solr
+## Install Apache Solr as a Docker container
 
 You can use Docker Desktop to get a local Apache Solr server using the following command. Do not forget to change the SOLR_CONFIG_DIR, PROJECT_NAME, Solr version.
 
@@ -150,6 +152,18 @@ Host: localhost
 Path: /
 Core: PROJECT_NAME
 ```
+
+## Install Elasticsearch as a Docker container
+
+You can use Docker Desktop to get a local Elasticsearch server using the following command.
+
+```bash
+docker run -d --name elasticsearch-7.3 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.13.3
+```
+
+## Install Redis
+
+<https://redfern.dev/articles/laravel-valet-installing-phpredis-with-pecl-homebrew/>
 
 ## Known issues
 
