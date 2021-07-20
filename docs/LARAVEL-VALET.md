@@ -153,6 +153,14 @@ Path: /
 Core: PROJECT_NAME
 ```
 
+If you have an existing container, then you can start it with the following command.
+
+```bash
+docker start CONTAINER_NAME
+```
+
+In the example above CONTAINER_NAME is solr-5.5.
+
 ## Install Elasticsearch as a Docker container
 
 You can use Docker Desktop to get a local Elasticsearch server using the following command.
@@ -160,6 +168,15 @@ You can use Docker Desktop to get a local Elasticsearch server using the followi
 ```bash
 docker run -d --name elasticsearch-7.3 -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:7.13.3
 ```
+
+If you have an existing container, then you can start it with the following command.
+
+```bash
+docker start CONTAINER_NAME
+```
+
+In the example above CONTAINER_NAME is elasticsearch-7.3.
+
 
 ## Install Redis
 
