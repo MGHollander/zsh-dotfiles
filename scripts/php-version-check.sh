@@ -5,7 +5,7 @@ set -e
 
 source "$(dirname "$0")/../.common"
 
-log "Check for a PHP versions in the composer.json and .lando.yml and use it if one is available"
+log "Check for a PHP versions in the composer.json and .lando.yml."
 
 COMPOSER_PHP_VERSION=$(grep '"php":' composer.json 2>/dev/null | cut -f 4 -d'"' | tr -d '>=^~')
 LANDO_PHP_VERSION=$(grep 'php:' .lando.yml 2>/dev/null | cut -f 2 -d ':' | tr -d ''\'' ')
@@ -28,8 +28,18 @@ function switchPhpVersion() {
 if [ -n "${COMPOSER_PHP_VERSION}" ] && [ -n "${LANDO_PHP_VERSION}" ]; then
     if [ "${COMPOSER_PHP_VERSION}" == "${LANDO_PHP_VERSION}" ]; then
         PHP_VERSION="${COMPOSER_PHP_VERSION}"
+    elif [ "${COMPOSER_PHP_VERSION}" == "${SYSTEM_PHP_VERSION}" ]; then
+        log_warning "The recommended Composer version (\033[1;33mPHP ${COMPOSER_PHP_VERSION}\033[0;33m) matches the active PHP version (\033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m)."
+        log_warning "But Lando recommends \033[1;33mPHP ${LANDO_PHP_VERSION}\033[0;33m). We will keep using \033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m."
+        log_warning "You can switch manually if necessary."
+        exit 0
+    elif [ "${LANDO_PHP_VERSION}" == "${SYSTEM_PHP_VERSION}" ]; then
+        log_warning "The recommended Lando version (\033[1;33mPHP ${LANDO_PHP_VERSION}\033[0;33m) matches the active PHP version (\033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m)."
+        log_warning "But Composer recommends \033[1;33mPHP ${COMPOSER_PHP_VERSION}\033[0;33m). We will keep using \033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m."
+        log_warning "You can switch manually if necessary."
+        exit 0
     else
-        log "We found multiple PHP versions. The active PHP version is \033[1m${SYSTEM_PHP_VERSION}\033[0m."
+        log_text "We found multiple PHP versions. The active PHP version is \033[1mPHP ${SYSTEM_PHP_VERSION}\033[0m."
         PS3="Please enter your choice: "
         options=("Composer: ${COMPOSER_PHP_VERSION}" "Lando: ${LANDO_PHP_VERSION}" "Active: ${SYSTEM_PHP_VERSION}")
         select opt in "${options[@]}"
@@ -70,5 +80,5 @@ elif [ -n "${PHP_VERSION}" ]; then
         switchPhpVersion "${PHP_VERSION}"
     fi
 else
-    log_warning "No recommended PHP version found in this project. The active PHP version is \033[4;33m${SYSTEM_PHP_VERSION}\033[0;33m."
+    log_warning "No recommended PHP version found in this project. The active PHP version is \033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m."
 fi
