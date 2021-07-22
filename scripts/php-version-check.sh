@@ -12,6 +12,19 @@ LANDO_PHP_VERSION=$(grep 'php:' .lando.yml 2>/dev/null | cut -f 2 -d ':' | tr -d
 SYSTEM_PHP_VERSION=$(php -v | grep -o -m 1 -E "[0-9]+\.[0-9]+")
 PHP_VERSION=""
 
+function switchPhpVersion() {
+    PHP_VERSION=$1
+
+    if [ -z "$PHP_VERSION" ]; then
+        log_error "Please provide a PHP version."
+        return 1
+    fi
+
+    # TODO Check if valet is available
+    log "Switch to \033[1mPHP ${PHP_VERSION}\033[0m."
+    valet use "php@${PHP_VERSION}"
+}
+
 if [ -n "${COMPOSER_PHP_VERSION}" ] && [ -n "${LANDO_PHP_VERSION}" ]; then
     if [ "${COMPOSER_PHP_VERSION}" == "${LANDO_PHP_VERSION}" ]; then
         PHP_VERSION="${COMPOSER_PHP_VERSION}"
@@ -23,17 +36,15 @@ if [ -n "${COMPOSER_PHP_VERSION}" ] && [ -n "${LANDO_PHP_VERSION}" ]; then
         do
             case $opt in
                 "Composer: ${COMPOSER_PHP_VERSION}")
-                    log "You chose PHP \033[1m${COMPOSER_PHP_VERSION}\033[0m"
-                    PHP_VERSION="${COMPOSER_PHP_VERSION}"
-                    break
+                    switchPhpVersion "${COMPOSER_PHP_VERSION}"
+                    exit 0
                     ;;
                 "Lando: ${LANDO_PHP_VERSION}")
-                    log "You chose PHP \033[1m${LANDO_PHP_VERSION}\033[0m"
-                    PHP_VERSION="${LANDO_PHP_VERSION}"
-                    break
+                    switchPhpVersion "${LANDO_PHP_VERSION}"
+                    exit 0
                     ;;
                 "Active: ${SYSTEM_PHP_VERSION}")
-                    log_success "You chose to keep using PHP \033[4m${SYSTEM_PHP_VERSION}\033[0m"
+                    log_success "You chose to stay at PHP \033[4m${SYSTEM_PHP_VERSION}\033[0m"
                     exit 0
                     ;;
                 *) log_error "Invalid option $REPLY";;
@@ -47,16 +58,16 @@ elif [ -n "${LANDO_PHP_VERSION}" ]; then
 fi
 
 if [ "${PHP_VERSION}" == "${SYSTEM_PHP_VERSION}" ]; then
-    log_success "The active PHP version (PHP ${SYSTEM_PHP_VERSION}) matches the recommanded PHP version."
+    log_success "The active PHP version (\033[1;32mPHP ${SYSTEM_PHP_VERSION}\033[0;32m) matches the recommanded PHP version."
 elif [ -n "${PHP_VERSION}" ]; then
-    log_warning "The active PHP version differs from the recommended PHP version. Do you want to use \033[4;33mPHP $PHP_VERSION\033[0;33m?"
-    read -p "Continue? [y/N] "
+    log_warning "You are using \033[1;33mPHP ${SYSTEM_PHP_VERSION}\033[0;33m, but the recommended PHP version for this project is \033[1;33mPHP ${PHP_VERSION}\033[0;33m."
+    log_warning "Would you like to switch to \033[1;33mPHP ${PHP_VERSION}\033[0;33m?"
+
+    read -rp "Continue? [y/N] "
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         log_warning "PHP version will not change."
     else
-        # TODO Check if valet is available
-        log "Switch valet to PHP \033[1m${PHP_VERSION}\033[0m."
-        valet use "php@${PHP_VERSION}"
+        switchPhpVersion "${PHP_VERSION}"
     fi
 else
     log_warning "No recommended PHP version found in this project. The active PHP version is \033[4;33m${SYSTEM_PHP_VERSION}\033[0;33m."
