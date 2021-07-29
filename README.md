@@ -11,7 +11,7 @@
   - [Installation](#installation)
   - [Keyboard shortcuts](#keyboard-shortcuts)
   - [Aliases](#aliases)
-  - [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
+  - [Install Laravel Valet and tools like Memcached, Mailhog, Xdebug and more](#install-laravel-valet-and-tools-like-memcached-mailhog-xdebug-and-more)
   - [EditorConfig](#editorconfig)
   - [Add custom commands without creating a new fork](#add-custom-commands-without-creating-a-new-fork)
   - [Using two Git identities to seperate work and personal accounts](#using-two-git-identities-to-seperate-work-and-personal-accounts)
@@ -67,7 +67,7 @@ Copy `.config-example`, rename the copied file to `.config` and change the varia
 
 [All available aliases](docs/ALIASES.md)
 
-## Install Laravel Valet with Mailhog and Xdebug
+## Install Laravel Valet and tools like Memcached, Mailhog, Xdebug and more
 
 [Read all about it!](docs/LARAVEL-VALET.md)
 

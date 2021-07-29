@@ -38,7 +38,7 @@ Run `/usr/local/etc/php/X.X/conf.d/mailhog.ini` and add the config below (replac
 sendmail_path = /usr/local/bin/MailHog sendmail test@test
 ```
 
-You need to repeat these steps every time you switch to a PHP version you have not been using before.
+**Note:** You need to repeat these steps every time you switch to a PHP version you have not been using before. You might also need to reconfigure after re-installing/updating a PHP version.
 
 Finally run `valet restart` to activate the
 
@@ -82,7 +82,7 @@ Edit you php.ini file and remove `zend_extension="xdebug.so"`. This rule is prob
 
 Finally run `valet restart`.
 
-You need to repeat these steps every time you switch to a PHP version you have not been using before.
+**Note:** You need to repeat these steps every time you switch to a PHP version you have not been using before. You might also need to reconfigure after re-installing/updating a PHP version.
 
 **Note:** This has been tested with PHP 7.2, 7.3 and 7.4. Instructions might be different for other PHP versions.
 
@@ -129,7 +129,7 @@ Edit you php.ini file and remove `extension="memcached.so"`. This rule is probab
 
 Finally run `valet restart`.
 
-You need to repeat these steps every time you switch to a PHP version you have not been using before.
+**Note:** You need to repeat these steps every time you switch to a PHP version you have not been using before. You might also need to reconfigure after re-installing/updating a PHP version.
 
 **Note:** This has been tested with PHP 7.3. Instructions might be different for other PHP versions.
 
@@ -176,7 +176,6 @@ docker start CONTAINER_NAME
 ```
 
 In the example above CONTAINER_NAME is elasticsearch-7.3.
-
 
 ## Install Redis
 
