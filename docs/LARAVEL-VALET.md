@@ -62,18 +62,29 @@ Run `php -m | grep 'xdebug'` to verify if Xdebug was installed. The output shoul
 
 Run `php --ini` to see which ini files PHP is using and copy the path in which additional .ini files are saved.
 
-Run `vi /usr/local/etc/php/X.X/conf.d/ext-xdebug.ini` and add the config below (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
+Run `vi /usr/local/etc/php/X.X/conf.d/ext-xdebug.ini` and add the part of the config below that matches your xdebug version (replace the X.X with you PHP version or change the path if it does not match the result from above's command).
+Not sure which xdebug version you have? You get run `php -v | grep -i "xdebug"` to see the xdebug version.
 
 ```ini
 [xdebug]
 zend_extension="/path/to/xdebug.so"
+
+xdebug.idekey=PHPSTORM
+
+; xdebug 2
 xdebug.remote_autostart=1
 xdebug.default_enable=1
 xdebug.remote_port=9000
 xdebug.remote_host=127.0.0.1
 xdebug.remote_connect_back=1
 xdebug.remote_enable=1
-xdebug.idekey=PHPSTORM
+
+; xdebug 3
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.client_port=9003
+xdebug.client_host=127.0.0.1
+xdebug.discover_client_host=true
 ```
 
 Replace `/path/to` in the `zend_extension` value with the path the Xdebug installation returned.
@@ -86,11 +97,13 @@ Finally run `valet restart`.
 
 **Note:** This has been tested with PHP 7.2, 7.3 and 7.4. Instructions might be different for other PHP versions.
 
+**Note:** xdebug 3 uses a different port by default. `9003` instead of `9000`. See <https://xdebug.org/docs/upgrade_guide> for more about the xdebug differences between version 2 and 3.
+
 ### Configure PHPStorm
 
-Next step is to configure PHPStorm. Open PHPStorm and open the preference panel. Go to `Languages & Frameworks > PHP > Debug > DBGp Proxy` and set IDE key to `PHPSTORM`. Next, set Port to `9000`.
+Next step is to configure PHPStorm. Open PHPStorm and open the preference panel. Go to `Languages & Frameworks > PHP > Debug > DBGp Proxy` and set IDE key to `PHPSTORM`. Next, set Port to `9000` or `9003` (depending on your xdebug version and configuration).
 
-After that, go to `Languages & Frameworks > PHP > Debug` and set Xdebug port to `9000`, check Can accept external connections and clear the two Force break at first line… checkboxes.
+After that, go to `Languages & Frameworks > PHP > Debug` and set Xdebug port to `9000` or `9003` (depending on your xdebug version and configuration), check Can accept external connections and clear the two Force break at first line… checkboxes.
 
 Now, you can save the settings and click Start listening for PHP Debug Connections and your debugger should be up and running.
 
