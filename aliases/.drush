@@ -5,7 +5,7 @@ SCRIPT_DIR="$(dirname "$0")/../scripts"
 alias drush='bash $SCRIPT_DIR/drush.sh'
 
 # Eport the database as file with the current date and time
-alias dse='drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip'
+alias dse='drush sql-dump --result-file="./$(basename '$PWD')-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip'
 
 # Import a database file
 alias dsi='drush sql-cli <'
