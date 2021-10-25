@@ -31,6 +31,9 @@ alias dtd="drupal-twig-debug"
 alias remove-vendor-dir="log 'Remove vendor directory' && rm -rf vendor"
 alias rvd="remove-vendor-dir"
 
+alias remove-drupal-install-dirs="log 'Remove Drupal install directories' && rm -rf vendor web/core web/libraries web/modules/contrib web/themes/contrib"
+alias rdd="remove-drupal-install-dirs"
+
 # Aliases for default One Shoe scripts in projects
 alias oneshoe-build="pvc && log 'Run build.sh' && bash scripts/build.sh"
 alias osb="oneshoe-build"
@@ -38,10 +41,10 @@ alias osb="oneshoe-build"
 # Ensure that all composer packages are re-installed. This helps with projects
 # that have custom composer packages which are checkout on other branches every
 # now and then (like Nuffic).
-alias oneshoe-clean-build="remove-vendor-dir && oneshoe-build"
+alias oneshoe-clean-build="remove-drupal-install-dirs && oneshoe-build"
 alias oscb="oneshoe-clean-build"
 
-alias oneshoe-clean-install="remove-vendor-dir && log 'Run clean-install.sh' && bash scripts/clean-install.sh && dtd"
+alias oneshoe-clean-install="remove-drupal-install-dirs && log 'Run clean-install.sh' && bash scripts/clean-install.sh && dtd"
 alias osci="oneshoe-clean-install"
 
 alias oneshoe-deploy="log 'Run deploy.sh' && bash scripts/deploy.sh"
