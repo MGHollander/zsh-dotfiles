@@ -20,9 +20,7 @@ function confirmPhpSwitch() {
         return 1
     fi
 
-    log_warning "Would you like to switch to \033[1;33mPHP ${PHP_VERSION}\033[0;33m?"
-
-    read -rp "Continue? [y/N] "
+    read -rp "Would you like to switch to PHP ${PHP_VERSION}? [y/N] "
     if [[ ! ${REPLY} =~ ^[Yy]$ ]]; then
         log_warning "PHP version will not change."
     else
