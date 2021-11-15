@@ -7,8 +7,12 @@ alias drush='bash $SCRIPT_DIR/drush.sh'
 # Eport the database as file with the current date and time
 alias dse='drush sql-dump --result-file="./$(basename '$PWD')-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip'
 
+function drush_import_db() {
+    drush sql-drop -y && drush sqlq --file="$1"
+}
+
 # Import a database file
-alias dsi='drush sql-cli <'
+alias dsi=drush_import_db
 
 # TODO add the below aliases to the docs
 
@@ -16,10 +20,10 @@ alias dsi='drush sql-cli <'
 alias dul='drush uli'
 
 # Import config, update db and rebuild cache
-alias dup8='drush csim -y; drush updb -y; drush cr'
+alias dup8='drush csim -y && drush updb -y && drush cr'
 
 # Revert all features, update db and clear all caches
-alias dup7='drush fra -y; drush updb -y; drush cc all'
+alias dup7='drush fra -y && drush updb -y && drush cc all'
 
 # Empty Drupal 8 caches
 alias dcr='drush cr'
