@@ -38,11 +38,20 @@ alias rdd="remove-drupal-install-dirs"
 alias oneshoe-build="pvc && log 'Run build.sh' && bash scripts/build.sh"
 alias osb="oneshoe-build"
 
+alias oneshoe-build-composer="pvc && log 'Run build-composer.sh' && bash scripts/build-composer.sh"
+alias osbc="oneshoe-build-composer"
+
+alias oneshoe-build-theme="log 'Run build-theme.sh' && bash scripts/build-theme.sh"
+alias osbt="oneshoe-build-theme"
+
 # Ensure that all composer packages are re-installed. This helps with projects
 # that have custom composer packages which are checkout on other branches every
 # now and then (like Nuffic).
 alias oneshoe-clean-build="remove-drupal-install-dirs && oneshoe-build"
 alias oscb="oneshoe-clean-build"
+
+alias oneshoe-clean-build-composer="remove-drupal-install-dirs && oneshoe-build-composer"
+alias oscbc="oneshoe-clean-build-composer"
 
 alias oneshoe-clean-install="remove-drupal-install-dirs && log 'Run clean-install.sh' && bash scripts/clean-install.sh && dtd"
 alias osci="oneshoe-clean-install"
@@ -54,9 +63,16 @@ alias oneshoe-build-deploy="oneshoe-build && oneshoe-deploy"
 alias osbd="oneshoe-build-deploy && dtd"
 alias osdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && osbd"
 
+alias oneshoe-build-composer-deploy="oneshoe-build-composer && oneshoe-deploy"
+alias osbcd="oneshoe-build-composer-deploy && dtd"
+
 alias oneshoe-clean-build-deploy="oneshoe-clean-build && oneshoe-deploy"
 alias oscbd="oneshoe-clean-build-deploy && dtd"
 alias oscdb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && oscbd"
+
+alias oneshoe-clean-build-composer-deploy="oneshoe-clean-build-composer && oneshoe-deploy"
+alias oscbcd="oneshoe-clean-build-composer-deploy && dtd"
+alias oscdcb="log_warning 'I assume you want to run the build first, so I will ¯\_(ツ)_/¯' && oscbcd"
 
 alias oneshoe-drush-update="log 'Run drush-update.sh' && bash scripts/drush-update.sh"
 alias osdu="oneshoe-drush-update"
