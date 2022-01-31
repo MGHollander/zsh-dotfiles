@@ -38,3 +38,4 @@ Thumbs.db
 
 # Local Lando config
 .lando.local.yml
+.lando/

@@ -1,0 +1,14 @@
+name: example-solr
+services:
+  search:
+    type: solr:8
+    portforward: true
+    core: example
+    config:
+      dir: ../solr_config
+
+# This example can be used to setup services.
+# Create a .lando folder an copy this file in it. Then rename this file to .lando.yml.
+# Run the services from the .lando folder.
+# The .lando folder is part of the global ignore and therefore should never be picked up by Git. But always double check yourself :-).
+# @TODO add this to the readme as proper documentation...
