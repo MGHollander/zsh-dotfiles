@@ -2,15 +2,16 @@
 
 ## Table of content <!-- omit in toc -->
 
-- [Easy navigation](#easy-navigation)
-- [Directory shortcuts](#directory-shortcuts)
-- [Command shortcuts](#command-shortcuts)
-- [Open programs (Mac only)](#open-programs-mac-only)
-- [Git](#git)
-- [Composer](#composer)
-- [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
-- [Drush](#drush)
-- [Other aliases](#other-aliases)
+- [Aliases](#aliases)
+  - [Easy navigation](#easy-navigation)
+  - [Directory shortcuts](#directory-shortcuts)
+  - [Command shortcuts](#command-shortcuts)
+  - [Open programs (Mac only)](#open-programs-mac-only)
+  - [Git](#git)
+  - [Composer](#composer)
+  - [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
+  - [Drush](#drush)
+  - [Other aliases](#other-aliases)
 
 ## Easy navigation
 
@@ -54,6 +55,7 @@
 | `gco` | `git checkout` |
 | `gcd` | `git checkout develop` |
 | `gcm` | `git checkout master` |
+| `gcs` | `git checkout release/staging` |
 | `gdt` | `git describe --tags $(git rev-list --tags --max-count=1)` | Return the last tag |
 | `gd` | `git diff` |
 | `gf` | `git fetch` |
