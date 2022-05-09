@@ -5,7 +5,7 @@ SCRIPT_DIR="$(dirname "$0")/../scripts"
 alias drush='bash $SCRIPT_DIR/drush.sh'
 
 # Eport the database as file with the current date and time
-alias dse='drush sql-dump --result-file="./$(basename '$PWD')-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip'
+alias dse='drush sql-dump --result-file="./db-dump-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip'
 
 function drush_import_db() {
     drush sql-drop -y && drush sqlq --file="$1"
@@ -20,7 +20,7 @@ alias dsi=drush_import_db
 alias dul='drush uli'
 
 # Import config, update db and rebuild cache
-alias dup8='drush csim -y && drush updb -y && drush cr'
+alias dup8='drush cim -y && drush updb -y && drush cr'
 
 # Revert all features, update db and clear all caches
 alias dup7='drush fra -y && drush updb -y && drush cc all'
