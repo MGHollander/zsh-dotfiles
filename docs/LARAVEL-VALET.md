@@ -4,6 +4,7 @@ This guide describes how to install Laravel Valet with Mailhog and Xdebug.
 
 - [Install Laravel Valet with Mailhog and Xdebug](#install-laravel-valet-with-mailhog-and-xdebug)
   - [Install Laravel Valet](#install-laravel-valet)
+  - [Environment variables](#environment-variables)
   - [Install MailHog](#install-mailhog)
     - [Configure PHP to send mail to MailHog](#configure-php-to-send-mail-to-mailhog)
   - [Install Xdebug](#install-xdebug)
@@ -18,6 +19,13 @@ This guide describes how to install Laravel Valet with Mailhog and Xdebug.
 ## Install Laravel Valet
 
 Follow the installation steps on <https://laravel.com/docs/master/valet#installation>.
+## Environment variables
+
+My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
+
+Append `fastcgi_param APP_ENV development;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
+
+_Source: <https://stackoverflow.com/a/45419230>_
 
 ## Install MailHog
 

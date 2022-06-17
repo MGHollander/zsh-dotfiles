@@ -18,7 +18,7 @@
   - [Prefix commit message with a ticket number automatically](#prefix-commit-message-with-a-ticket-number-automatically)
   - [Terminal completion](#terminal-completion)
   - [Environment variables](#environment-variables)
-    - [MacOS nginx](#macos-nginx)
+    - [nginx](#nginx)
   - [MySQL database import and export](#mysql-database-import-and-export)
   - [Help](#help)
     - [Git Completion not working](#git-completion-not-working)
@@ -141,13 +141,9 @@ The .exports file contains an environment variable to use to check if you are on
 
 You should also set the environment variable to your development environments.
 
-### MacOS nginx
+### nginx
 
-My nginx config is located in `/usr/local/etc/nginx` and environment variables are already set in the fastcgi_params file.
-
-Append `fastcgi_param APP_ENV development;` to a new line in `/usr/local/etc/nginx/fastcgi_params`
-
-_Source: <https://stackoverflow.com/a/45419230>_
+See [the Laravel Valet docs](docs/LARAVEL-VALET.md#environment-variables) for nginx environment variables.
 
 ## MySQL database import and export
 
