@@ -8,6 +8,7 @@
 
 - [Marc's dotfiles](#marcs-dotfiles)
   - [Prerequirements](#prerequirements)
+    - [iTerm profile configuration](#iterm-profile-configuration)
   - [Installation](#installation)
   - [Keyboard shortcuts](#keyboard-shortcuts)
   - [Aliases](#aliases)
@@ -31,10 +32,16 @@
 - Z shell ([Installation instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH))
 - [iTerm2](https://www.iterm2.com/)
 - [Oh My Zsh](https://ohmyz.sh/) ([Installation instructions](https://github.com/robbyrussell/oh-my-zsh#basic-installation))
-- [Powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k) ([Installation instructions](https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions))
-- [Solarized theme](https://ethanschoonover.com/solarized/) ([Installation instructions](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized))
+- [Powerlevel9k for Oh-My-ZSH](https://github.com/Powerlevel9k/powerlevel9k) ([Installation instructions](https://github.com/Powerlevel9k/powerlevel9k/wiki/Install-Instructions#option-2-install-for-oh-my-zsh))
 
-**Note:** I use the `Book` font type of the `DejaVu Sans Mono fo Powerline` font at size `15`.
+### iTerm profile configuration
+
+- I use the `Book` font type of the `DejaVu Sans Mono for Powerline` font at size `15`.\
+  You can set the font in the preferences under the Profiles > Text.\
+  You can download the font [here](https://github.com/ninegrid/dejavu-sans-mono-powerline).
+- I use the [Solarized theme](https://ethanschoonover.com/solarized/) color scheme.\
+  You can set the color scheme in the preferences under the Profiles > Colors.\
+  At the time of writing this is part of iTerm. Otherwise you can download the scheme for iTerm [here](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized).
 
 ## Installation
 
