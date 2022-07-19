@@ -40,9 +40,16 @@
 
 Run `git clone git@github.com:MGHollander/zsh-dotfiles.git dotfiles` in the root of your user directory.
 
-Replace content of `~/.zshrc` or just add the code on the bottom:
+Replace the content of `~/.zshrc` or just add it to the bottom of the file:
 
 ```bash
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/mghollander/.oh-my-zsh"
+
+# Set username to consider a default context, which by default will not be shown.
+# https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
+DEFAULT_USER='mghollander'
+
 # Load custom dotfiles
 source ~/dotfiles/.zshrc;
 ```
