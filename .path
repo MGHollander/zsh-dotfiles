@@ -8,6 +8,7 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Add Garmin ConnectIQ SDK
+# @TODO Replace user folder for a variable
 export PATH="$PATH:/Users/marc.hollander/dev/connectiq/sdk/connectiq-sdk-mac-3.2.2-2020-08-28-a50584d55/bin"
 
 # Add development folders to CDPATH for quick access via `cd`
