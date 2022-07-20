@@ -13,5 +13,5 @@ export PATH="$PATH:/Users/marc.hollander/dev/connectiq/sdk/connectiq-sdk-mac-3.2
 # Add development folders to CDPATH for quick access via `cd`
 export CDPATH=$CDPATH:~/dev
 export CDPATH=$CDPATH:~/dev/connectiq
-export CDPATH=$CDPATH:~/dev/oneshoe
+export CDPATH=$CDPATH:~/dev/imu
 export CDPATH=$CDPATH:~/dev/personal
