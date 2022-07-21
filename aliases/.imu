@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Open Plug&Pay dev folder
+alias pap='cd ~/dev/imu/plug-and-pay/'
