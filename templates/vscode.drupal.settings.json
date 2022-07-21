@@ -39,7 +39,7 @@
 
   /* PHP CodeSniffer (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-drupal-code-standards-configuration) */
   "phpcs.enable": true,
-  "phpcs.standard": "/Users/marc.hollander/.composer/vendor/oneshoe/codingstandard/OneShoe",
+  //"phpcs.standard": "/Users/marc.hollander/.composer/vendor/oneshoe/codingstandard/OneShoe",
 
   /* PHP Validate (https://www.drupal.org/docs/develop/development-tools/configuring-visual-studio-code#s-php-validation) */
   "php.validate.enable": true,
