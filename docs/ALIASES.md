@@ -1,5 +1,8 @@
 # Aliases
 
+Aliases make yout life easier :-). You can add more aliases and helper function
+via [On My Zsh plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
+
 ## Table of content <!-- omit in toc -->
 
 - [Aliases](#aliases)
@@ -7,10 +10,11 @@
   - [Directory shortcuts](#directory-shortcuts)
   - [Command shortcuts](#command-shortcuts)
   - [Open programs (Mac only)](#open-programs-mac-only)
-  - [Git](#git)
   - [Composer](#composer)
   - [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
   - [Drush](#drush)
+  - [Git](#git)
+  - [Laravel](#laravel)
   - [Other aliases](#other-aliases)
 
 ## Easy navigation
@@ -47,31 +51,9 @@
 | `phpstorm` | `open -a PhpStorm` |
 | `sourcetree` | `open -a SourceTree` |
 
-## Git
-
-| Alias | Command | Note |
-| ------ | ------ | ------ |
-| `gb` | `git branch -a` | List all branches |
-| `gco` | `git checkout` |
-| `gcd` | `git checkout develop` |
-| `gcm` | `git checkout master` |
-| `gcs` | `git checkout release/staging` |
-| `gdt` | `git describe --tags $(git rev-list --tags --max-count=1)` | Return the last tag |
-| `gd` | `git diff` |
-| `gf` | `git fetch` |
-| `gl` | `git pull` |
-| `glc` | `git pull origin "$(git_current_branch)"` |
-| `gld` | `git pull origin develop` |
-| `gp` | `git push` |
-| `gpc` | `git push origin "$(git_current_branch)"` |
-| `gst` | `git status` |
-| `gr` | `git remote -v` | List remote servers |
-| `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
-| `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (<https://stackoverflow.com/a/17029936>) |
-
-@TODO: Add Git aliases from `.gitconfig`
-
 ## Composer
+
+There is a set of aliases available from the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/composer).
 
 Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 (see <https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors>)
@@ -103,6 +85,41 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 | ------ | ------ | ------ |
 | `dse` | `drush sql-dump --result-file="./sql-dump-$(date +'%Y%m%d%H%M%S').sql" --skip-tables-key=common --gzip` | Export the database as compressed file with the current date and time |
 | `dsi` | `drush sql-cli <` | Import a database file |
+
+## Git
+
+There is a set of aliases available from the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git).
+
+| Alias | Command | Note |
+| ------ | ------ | ------ |
+| `gb` | `git branch -a` | List all branches |
+| `gco` | `git checkout` |
+| `gcd` | `git checkout develop` |
+| `gcm` | `git checkout master` |
+| `gcs` | `git checkout release/staging` |
+| `gdt` | `git describe --tags $(git rev-list --tags --max-count=1)` | Return the last tag |
+| `gd` | `git diff` |
+| `gf` | `git fetch` |
+| `gl` | `git pull` |
+| `glc` | `git pull origin "$(git_current_branch)"` |
+| `gld` | `git pull origin develop` |
+| `gp` | `git push` |
+| `gpc` | `git push origin "$(git_current_branch)"` |
+| `gst` | `git status` |
+| `gr` | `git remote -v` | List remote servers |
+| `gtl` | <code>git tag --sort=-version:refname &#124; head -n 5</code> | Return the last 5 tags |
+| `gclb` | `git-clean-local-branches` | Clean up local branches that do not exist on remote anymore (<https://stackoverflow.com/a/17029936>) |
+
+@TODO: Add Git aliases from `.gitconfig`
+
+## Laravel
+
+There is a set of aliases available from the [Oh My Zsh Git plugin](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/laravel).
+
+| Alias | Command |
+| ------ | ------ |
+| `pa` | `php artisan` |
+| `pat` | `pa tinker` |
 
 ## Other aliases
 

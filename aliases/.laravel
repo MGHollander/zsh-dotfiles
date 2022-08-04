@@ -2,4 +2,4 @@
 
 # Laravel shortcuts (php artisan)
 alias pa='php artisan'
-alias pat='php artisan tinker'
+alias pat='pa tinker'

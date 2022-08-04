@@ -4,6 +4,7 @@
 
 # This file cannot be named .git, because most editors will hide it then.
 # TODO Consider to move the Git aliases from .gitconfig to this file to have everything at one place.
+# TODO Remove aliases that are already part of the Oh My Zsh plugin.
 
 alias gb='git branch -a'
 alias gco='git checkout'

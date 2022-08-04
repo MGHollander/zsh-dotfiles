@@ -2,6 +2,8 @@
 
 # Composer shortcuts
 
+# TODO Remove aliases that are already part of the Oh My Zsh plugin.
+
 # Composer shortcuts including an unlimited PHP memory limit to prevent errors
 # @see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
 alias composer="COMPOSER_MEMORY_LIMIT=-1 composer"
