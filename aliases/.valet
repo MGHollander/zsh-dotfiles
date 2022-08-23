@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 # Valet
-
 alias vo="valet open"

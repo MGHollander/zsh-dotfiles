@@ -66,6 +66,7 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 | `cr` | `c require` |
 | `crm` | `c remove` |
 | `cu` | `c update` |
+| `cni` | `ci && npm i` |
 
 ## Docker & docker-compose shortcuts
 
