@@ -15,6 +15,7 @@ via [On My Zsh plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
   - [Drush](#drush)
   - [Git](#git)
   - [Laravel](#laravel)
+  - [Node.js & NPM](#nodejs--npm)
   - [Other aliases](#other-aliases)
 
 ## Easy navigation
@@ -121,6 +122,15 @@ There is a set of aliases available from the [Oh My Zsh Git plugin](https://gith
 | ------ | ------ |
 | `pa` | `php artisan` |
 | `pat` | `pa tinker` |
+
+
+## Node.js & NPM
+
+| Alias | Command |
+| ------ | ------ |
+| `npmd` | `npm run dev` |
+| `npmp` | `npm run prod` |
+| `npmw` | `npm run watch` |
 
 ## Other aliases
 

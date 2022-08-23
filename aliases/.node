@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Node.js and NPM aliases
+
+# Common npm script aliases
+alias npmd='npm run dev'
+alias npmp='npm run prod'
+alias npmw='npm run watch'
