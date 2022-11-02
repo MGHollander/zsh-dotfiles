@@ -122,6 +122,9 @@ There is a set of aliases available from the [Oh My Zsh Git plugin](https://gith
 | ------ | ------ |
 | `pa` | `php artisan` |
 | `pat` | `pa tinker` |
+| `sail` | `[ -f sail ] && sh sail || sh vendor/bin/sail` |
+| `saa` | `sail artisan` |
+| `sat` | `saa tinker` |
 
 
 ## Node.js & NPM

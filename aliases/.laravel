@@ -3,3 +3,8 @@
 # Laravel shortcuts (php artisan)
 alias pa='php artisan'
 alias pat='pa tinker'
+
+# Laravel Sail
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+alias saa='sail artisan'
+alias sat='saa tinker'
