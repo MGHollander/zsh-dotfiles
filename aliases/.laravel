@@ -7,4 +7,5 @@ alias pat='pa tinker'
 # Laravel Sail
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias saa='sail artisan'
+alias sau='sail up -d'
 alias sat='saa tinker'
