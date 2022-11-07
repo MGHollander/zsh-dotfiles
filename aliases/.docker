@@ -3,6 +3,7 @@
 # Docker shortcuts
 
 alias docker-stop-all="docker stop \$(docker ps -q)"
+alias dsp="docker system prune -af --volumes"
 alias dsa="docker-stop-all"
 alias dco="docker-compose"
 alias dcup="docker-compose up -d"

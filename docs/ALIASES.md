@@ -71,15 +71,16 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 
 ## Docker & docker-compose shortcuts
 
-| Alias | Command |
-| ------ | ------ |
-| `docker-stop-all` | `docker stop $(docker ps -q)` |
-| `dsa` | `docker-stop-all` |
-| `dco` | `docker-compose` |
-| `dcup` | `docker-compose up -d` |
-| `dcs` | `docker-compose stop` |
-| `dcd` | `docker-compose down` |
-| `dcdv` | `docker-compose down --volumes` |
+| Alias             | Command                              |
+|-------------------|--------------------------------------|
+| `docker-stop-all` | `docker stop $(docker ps -q)`        |
+| `dsa`             | `docker-stop-all`                    |
+| `dsp`             | `docker system prune -af --volumes`  |
+| `dco`             | `docker-compose`                     |
+| `dcup`            | `docker-compose up -d`               |
+| `dcs`             | `docker-compose stop`                |
+| `dcd`             | `docker-compose down`                |
+| `dcdv`            | `docker-compose down --volumes`      |
 
 ## Drush
 
