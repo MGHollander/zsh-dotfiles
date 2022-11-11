@@ -106,6 +106,12 @@ POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="$ "
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 
+# Work around Warp terminal issues
+# https://github.com/warpdotdev/Warp/issues/936
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+    POWERLEVEL9K_DISABLE_RPROMPT=true
+fi
+
 # Set username to consider a default context, which by default will not be shown.
 # https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
 DEFAULT_USER='mghollander'
