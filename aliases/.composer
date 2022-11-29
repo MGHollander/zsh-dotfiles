@@ -6,7 +6,7 @@
 
 # Composer shortcuts including an unlimited PHP memory limit to prevent errors
 # @see https://getcomposer.org/doc/articles/troubleshooting.md#memory-limit-errors
-alias composer="COMPOSER_MEMORY_LIMIT=-1 composer"
+#alias composer="COMPOSER_MEMORY_LIMIT=-1 composer"
 alias c="composer"
 alias ci="c install"
 alias co="c outdated"
