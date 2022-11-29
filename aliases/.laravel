@@ -8,4 +8,7 @@ alias pat='pa tinker'
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias saa='sail artisan'
 alias sau='sail up -d'
+alias sd="sail down"
 alias sat='saa tinker'
+
+alias start="sau && npm run dev"
