@@ -10,5 +10,7 @@ alias saa='sail artisan'
 alias sau='sail up -d'
 alias sd="sail down"
 alias sat='saa tinker'
+alias sc="sail composer"
+alias sr="sc require"
 
-alias start="sau && npm run dev"
+alias start="sau && sail npm run dev"
