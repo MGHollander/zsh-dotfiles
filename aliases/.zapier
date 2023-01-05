@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Zapier Platform CLI aliases
+alias zlb='zapier logs --type=bundle'
+alias zlc='zapier logs --type=console'
+alias zlh='zapier logs --type=http'
+alias zp='zapier push'
+alias zt='zapier test'
+alias zv='zapier validate'

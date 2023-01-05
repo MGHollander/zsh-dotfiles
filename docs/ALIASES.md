@@ -9,13 +9,14 @@ via [On My Zsh plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
   - [Easy navigation](#easy-navigation)
   - [Directory shortcuts](#directory-shortcuts)
   - [Command shortcuts](#command-shortcuts)
-  - [Open programs (Mac only)](#open-programs-mac-only)
+  - [Open programs (Mac only)](#open-programs--mac-only-)
   - [Composer](#composer)
   - [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
   - [Drush](#drush)
   - [Git](#git)
   - [Laravel](#laravel)
   - [Node.js & NPM](#nodejs--npm)
+  - [Zapier Platform CLI](#zapier-platform-cli)
   - [Other aliases](#other-aliases)
 
 ## Easy navigation
@@ -127,7 +128,6 @@ There is a set of aliases available from the [Oh My Zsh Git plugin](https://gith
 | `saa` | `sail artisan` |
 | `sat` | `saa tinker` |
 
-
 ## Node.js & NPM
 
 | Alias | Command |
@@ -135,6 +135,17 @@ There is a set of aliases available from the [Oh My Zsh Git plugin](https://gith
 | `npmd` | `npm run dev` |
 | `npmp` | `npm run prod` |
 | `npmw` | `npm run watch` |
+
+## Zapier Platform CLI
+
+| Alias | Command |
+| ------ | ------ |
+| `zlb` | `zapier logs --type=bundle` |
+| `zlc` | `zapier logs --type=console` |
+| `zlh` | `zapier logs --type=http` |
+| `zp` | `zapier push` |
+| `zt` | `zapier test` |
+| `zv` | `zapier validate` |
 
 ## Other aliases
 
