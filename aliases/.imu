@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 alias pap='cd ~/dev/imu/plug-and-pay/'
+alias papa='cd ~/dev/imu/plug-and-pay-admin/'
 alias zap='cd ~/dev/imu/plug-and-pay-zapier-app/'
