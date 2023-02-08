@@ -3,10 +3,48 @@
 # Docker shortcuts
 
 alias docker-stop-all="docker stop \$(docker ps -q)"
-alias dsp="docker system prune -af --volumes"
 alias dsa="docker-stop-all"
+alias dsp="docker system prune -af --volumes"
 alias dco="docker-compose"
 alias dcup="docker-compose up -d"
 alias dcs="docker-compose stop"
 alias dcd="docker-compose down"
 alias dcdv="docker-compose down --volumes"
+
+
+# TODO add to docs
+# `docker ps` and show only the names of the running containers
+alias dpsn='docker ps --format '{{.Names}}''
+
+# kill all running docker containers
+alias dkill='docker kill $(docker ps -q)'
+
+# dl can be used to list all the running containers and give them an index followed by their container name.
+function dlist() {
+  i=1
+  for value in $(docker ps --format '{{.Names}}')
+  do
+   echo $i $value
+   i=$(expr $i + 1)
+  done
+}
+
+# dx can be used in two ways:
+# 1. it expects the index of the previous function and will open the container in bash or sh (default in bash, second parameter sh or bash is optional)
+# 2. it can be used as a shorthand for the docker exec command and the next parameter will be the container name or id (again: default in bash, second parameter sh or bash is optional)
+function dx() {
+  re='^[0-9]+$'
+  if [[ $1 =~ $re ]]; then
+     if [ "sh" = "$2" ]; then
+         docker exec -it $(dpsn | sed -n $1p) sh
+     else
+         docker exec -it $(dpsn | sed -n $1p) bash
+     fi
+  else
+     if [ "sh" = "$2" ]; then
+        docker exec -it $1 sh
+     else
+        docker exec -it $1 bash
+     fi
+  fi
+}
