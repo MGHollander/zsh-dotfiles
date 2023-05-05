@@ -10,6 +10,7 @@ alias saa='sail artisan'
 alias saam='saa migrate'
 alias sau='sail up -d'
 alias sd="sail down"
+alias sst="sail stop"
 alias sat='saa tinker'
 alias sc="sail composer"
 alias sr="sc require"
