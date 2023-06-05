@@ -82,6 +82,7 @@ Composer shortcuts including an unlimited PHP memory limit to prevent errors\
 | `dcs`             | `docker-compose stop`                |
 | `dcd`             | `docker-compose down`                |
 | `dcdv`            | `docker-compose down --volumes`      |
+| `dcl`             | `docker-compose logs -tf`            |
 
 ## Drush
 

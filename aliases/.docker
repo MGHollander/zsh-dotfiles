@@ -10,7 +10,7 @@ alias dcup="docker-compose up -d"
 alias dcs="docker-compose stop"
 alias dcd="docker-compose down"
 alias dcdv="docker-compose down --volumes"
-
+alias dcl="docker-compose logs -tf"
 
 # TODO add to docs
 # `docker ps` and show only the names of the running containers
