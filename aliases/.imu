@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
 alias pap='cd ~/dev/imu/plug-and-pay/'
-alias papa='cd ~/dev/imu/plug-and-pay-admin/'
 alias zap='cd ~/dev/imu/plug-and-pay-zapier-app/'
+
+alias p1='docker exec -it plug-and-pay-admin-v1-1 bash -c "npm run watch"'
+alias p2='docker exec -it --workdir=/var/www/html/resources/admin plug-and-pay-admin-v2-1 bash -c "yarn dev"'
+alias dep='docker exec -it plug-and-pay-php-1 bash'
