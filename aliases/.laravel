@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-# Laravel shortcuts (php artisan)
+# Laravel shortcuts (https://laravel.com/)
+
+# Artisan
 alias pa='php artisan'
 alias pat='pa tinker'
 
-# Laravel Sail
+# Laravel Sail (https://laravel.com/docs/sail)
 alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
 alias saa='sail artisan'
 alias saam='saa migrate'
@@ -16,3 +18,6 @@ alias sc="sail composer"
 alias sr="sc require"
 
 alias start="sau && sail npm run dev"
+
+# Laravel Valet (https://laravel.com/docs/valet)
+alias vo="valet open"
