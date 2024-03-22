@@ -13,5 +13,3 @@ export HISTCONTROL='ignoreboth';
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
-# Local environment variable
-export APP_ENV='development'
