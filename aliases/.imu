@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-alias pap='cd ~/dev/imu/plug-and-pay/'
+alias pipi='cd ~/dev/imu/plug-and-pay/'
+alias pap='pipi'
 alias zap='cd ~/dev/imu/plug-and-pay-zapier-app/'
 
 alias p1='docker exec -it plug-and-pay-admin-v1-1 bash -c "npm run watch"'
