@@ -116,7 +116,7 @@ fi
 # https://github.com/bhilburn/powerlevel9k/blob/next/segments/context/README.md
 DEFAULT_USER='mghollander'
 
-source ~/dotfiles/.intro
+# source ~/dotfiles/.intro
 source ~/dotfiles/.zsh_profile
 
 # https://coderwall.com/p/a8uxma/zsh-iterm2-osx-shortcuts
