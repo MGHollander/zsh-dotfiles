@@ -10,9 +10,9 @@ alias gb='git branch'
 alias gba='git branch --all'
 alias gbr='git branch --remote'
 alias gco='git checkout'
-alias gcd='git checkout develop'
-alias gcm='git checkout master'
-alias gcs='git checkout release/staging'
+alias gcd='git checkout develop && gpc'
+alias gcm='git checkout master && gpc'
+alias gcs='git checkout release/staging && gpc'
 alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gd='git diff'
 alias gf='git fetch'
@@ -32,5 +32,7 @@ alias gtl='git tag --sort=-version:refname | head -n 5'
 #   deleted and ask for confirmation before deleting.
 #   Add a flag to delete the branches without confirmation.
 #   Add a flag to delete the branches that are not fully merged.
-alias git-clean-local-branches='git fetch --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d'
 alias gclb='git-clean-local-branches'
+
+gcou() { git checkout "$1" && git pull origin "$1"; }
+git-clean-local-branches() { git fetch --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d; }
