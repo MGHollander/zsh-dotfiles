@@ -24,8 +24,16 @@ alias gp='git push'
 alias gpc='git push origin "$(git_current_branch)"'
 alias gr='git remote -v'
 alias gst='git status'
-# TODO make a function from this to make the returned tags configurable
-alias gtl='git tag --sort=-version:refname | head -n 5'
+
+gcou() {
+  git checkout "$1"
+  git pull origin "$1"
+}
+
+alias gtl='git-tag-list'
+git-tag-list() {
+  git tag --sort=-version:refname | head -n "${1:-5}"
+}
 
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
 # TODO make a function from this command that return's branches that will be
@@ -34,5 +42,21 @@ alias gtl='git tag --sort=-version:refname | head -n 5'
 #   Add a flag to delete the branches that are not fully merged.
 alias gclb='git-clean-local-branches'
 
-gcou() { git checkout "$1" && git pull origin "$1"; }
-git-clean-local-branches() { git fetch --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d; }
+git-clean-local-branches() {
+  git fetch --prune
+  git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d;
+}
+
+hf() {
+  local branch_name="hotfix/$1"
+  local base_branch="${2:-master}"
+  git checkout -b "$branch_name" "origin/$base_branch"
+  git push -u origin "$branch_name"
+}
+
+fe() {
+  branch_name="feature/$1"
+  base_branch="${2:-develop}"
+  git checkout -b "$branch_name" "origin/$base_branch"
+  git push -u origin "$branch_name"
+}
