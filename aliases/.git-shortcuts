@@ -26,8 +26,7 @@ alias gr='git remote -v'
 alias gst='git status'
 
 gcou() {
-  git checkout "$1"
-  git pull origin "$1"
+  git checkout "$1" && gpc
 }
 
 alias gtl='git-tag-list'
@@ -50,13 +49,11 @@ git-clean-local-branches() {
 hf() {
   local branch_name="hotfix/$1"
   local base_branch="${2:-master}"
-  git checkout -b "$branch_name" "origin/$base_branch"
-  git push -u origin "$branch_name"
+  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
 }
 
 fe() {
   branch_name="feature/$1"
   base_branch="${2:-develop}"
-  git checkout -b "$branch_name" "origin/$base_branch"
-  git push -u origin "$branch_name"
+  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
 }
