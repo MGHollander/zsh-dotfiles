@@ -16,7 +16,6 @@ alias gcs='git checkout release/staging && glc'
 alias gdt='git describe --tags $(git rev-list --tags --max-count=1)'
 alias gd='git diff'
 alias gf='git fetch'
-alias gfco='gf && gco'
 alias gl='git pull'
 alias glc='git pull origin "$(git_current_branch)"'
 alias gld='git pull origin develop'
@@ -25,8 +24,8 @@ alias gpc='git push origin "$(git_current_branch)"'
 alias gr='git remote -v'
 alias gst='git status'
 
-gcou() {
-  git checkout "$1" && glc
+gfco() {
+  gf && gco "$1" && glc
 }
 
 alias gtl='git-tag-list'
