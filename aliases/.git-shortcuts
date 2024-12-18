@@ -24,7 +24,8 @@ alias gpc='git push origin "$(git_current_branch)"'
 alias gr='git remote -v'
 alias gst='git status'
 
-gfco() {
+alias gfco='git-fetch-checkout'
+git-fetch-checkout() {
   gf && gco "$1" && glc
 }
 
