@@ -4,7 +4,7 @@ alias pipi='cd ~/dev/imu/plug-and-pay/'
 alias pap='pipi'
 alias zap='cd ~/dev/imu/plug-and-pay-zapier-app/'
 
-alias pp-aadmin='docker exec -it --workdir=/var/www/html/resources/admin plug-and-pay-admin-1'
+alias pp-admin='docker exec -it --workdir=/var/www/html/resources/admin plug-and-pay-admin-1'
 alias pp-checkouts='docker exec -it --workdir=/var/www/html/resources/checkout plug-and-pay-checkouts-v2-frontend-1'
 alias pp-php='docker exec -it plug-and-pay-php-1'
 alias papa='docker exec -it plug-and-pay-php-1 php artisan'
