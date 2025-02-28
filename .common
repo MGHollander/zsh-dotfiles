@@ -206,3 +206,9 @@ git-standup() {
 
     git log --all --since "$since" --oneline --author="$AUTHOR"
 }
+
+# TODO Make this function work with my setup. And add to docs.
+toggle_xdebug () {
+    INI_FILE=$(php --ini | grep Loaded | grep -o '/.*');
+    grep --color=auto --color=auto -Fq ';zend_extension="xdebug' -- "${INI_FILE}" && ( perl -p -i -e 's/^;(?<ext>zend_extension="xdebug\.so")/$+{ext}/smgx' -- "${INI_FILE}" && echo -e "xDebug for cli: \033[92menabled\033[0m" ) || ( perl -p -i -e 's/^(?<ext>zend_extension="xdebug\.so")/;$+{ext}/smgx' -- "${INI_FILE}" && echo -e "xDebug for cli: \e[01;31mdisabled\033[0m" )
+}
