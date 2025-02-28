@@ -1,6 +1,6 @@
 # Aliases
 
-Aliases make yout life easier :-). You can add more aliases and helper function
+Aliases make your life easier :-). You can add more aliases and helper function
 via [On My Zsh plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
 
 ## Table of content <!-- omit in toc -->
@@ -9,13 +9,13 @@ via [On My Zsh plugins](https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins).
   - [Easy navigation](#easy-navigation)
   - [Directory shortcuts](#directory-shortcuts)
   - [Command shortcuts](#command-shortcuts)
-  - [Open programs (Mac only)](#open-programs--mac-only-)
+  - [Open programs (Mac only)](#open-programs-mac-only)
   - [Composer](#composer)
-  - [Docker & docker-compose shortcuts](#docker--docker-compose-shortcuts)
+  - [Docker \& docker-compose shortcuts](#docker--docker-compose-shortcuts)
   - [Drush](#drush)
   - [Git](#git)
   - [Laravel](#laravel)
-  - [Node.js & NPM](#nodejs--npm)
+  - [Node.js \& NPM](#nodejs--npm)
   - [Zapier Platform CLI](#zapier-platform-cli)
   - [Other aliases](#other-aliases)
 
