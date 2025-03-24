@@ -52,6 +52,12 @@ hf() {
   git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
 }
 
+bf() {
+  branch_name="bugfix/$1"
+  base_branch="${2:-develop}"
+  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
+}
+
 fe() {
   branch_name="feature/$1"
   base_branch="${2:-develop}"
