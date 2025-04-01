@@ -46,20 +46,70 @@ git-clean-local-branches() {
   git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d;
 }
 
+# Helper function to create a new branch
+_create_branch() {
+  local prefix="$1"
+  local default_base="$2"
+  shift 2
+
+  # Show help if no arguments or help flag
+  if [[ $# -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    echo "Usage: ${prefix} [options] <branch-description>"
+    echo
+    echo "Create a new ${prefix} branch from a specified base branch."
+    echo
+    echo "Options:"
+    echo "  -h, --help         Show this help message"
+    echo "  -b, --base <ref>   Use <ref> as base branch instead of ${default_base}"
+    echo
+    echo "Examples:"
+    echo "  ${prefix} fix critical bug     # Creates ${prefix}/fix-critical-bug from ${default_base}"
+    echo "  ${prefix} -b main new thing    # Creates ${prefix}/new-thing from main"
+    return 0
+  fi
+
+  local base_branch="$default_base"
+  local args=()
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -b|--base)
+        base_branch="$2"
+        shift 2
+        ;;
+      *)
+        args+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  # Check if we have a branch description
+  if [[ ${#args[@]} -eq 0 ]]; then
+    echo "Error: No branch description provided"
+    echo "Try '${prefix} --help' for usage information"
+    return 1
+  fi
+
+  # Join remaining arguments with hyphens
+  local branch_suffix="$(printf "%s" "${args[*]}" | tr ' ' '-')"
+  local branch_name="$prefix/$branch_suffix"
+
+  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
+}
+
+# Create a hotfix branch (default base: master)
 hf() {
-  local branch_name="hotfix/$1"
-  local base_branch="${2:-master}"
-  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
+  _create_branch "hotfix" "master" "$@"
 }
 
+# Create a bugfix branch (default base: develop)
 bf() {
-  branch_name="bugfix/$1"
-  base_branch="${2:-develop}"
-  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
+  _create_branch "bugfix" "develop" "$@"
 }
 
+# Create a feature branch (default base: develop)
 fe() {
-  branch_name="feature/$1"
-  base_branch="${2:-develop}"
-  git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
+  _create_branch "feature" "develop" "$@"
 }
