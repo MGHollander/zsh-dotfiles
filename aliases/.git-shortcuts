@@ -35,15 +35,42 @@ git-tag-list() {
 }
 
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
-# TODO make a function from this command that return's branches that will be
-#   deleted and ask for confirmation before deleting.
-#   Add a flag to delete the branches without confirmation.
-#   Add a flag to delete the branches that are not fully merged.
 alias gclb='git-clean-local-branches'
 
 git-clean-local-branches() {
+  local force=false
+
+  # Parse arguments
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -f|--force)
+        force=true
+        shift
+        ;;
+      *)
+        shift
+        ;;
+    esac
+  done
+
+  # Fetch and prune remote branches
   git fetch --prune
-  git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | xargs git branch -d;
+
+  # Get list of branches to delete
+  local branches_to_delete
+  branches_to_delete=$(git branch -r | awk "{print \$1}" | grep -E -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}")
+
+  if [[ -z "$branches_to_delete" ]]; then
+    echo "No branches to delete"
+    return 0
+  fi
+
+  # Delete branches based on force flag
+  if [[ "$force" = true ]]; then
+    echo "$branches_to_delete" | xargs git branch -D
+  else
+    echo "$branches_to_delete" | xargs git branch -d
+  fi
 }
 
 # Helper function to create a new branch
