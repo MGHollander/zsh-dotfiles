@@ -23,6 +23,7 @@ alias gp='git push'
 alias gpc='git push origin "$(git_current_branch)"'
 alias gr='git remote -v'
 alias gst='git status'
+alias gspc='git stash push -m "$(git_current_branch)"'
 
 alias gfco='git-fetch-checkout'
 git-fetch-checkout() {
@@ -140,3 +141,4 @@ bf() {
 fe() {
   _create_branch "feature" "develop" "$@"
 }
+
