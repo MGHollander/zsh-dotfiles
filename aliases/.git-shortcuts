@@ -25,20 +25,20 @@ alias gr='git remote -v'
 alias gst='git status'
 alias gspc='git stash push -m "$(git_current_branch)"'
 
-alias gfco='git_fetch_checkout'
-git_fetch_checkout() {
+alias gfco='git-fetch-checkout'
+git-fetch-checkout() {
   gf && gco "$1" && glc
 }
 
-alias gtl='git_tag_list'
-git_tag_list() {
+alias gtl='git-tag-list'
+git-tag-list() {
   git tag --sort=-version:refname | head -n "${1:-5}"
 }
 
 # Clean up local branches that do not exist on remote anymore (https://stackoverflow.com/a/17029936)
 alias gclb='git-clean-local-branches'
 
-git_clean_local_branches() {
+git-clean-local-branches() {
   local force=false
 
   # Parse arguments
@@ -76,60 +76,23 @@ git_clean_local_branches() {
 
 # Helper function to create a new branch
 _create_branch() {
-  local prefix=""
-  local default_base=""
-
-  # Check if we're calling the function directly with a prefix
-  # or if we're calling it from the wrapper functions (hf, bf, fe)
-  if [[ $# -ge 2 ]] && [[ "$1" != "-"* ]] && [[ "$2" != "-"* ]]; then
-    # Called with explicit prefix and base
-    prefix="$1"
-    default_base="$2"
-    shift 2
-  elif [[ $# -ge 1 ]] && [[ "$1" != "-"* ]]; then
-    # Check if first argument is a valid prefix or branch description
-    if [[ "$1" == "hotfix" ]] || [[ "$1" == "bugfix" ]] || [[ "$1" == "feature" ]]; then
-      prefix="$1"
-      default_base="develop"
-      shift 1
-    else
-      # First argument is branch description, no prefix
-      default_base="develop"
-    fi
-  else
-    # No arguments or first argument is an option
-    default_base="develop"
-  fi
+  local prefix="$1"
+  local default_base="$2"
+  shift 2
 
   # Show help if no arguments or help flag
   if [[ $# -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
-    if [[ -n "$prefix" ]] && [[ "$prefix" != "-"* ]]; then
-      echo "Usage: ${prefix} [options] <branch-description>"
-      echo
-      echo "Create a new ${prefix} branch from a specified base branch."
-    else
-      echo "Usage: _create_branch [prefix] [default-base] [options] <branch-description>"
-      echo
-      echo "Create a new branch from a specified base branch."
-    fi
+    echo "Usage: ${prefix} [options] <branch-description>"
+    echo
+    echo "Create a new ${prefix} branch from a specified base branch."
     echo
     echo "Options:"
     echo "  -h, --help         Show this help message"
     echo "  -b, --base <ref>   Use <ref> as base branch instead of ${default_base}"
     echo
-    if [[ -n "$prefix" ]] && [[ "$prefix" != "-"* ]]; then
-      echo "Examples:"
-      echo "  ${prefix} fix critical bug     # Creates ${prefix}/fix-critical-bug from ${default_base}"
-      echo "  ${prefix} test-456 add feature # Creates ${prefix}/TEST-456-add-feature from ${default_base}"
-      echo "  ${prefix} -b main new thing    # Creates ${prefix}/new-thing from main"
-    else
-      echo "Examples:"
-      echo "  _create_branch feature develop fix critical bug  # Creates feature/fix-critical-bug from develop"
-      echo "  _create_branch fix critical bug                  # Creates fix-critical-bug from develop"
-      echo "  _create_branch check-123 fix bug                 # Creates CHECK-123-fix-bug from develop"
-      echo "  _create_branch test-456 add feature              # Creates TEST-456-add-feature from develop"
-      echo "  _create_branch feature -b main new thing         # Creates feature/new-thing from main"
-    fi
+    echo "Examples:"
+    echo "  ${prefix} fix critical bug     # Creates ${prefix}/fix-critical-bug from ${default_base}"
+    echo "  ${prefix} -b main new thing    # Creates ${prefix}/new-thing from main"
     return 0
   fi
 
@@ -153,58 +116,15 @@ _create_branch() {
   # Check if we have a branch description
   if [[ ${#args[@]} -eq 0 ]]; then
     echo "Error: No branch description provided"
-    if [[ -n "$prefix" ]] && [[ "$prefix" != "-"* ]]; then
-      echo "Try '${prefix} --help' for usage information"
-    else
-      echo "Try '_create_branch --help' for usage information"
-    fi
+    echo "Try '${prefix} --help' for usage information"
     return 1
   fi
 
   # Join remaining arguments with hyphens
   local branch_suffix="$(printf "%s" "${args[*]}" | tr ' ' '-')"
-
-  # Check if branch_suffix starts with an issue number pattern (single word followed by hyphen and digits)
-  if [[ "$branch_suffix" =~ ^([a-zA-Z]+)-([0-9]+)-(.*)$ ]]; then
-    # Extract issue prefix, issue number, and remaining description
-    local issue_prefix="${BASH_REMATCH[1]}"
-    local issue_number="${BASH_REMATCH[2]}"
-    local description="${BASH_REMATCH[3]}"
-
-    # Make issue prefix uppercase and convert description to lowercase
-    issue_prefix=$(echo "$issue_prefix" | tr '[:lower:]' '[:upper:]')
-    description=$(echo "$description" | tr '[:upper:]' '[:lower:]')
-
-    # Reconstruct branch_suffix with uppercase issue prefix and lowercase description
-    if [[ -n "$description" ]]; then
-      branch_suffix="${issue_prefix}-${issue_number}-${description}"
-    else
-      branch_suffix="${issue_prefix}-${issue_number}"
-    fi
-  elif [[ "$branch_suffix" =~ ^([a-zA-Z]+)-([0-9]+)$ ]]; then
-    # Handle case where there's only issue number without description
-    local issue_prefix="${BASH_REMATCH[1]}"
-    local issue_number="${BASH_REMATCH[2]}"
-
-    # Make issue prefix uppercase
-    issue_prefix=$(echo "$issue_prefix" | tr '[:lower:]' '[:upper:]')
-    branch_suffix="${issue_prefix}-${issue_number}"
-  fi
-
-  # Create branch name with or without prefix
-  local branch_name
-  if [[ -n "$prefix" ]] && [[ "$prefix" != "-"* ]]; then
-    branch_name="$prefix/$branch_suffix"
-  else
-    branch_name="$branch_suffix"
-  fi
+  local branch_name="$prefix/$branch_suffix"
 
   git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
-}
-
-# Create a branch without a prefix
-create_branch() {
-  _create_branch "" "develop" "$@"
 }
 
 # Create a hotfix branch (default base: master)
