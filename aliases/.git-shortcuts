@@ -131,6 +131,24 @@ _create_branch() {
   # Join remaining arguments with hyphens
   local branch_suffix
   branch_suffix="$(printf "%s" "${args[*]}" | tr ' ' '-')"
+
+  if [[ -z "$branch_suffix" ]] || [[ "$branch_suffix" =~ ^- ]]; then
+    echo "Error: Invalid branch description"
+    return 1
+  fi
+
+  if [[ "$branch_suffix" == *-* ]]; then
+    word=${branch_suffix%%-*}
+    temp=${branch_suffix#*-}
+    if [[ "$temp" =~ ^[[:digit:]]+ ]]; then
+      numbers=${temp%%-*}
+      rest=${temp#*-}
+      if [[ "$rest" == "$temp" ]]; then rest=""; else rest="-$rest"; fi
+
+      branch_suffix="$(echo "$word" | tr 'a-z' 'A-Z')-${numbers}${rest}"
+    fi
+  fi
+
   if [[ -n "$prefix" ]]; then
     local branch_name="$prefix/$branch_suffix"
   else
