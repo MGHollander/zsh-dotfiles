@@ -76,32 +76,36 @@ git_clean_local_branches() {
 
 # Helper function to create a new branch
 _create_branch() {
-  local prefix="$1"
-  local default_base="$2"
-  shift 2
+  local base_branch=""
+  local prefix=""
 
   # Show help if no arguments or help flag
   if [[ $# -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
-    echo "Usage: ${prefix} [options] <branch-description>"
+    echo "Usage: command [options] <branch-description>"
     echo
-    echo "Create a new ${prefix} branch from a specified base branch."
+    echo "Create a new branch from a specified base branch."
     echo
     echo "Options:"
-    echo "  -h, --help         Show this help message"
-    echo "  -b, --base <ref>   Use <ref> as base branch instead of ${default_base}"
+    echo "  -h, --help              Show this help message"
+    echo "  -p, --prefix <prefix>   Use <prefix> for the branch name"
+    echo "  -b, --base <ref>        Use <ref> as base branch"
     echo
     echo "Examples:"
-    echo "  ${prefix} fix critical bug     # Creates ${prefix}/fix-critical-bug from ${default_base}"
-    echo "  ${prefix} -b main new thing    # Creates ${prefix}/new-thing from main"
+    echo "  command --base master --prefix hotfix fix critical bug   # Creates hotfix/fix-critical-bug from master"
+    echo "  command --prefix feature new thing                       # Creates feature/new-thing from the current branch"
+    echo "  command several changes                                  # Creates several-changes from the current branch"
     return 0
   fi
 
-  local base_branch="$default_base"
   local args=()
 
   # Parse arguments
   while [[ $# -gt 0 ]]; do
     case "$1" in
+      -p|--prefix)
+        prefix="$2"
+        shift 2
+        ;;
       -b|--base)
         base_branch="$2"
         shift 2
@@ -113,32 +117,41 @@ _create_branch() {
     esac
   done
 
+  if [[ -z "$base_branch" ]]; then
+    base_branch="$(git_current_branch)"
+  fi
+
   # Check if we have a branch description
   if [[ ${#args[@]} -eq 0 ]]; then
     echo "Error: No branch description provided"
-    echo "Try '${prefix} --help' for usage information"
+    echo "Try 'command --help' for usage information"
     return 1
   fi
 
   # Join remaining arguments with hyphens
-  local branch_suffix="$(printf "%s" "${args[*]}" | tr ' ' '-')"
-  local branch_name="$prefix/$branch_suffix"
+  local branch_suffix
+  branch_suffix="$(printf "%s" "${args[*]}" | tr ' ' '-')"
+  if [[ -n "$prefix" ]]; then
+    local branch_name="$prefix/$branch_suffix"
+  else
+    local branch_name="$branch_suffix"
+  fi
 
   git checkout -b "$branch_name" "origin/$base_branch" && git push -u origin "$branch_name"
 }
 
-# Create a hotfix branch (default base: master)
+cb() {
+  _create_branch --base "develop" "$@"
+}
+
 hf() {
-  _create_branch "hotfix" "master" "$@"
+  _create_branch --base "master" --prefix "hotfix" "$@"
 }
 
-# Create a bugfix branch (default base: develop)
 bf() {
-  _create_branch "bugfix" "develop" "$@"
+  _create_branch --base "develop" --prefix "bugfix" "$@"
 }
 
-# Create a feature branch (default base: develop)
 fe() {
-  _create_branch "feature" "develop" "$@"
+  _create_branch --base "develop" --prefix "feature" "$@"
 }
-
