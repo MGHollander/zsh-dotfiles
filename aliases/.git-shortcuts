@@ -163,18 +163,58 @@ _create_branch() {
 }
 
 cb() {
-  _create_branch --base "develop" "$@"
+  _handle_shortcut_help "develop" "" "$@"
 }
 
 hf() {
-  _create_branch --base "master" --prefix "hotfix" "$@"
+  _handle_shortcut_help "master" "hotfix" "$@"
 }
 
 bf() {
-  _create_branch --base "develop" --prefix "bugfix" "$@"
+  _handle_shortcut_help "develop" "bugfix" "$@"
 }
 
 fe() {
-  _create_branch --base "develop" --prefix "feature" "$@"
+  _handle_shortcut_help "develop" "feature" "$@"
+}
+
+# Helper function to create a branch with configurable base and prefix
+_create_branch_with_defaults() {
+  local default_base="$1"
+  local prefix="$2"
+  shift 2
+
+  local has_base=false
+  for arg in "$@"; do
+    if [[ "$arg" == "--base" ]]; then
+      has_base=true
+      break
+    fi
+  done
+
+  local args=()
+  if [[ "$has_base" == false ]]; then
+    args+=(--base "$default_base")
+  fi
+  if [[ -n "$prefix" ]]; then
+    args+=(--prefix "$prefix")
+  fi
+  args+=("$@")
+
+  _create_branch "${args[@]}"
+}
+
+# Helper function to handle help and create branch with defaults
+_handle_shortcut_help() {
+  local default_base="$1"
+  local prefix="$2"
+  shift 2
+
+  if [[ $# -eq 0 ]] || [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]]; then
+    _create_branch --help
+    return 0
+  fi
+
+  _create_branch_with_defaults "$default_base" "$prefix" "$@"
 }
 
