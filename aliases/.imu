@@ -9,7 +9,7 @@ alias pp-checkouts='docker exec -it --workdir=/var/www/html/resources/checkout p
 
 alias pp-phpx='docker exec -it plug-and-pay-php-1'
 pp-php () {
-  docker exec -it plug-and-pay-php-1 sh -c "XDEBUG_MODE=off php $*"
+  docker exec -it plug-and-pay-php-1 sh -c "XDEBUG_MODE=off $*"
 }
 
 alias papax='docker exec -it plug-and-pay-php-1 php artisan'
