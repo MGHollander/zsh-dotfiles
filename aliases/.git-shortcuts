@@ -31,7 +31,7 @@ alias gspc='git stash push -m "$(git_current_branch)"'
 
 alias gfco='git_fetch_checkout'
 git_fetch_checkout() {
-  gf && gco "$1" && glc
+  gf && gco "$1" && glc && gsu
 }
 
 alias gtl='git_tag_list'
