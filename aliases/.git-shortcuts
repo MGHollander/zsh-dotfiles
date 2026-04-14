@@ -218,3 +218,28 @@ _handle_shortcut_help() {
   _create_branch_with_defaults "$default_base" "$prefix" "$@"
 }
 
+# What changes the most (source https://piechowski.io/post/git-commands-before-reading-code/)
+git_changes() {
+  git log --format=format: --name-only --since="1 year ago" | sort | uniq -c | sort -nr | head -20
+}
+
+# Who Built This (source https://piechowski.io/post/git-commands-before-reading-code/)
+git_who() {
+  git shortlog -sn --no-merges
+}
+
+# Where Do Bugs Cluster (source https://piechowski.io/post/git-commands-before-reading-code/)
+git_bugs() {
+  git log -i -E --grep="fix|bug|broken" --name-only --format='' | sort | uniq -c | sort -nr | head -20
+}
+
+# Is This Project Accelerating or Dying (source https://piechowski.io/post/git-commands-before-reading-code/)
+git_activity(){
+  git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c
+}
+
+# How Often Is the Team Firefighting (source https://piechowski.io/post/git-commands-before-reading-code/)
+git_fire() {
+  git log --oneline --since="1 year ago" | grep -iE 'revert|hotfix|emergency|rollback'
+}
+
