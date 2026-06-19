@@ -15,12 +15,13 @@
 FILE=$1
 MESSAGE=$(cat $FILE)
 TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
-if [[ $TICKET == "" || $TICKET == "develop" || $TICKET == "main" || $TICKET == "master" || $TICKET == "release" || "$MESSAGE" == "$TICKET"*  || "$MESSAGE" == "#$TICKET"* ]];then
+if [[ $TICKET == "" || $TICKET == "develop" || $TICKET == "main" || $TICKET == "master" || $TICKET == "release" || "$MESSAGE" == "$TICKET"*  || "$MESSAGE" == "#$TICKET"*   || "$MESSAGE" == " #$TICKET"* ]];then
   exit 0;
 fi
 
 if [[ $TICKET =~ ^[0-9]+$ ]]; then
-  TICKET="#$TICKET"
+  # Add a space before the # to prevent the commit from being interpreted as an empty commit message. Workaround when using Zed editor.
+  TICKET=" #$TICKET"
 fi
 
 echo "$TICKET $MESSAGE" > $FILE

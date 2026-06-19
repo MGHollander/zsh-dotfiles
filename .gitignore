@@ -31,3 +31,15 @@ Thumbs.db
 
 # Valet environment variable files
 .valet-env.php
+
+# Zed editor asks to add this file
+.phpactor.json
+
+
+## Plug&Pay ignores
+
+# Solo terminal
+solo.yml
+
+# Plug&Pay local checkout devtools (command palette), never commit
+resources/checkout/src/devtools/
