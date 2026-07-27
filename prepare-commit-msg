@@ -14,13 +14,14 @@
 
 FILE=$1
 MESSAGE=$(cat $FILE)
-TICKET=$(git rev-parse --abbrev-ref HEAD | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
+# Exclude branches that start with session/agent_ to avoid prepending ticket numbers for Kilo cloud agent branches.
+TICKET=$(git rev-parse --abbrev-ref HEAD | grep -v '^session/agent_' | grep -Eo '^(\w+/)?(\w+[-_])?[0-9]+' | grep -Eo '(\w+[-])?[0-9]+' | tr "[:lower:]" "[:upper:]")
 if [[ $TICKET == "" || $TICKET == "develop" || $TICKET == "main" || $TICKET == "master" || $TICKET == "release" || "$MESSAGE" == "$TICKET"*  || "$MESSAGE" == "#$TICKET"*   || "$MESSAGE" == " #$TICKET"* ]];then
   exit 0;
 fi
 
 if [[ $TICKET =~ ^[0-9]+$ ]]; then
-  # Add a space before the # to prevent the commit from being interpreted as an empty commit message. Workaround when using Zed editor.
+  # Add a space before the # to prevent the commit from being interpreted as an empty commit message. Workaround for Zed editor.
   TICKET=" #$TICKET"
 fi
 
